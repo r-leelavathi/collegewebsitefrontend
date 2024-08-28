@@ -1,0 +1,114 @@
+/* Container styling for the circular table */
+.circular-table-container {
+  width: 100%;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+/* Header styling */
+.circular-table-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+/* Table styling */
+.circular-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+}
+
+.circular-table th,
+.circular-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.circular-table th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.circular-table td {
+  color: #555;
+}
+
+/* Button styling */
+.action-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-button {
+  background-color: #4caf50;
+  /* Green */
+}
+
+.view-button:hover {
+  background-color: #45a049;
+  /* Darker green */
+}
+
+.download-button {
+  background-color: #2196f3;
+  /* Blue */
+}
+
+.download-button:hover {
+  background-color: #0b79d0;
+  /* Darker blue */
+}
+
+/* Edit and Delete button styling if needed in the future */
+.edit-button {
+  background-color: #ff9800;
+  /* Orange */
+}
+
+.edit-button:hover {
+  background-color: #e68900;
+  /* Darker orange */
+}
+
+.delete-button {
+  background-color: #f44336;
+  /* Red */
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+  /* Darker red */
+}
+
+/* Input field styling */
+input[type="date"],
+input[type="text"] {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .circular-table-container {
+    padding: 0.5rem;
+  }
+
+  .circular-table th,
+  .circular-table td {
+    padding: 0.5rem;
+  }
+}

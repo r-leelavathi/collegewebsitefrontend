@@ -1,0 +1,122 @@
+.faculty-table-container {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: var(--paragraph-font);
+}
+
+.table-heading {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.faculty-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--paragraph-font);
+}
+
+.faculty-table th,
+.faculty-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.faculty-table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-family: var(--heading-font);
+}
+
+.faculty-table tr:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.table-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.table-button:hover {
+  background-color: var(--primary-color);
+}
+
+.delete-button {
+  background-color: red;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.update-button {
+  background-color: var(--accent-color);
+}
+
+.update-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.more-button {
+  background-color: var(--primary-color);
+}
+
+.more-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.table-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.table-button:hover {
+  background-color: var(--primary-color);
+}
+
+.save-button {
+  background-color: var(--primary-color);
+}
+
+.save-button:hover {
+  background-color: var(--accent-color);
+}
+
+.cancel-button {
+  background-color: #ccc;
+}
+
+.cancel-button:hover {
+  background-color: #aaa;
+}
+
+.faculty-table input[type="text"],
+.faculty-table input[type="email"] {
+  padding: 0.5rem;
+  border-radius: var(--card-border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.faculty-table input[type="text"]:focus,
+.faculty-table input[type="email"]:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}

@@ -1,0 +1,56 @@
+.circular-form-container {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.circular-form-container h2 {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.circular-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.circular-form .form-group label {
+  display: block;
+  font-family: var(--paragraph-font);
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.circular-form .form-group input,
+.circular-form .form-group textarea,
+.circular-form .form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: var(--paragraph-font);
+  border: 1px solid #ccc;
+  border-radius: var(--card-border-radius);
+  box-sizing: border-box;
+}
+
+.circular-form .form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-family: var(--heading-font);
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: var(--accent-color);
+}
