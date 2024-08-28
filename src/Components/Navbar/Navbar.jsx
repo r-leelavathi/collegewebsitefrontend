@@ -9,13 +9,32 @@ const Navbar = () => {
     studentLife: false,
     events: false,
     alumni: false,
+    news: false,
+  });
+
+  const [subDropdownOpen, setSubDropdownOpen] = useState({
+    clubsAndSocieties: false,
   });
 
   const toggleDropdown = (menu) => {
-    setDropdownOpen({
-      ...dropdownOpen,
-      [menu]: !dropdownOpen[menu],
-    });
+    setDropdownOpen((prevState) => ({
+      ...prevState,
+      [menu]: !prevState[menu],
+    }));
+  };
+
+  const handleMouseEnter = (submenu) => {
+    setSubDropdownOpen((prevState) => ({
+      ...prevState,
+      [submenu]: true,
+    }));
+  };
+
+  const handleMouseLeave = (submenu) => {
+    setSubDropdownOpen((prevState) => ({
+      ...prevState,
+      [submenu]: false,
+    }));
   };
 
   return (
@@ -28,6 +47,7 @@ const Navbar = () => {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/about-us" className="nav-link">About</Link>
 
+          {/* Academics Dropdown */}
           <div className="relative group">
             <button
               onClick={() => toggleDropdown('academics')}
@@ -45,6 +65,7 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Admissions Dropdown */}
           <div className="relative group">
             <button
               onClick={() => toggleDropdown('admissions')}
@@ -62,6 +83,7 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Student Life Dropdown */}
           <div className="relative group">
             <button
               onClick={() => toggleDropdown('studentLife')}
@@ -72,13 +94,36 @@ const Navbar = () => {
             {dropdownOpen.studentLife && (
               <div className="dropdown-content">
                 <Link to="/student-life/campus" className="dropdown-link">Campus Life</Link>
-                <Link to="/student-life/clubs" className="dropdown-link">Clubs & Societies</Link>
+
+                {/* Clubs & Societies with Submenu */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('clubsAndSocieties')}
+                  onMouseLeave={() => handleMouseLeave('clubsAndSocieties')}
+                >
+                  <Link to="/student-life/clubs" className="dropdown-link">
+                    Clubs & Societies
+                  </Link>
+                  {subDropdownOpen.clubsAndSocieties && (
+                    <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
+                      <Link to="/student-life/clubs/redcross" className="dropdown-link">Sports</Link>
+                      <Link to="/student-life/clubs/yoga" className="dropdown-link">NCC</Link>
+                      <Link to="/student-life/clubs/yoga" className="dropdown-link">NSS</Link>
+                      <Link to="/student-life/clubs/yoga" className="dropdown-link">Yoga</Link>
+                      <Link to="/student-life/clubs/yoga" className="dropdown-link">Technical Club</Link>
+                      <Link to="/student-life/clubs/yoga" className="dropdown-link">Art & Literature Club</Link>
+                      <Link to="/student-life/clubs/redcross" className="dropdown-link">Red Cross</Link>
+                    </div>
+                  )}
+                </div>
+
                 <Link to="/student-life/events" className="dropdown-link">Events & Activities</Link>
                 <Link to="/student-life/housing" className="dropdown-link">Housing & Dining</Link>
               </div>
             )}
           </div>
 
+          {/* Events Dropdown */}
           <div className="relative group">
             <button
               onClick={() => toggleDropdown('events')}
@@ -94,6 +139,7 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* News & Announcements Dropdown */}
           <div className="relative group">
             <button
               onClick={() => toggleDropdown('news')}
@@ -103,7 +149,7 @@ const Navbar = () => {
             </button>
             {dropdownOpen.news && (
               <div className="dropdown-content">
-                <Link to="/news/circulars" className="dropdown-link">Coolege Circulars</Link>
+                <Link to="/news/circulars" className="dropdown-link">College Circulars</Link>
                 <Link to="/news/press" className="dropdown-link">Press Release</Link>
               </div>
             )}

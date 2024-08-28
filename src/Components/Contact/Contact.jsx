@@ -38,7 +38,6 @@ const Contact = () => {
   };
   return (
     <>
-      <h1 className='contact'>Contact us</h1>
       <div className='contact__main'>
         <div className="contact__Container">
           <div className="contact__left">
