@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-const TechnicalClubForm = () => {
+const ClubSocietiesForm = () => {
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({ topic: '', description: '', date: '', link: '' });
   const [editEvent, setEditEvent] = useState(null);
@@ -12,8 +12,9 @@ const TechnicalClubForm = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/technicalclub');
+      const response = await axios.get('http://localhost:8080/api/club_details');
       setEvents(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
     }
@@ -27,10 +28,10 @@ const TechnicalClubForm = () => {
     e.preventDefault();
     try {
       if (editEvent) {
-        await axios.put('http://localhost:8080/api/technicalclub/${editEvent.id}', newEvent);
+        await axios.put('http://localhost:8080/api/club_details/${editEvent.id}', newEvent);
         setEditEvent(null);
       } else {
-        await axios.post('http://localhost:8080/api/technicalclub', newEvent);
+        await axios.post('http://localhost:8080/api/club_details', newEvent);
       }
       setNewEvent({ topic: '', description: '', date: '', link: '' });
       fetchEvents();
@@ -46,7 +47,7 @@ const TechnicalClubForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('http://localhost:8080/api/technicalclub/${id}');
+      await axios.delete('http://localhost:8080/api/club_details/${id}');
       fetchEvents();
 
     } catch (error) {
@@ -60,33 +61,48 @@ const TechnicalClubForm = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="topic"
-          value={newEvent.topic}
+          name="clubName"
+          value={newEvent.clubName}
           onChange={handleInputChange}
-          placeholder="Topic"
+          placeholder="Enter Name of the Club"
           required
         />
         <input
           type="text"
-          name="description"
-          value={newEvent.description}
+          name="clubIncharge"
+          value={newEvent.clubIncharge}
           onChange={handleInputChange}
-          placeholder="Description"
-          required
-        />
-        <input
-          type="date"
-          name="date"
-          value={newEvent.date}
-          onChange={handleInputChange}
+          placeholder="Enter the name of the in-charge "
           required
         />
         <input
           type="text"
-          name="link"
-          value={newEvent.link}
+          name="clubInchargeDesigntion"
+          value={newEvent.clubInchargeDesigntion}
           onChange={handleInputChange}
-          placeholder="Link"
+          placeholder="Enter designation of the in-charge "
+          required
+        />
+        <input
+          type="number"
+          name="clubInchargePhoneNumer"
+          value={newEvent.clubInchargePhoneNumer}
+          onChange={handleInputChange}
+          placeholder="Enter the phone number of in-charge"
+        />
+        <input
+          type="email"
+          name="clubInchargeEmail"
+          value={newEvent.clubInchargeEmail}
+          onChange={handleInputChange}
+          placeholder="Enter the email id of in-charge"
+        />
+        <input
+          type="text"
+          name="clubInchargePhoto"
+          value={newEvent.clubInchargePhoto}
+          onChange={handleInputChange}
+          placeholder="Enter the in-charge photo link"
         />
         <button type="submit">{editEvent ? 'Update Event' : 'Add Event'}</button>
       </form>
@@ -107,4 +123,5 @@ const TechnicalClubForm = () => {
   );
 };
 
-export default TechnicalClubForm
+
+export default ClubSocietiesForm

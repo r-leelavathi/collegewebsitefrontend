@@ -106,12 +106,12 @@ const Navbar = () => {
                   </Link>
                   {subDropdownOpen.clubsAndSocieties && (
                     <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
-                      <Link to="/student-life/clubs/redcross" className="dropdown-link">Sports</Link>
-                      <Link to="/student-life/clubs/yoga" className="dropdown-link">NCC</Link>
-                      <Link to="/student-life/clubs/yoga" className="dropdown-link">NSS</Link>
+                      <Link to="/student-life/clubs/sports" className="dropdown-link">Sports</Link>
+                      <Link to="/student-life/clubs/ncc" className="dropdown-link">NCC</Link>
+                      <Link to="/student-life/clubs/nss" className="dropdown-link">NSS</Link>
                       <Link to="/student-life/clubs/yoga" className="dropdown-link">Yoga</Link>
-                      <Link to="/student-life/clubs/yoga" className="dropdown-link">Technical Club</Link>
-                      <Link to="/student-life/clubs/yoga" className="dropdown-link">Art & Literature Club</Link>
+                      <Link to="/student-life/clubs/technicalclub" className="dropdown-link">Technical Club</Link>
+                      <Link to="/student-life/clubs/artliterature" className="dropdown-link">Art & Literature Club</Link>
                       <Link to="/student-life/clubs/redcross" className="dropdown-link">Red Cross</Link>
                     </div>
                   )}

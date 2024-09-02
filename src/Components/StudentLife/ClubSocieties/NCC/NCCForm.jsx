@@ -1,7 +1,8 @@
+import React from 'react'
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-const TechnicalClubForm = () => {
+const NCCForm = () => {
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({ topic: '', description: '', date: '', link: '' });
   const [editEvent, setEditEvent] = useState(null);
@@ -107,4 +108,5 @@ const TechnicalClubForm = () => {
   );
 };
 
-export default TechnicalClubForm
+
+export default NCCForm

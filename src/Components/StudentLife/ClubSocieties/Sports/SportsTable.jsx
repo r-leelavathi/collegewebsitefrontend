@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import YogaForm from './YogaForm';
-
-const YogaTable = () => {
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+const SportsTable = () => {
   const [events, setEvents] = useState([]);
+
+
   const [clubInfo, SetClubInfo] = useState([]);
 
   useEffect(() => {
@@ -21,9 +21,10 @@ const YogaTable = () => {
     }
 
   };
+
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/yoga');
+      const response = await axios.get('http://localhost:8080/api/technicalclub');
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -40,15 +41,16 @@ const YogaTable = () => {
               <h2 className="
               bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-lg p-4 mb-8
               text-2xl font-bold text-white mb-2">{club.clubName}</h2>
-              <p className="text-black mb-4 text-justify">The Yoga Club at our college is a sanctuary for students to connect with their inner selves and find balance amidst their academic pursuits. We aim to create a nurturing environment where both body and mind are strengthened through the practice of yoga. By integrating ancient wisdom with modern practices, we empower our students to lead healthier, more mindful lives. The Yoga Club welcomes everyone, regardless of experience, to join and experience the transformative power of yoga.</p>
+              <p className="text-black mb-4 text-justify">The Sports Club at our college is more than just a place for physical activity; it is a thriving community that champions the spirit of teamwork, discipline, and resilience. We believe in the power of sports to shape character, build leadership, and promote a healthy, balanced lifestyle. By engaging students in a variety of sports and fitness activities, the club fosters camaraderie and instills a sense of fair play, encouraging every member to strive for excellence both on and off the field.</p>
               <div className="text-black">
                 <h3 className="
                 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-lg p-4 mb-8 text-white
-                text-lg font-semibold">Vision</h3>                <p className="mb-2 text-justify">To foster a harmonious community of students who embrace physical, mental, and spiritual wellness, cultivating resilience and inner peace through the practice of yoga.</p>
+                text-lg font-semibold">Vision</h3>
+                <p className="mb-2 text-justify">To cultivate a vibrant sporting culture that nurtures physical fitness, sportsmanship, and personal growth, empowering students to achieve their full potential through the joy of sports.</p>
 
                 <h3 className="
                 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-lg p-4 mb-8 text-white
-                text-lg font-semibold">Mission</h3>                <p className="mb-2 text-justify text-black">To promote a holistic lifestyle among students by encouraging regular yoga practice, fostering mindfulness, and building a supportive community that values health, well-being, and personal growth.</p>
+                text-lg font-semibold">Mission</h3>                <p className="mb-2 text-justify">To provide a diverse range of sports and recreational opportunities that encourage participation, develop athletic skills, and promote wellness, while building a community that values teamwork, perseverance, and mutual respect.</p>
               </div>
             </div>
             <div className="flex items-center justify-center flex-1 mb-6">
@@ -56,17 +58,16 @@ const YogaTable = () => {
                 <img
                   src={club.clubInchargePhoto}
                   alt={club.clubIncharge}
-                  className="w-60 h-60 rounded-full mx-auto mb-4 border-4 border-white shadow-md"
+                  className="w-44 h-44 rounded-full mx-auto mb-4 border-4 border-white shadow-md"
                 />
-                <p className="text-black font-semibold">Incharge : {club.clubIncharge}</p>
-                <p className="text-black text-sm">Department : {club.clubInchargeDesigntion}</p>
-                <p className="text-black text-sm">Phone Number : {club.clubInchargePhoneNumer}</p>
-                <p className="text-black text-sm">Mail Id : {club.clubInchargeEmail}</p>
+                <p className="text-white font-semibold">Incharge : {club.clubIncharge}</p>
+                <p className="text-white text-sm">Department : {club.clubInchargeDesigntion}</p>
+                <p className="text-white text-sm">Phone Number : {club.clubInchargePhoneNumer}</p>
+                <p className="text-white text-sm">Mail Id : {club.clubInchargeEmail}</p>
               </div>
             </div>
           </div>
         ))}
-
       <hr />
       <table className="event-table">
         <thead>
@@ -92,4 +93,4 @@ const YogaTable = () => {
   );
 };
 
-export default YogaTable;
+export default SportsTable

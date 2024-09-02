@@ -1,0 +1,88 @@
+.club-table-container {
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  font-family: var(--paragraph-font);
+  margin: 0 20px 20px 20px;
+}
+
+.club-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.club-table th,
+.club-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  color: var(--text-color);
+}
+
+.club-table th {
+  background-color: #4c51bf;
+  color: #ffffff;
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+}
+
+.club-table tr:nth-child(even) {
+  background-color: #f7fafc;
+}
+
+.club-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.action-button {
+  background-color: #6b46c1;
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-right: 6px;
+  font-family: var(--heading-font);
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #4c51bf;
+}
+
+.view-button,
+.download-button,
+.edit-button,
+.save-button {
+  background-color: #6b46c1;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover,
+.download-button:hover,
+.edit-button:hover,
+.save-button:hover {
+  background-color: #4c51bf;
+  /* Consistent hover effect with navbar */
+}
+
+.delete-button {
+  background-color: #e53e3e;
+  /* Red color for delete action */
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c53030;
+  /* Slightly darker red on hover */
+}

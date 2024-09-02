@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-const TechnicalClubForm = () => {
+const YogaForm = () => {
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({ topic: '', description: '', date: '', link: '' });
   const [editEvent, setEditEvent] = useState(null);
@@ -12,7 +11,7 @@ const TechnicalClubForm = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/technicalclub');
+      const response = await axios.get('http://localhost:8080/api/yoga');
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -27,10 +26,10 @@ const TechnicalClubForm = () => {
     e.preventDefault();
     try {
       if (editEvent) {
-        await axios.put('http://localhost:8080/api/technicalclub/${editEvent.id}', newEvent);
+        await axios.put('http://localhost:8080/api/yoga/${editEvent.id}', newEvent);
         setEditEvent(null);
       } else {
-        await axios.post('http://localhost:8080/api/technicalclub', newEvent);
+        await axios.post('http://localhost:8080/api/yoga', newEvent);
       }
       setNewEvent({ topic: '', description: '', date: '', link: '' });
       fetchEvents();
@@ -46,7 +45,7 @@ const TechnicalClubForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('http://localhost:8080/api/technicalclub/${id}');
+      await axios.delete('http://localhost:8080/api/yoga/${id}');
       fetchEvents();
 
     } catch (error) {
@@ -107,4 +106,4 @@ const TechnicalClubForm = () => {
   );
 };
 
-export default TechnicalClubForm
+export default YogaForm
