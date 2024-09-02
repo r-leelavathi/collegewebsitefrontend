@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FacultyForm.css';
+import FacultyTable from './FacultyTable';
 
 const FacultyForm = ({ faculty, onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const FacultyForm = ({ faculty, onClose, onSuccess }) => {
     facultyPhone: '',
     facultyEmail: '',
     facultyAddress: '',
+    facultyLink: ''
   });
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const FacultyForm = ({ faculty, onClose, onSuccess }) => {
         facultyPhone: faculty.facultyPhone || '',
         facultyEmail: faculty.facultyEmail || '',
         facultyAddress: faculty.facultyAddress || '',
+        facultyLink: faculty.facultyLink || '',
       });
     }
   }, [faculty]);
@@ -44,7 +47,8 @@ const FacultyForm = ({ faculty, onClose, onSuccess }) => {
     request
       .then(response => {
         console.log('Faculty data submitted successfully:', response.data);
-        onSuccess();
+
+        // onSuccess();
       })
       .catch(error => {
         console.error('There was an error submitting the faculty data:', error);
@@ -53,6 +57,7 @@ const FacultyForm = ({ faculty, onClose, onSuccess }) => {
 
   return (
     <div className="faculty-form-container">
+
       <h2 className="form-heading">{faculty ? 'Update Faculty' : 'Add Faculty'}</h2>
       <form onSubmit={handleSubmit} className="faculty-form">
         <div className="form-group">
@@ -142,6 +147,17 @@ const FacultyForm = ({ faculty, onClose, onSuccess }) => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="facultyEmail">LINK</label>
+          <input
+            type="email"
+            id="facultyEmail"
+            name="facultyEmail"
+            value={formData.facultyEmail}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="facultyAddress">Address</label>
           <textarea
             id="facultyAddress"
@@ -160,6 +176,7 @@ const FacultyForm = ({ faculty, onClose, onSuccess }) => {
           </button>
         </div>
       </form>
+
     </div>
   );
 };

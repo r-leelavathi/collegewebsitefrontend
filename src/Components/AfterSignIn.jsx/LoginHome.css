@@ -1,0 +1,39 @@
+.login-home-container {
+  padding: 20px;
+}
+
+.menu-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menu-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card h3 {
+  margin-top: 0;
+}
+
+.menu-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.menu-card ul li {
+  margin-bottom: 10px;
+}
+
+.menu-card button {
+  margin-left: 10px;
+}
+
+.edit-form,
+.add-form {
+  margin-top: 10px;
+}

@@ -15,7 +15,9 @@ const Navbar = () => {
   const [subDropdownOpen, setSubDropdownOpen] = useState({
     clubsAndSocieties: false,
   });
-
+  const [aboutDropDownOpen, setAboutDropDownOpen] = useState({
+    aboutDropDown: false,
+  })
   const toggleDropdown = (menu) => {
     setDropdownOpen((prevState) => ({
       ...prevState,
@@ -43,9 +45,43 @@ const Navbar = () => {
         <div className="navbar-logo text-white text-2xl font-bold">
           <Link to="/">Karnataka (Govt.) Polytechnic</Link>
         </div>
-        <div className="navbar-links flex space-x-6">
+        <div className="navbar-links flex space-x-6  ">
           <Link to="/" className="nav-link">Home</Link>
-          <Link to="/about-us" className="nav-link">About</Link>
+
+          <div className="relative group">
+            <button
+              onClick={() => toggleDropdown('about')}
+              className="nav-link"
+            >
+              About
+            </button>
+            {dropdownOpen.about && (
+              <div className="dropdown-content">
+                <Link to="/about/instituteProfile" className="dropdown-link">Institue Profile</Link>
+                <Link to="/about/visionMission" className="dropdown-link">Vision & Mission</Link>
+                <Link to="/about/fromPrincipalDesk" className="dropdown-link">From Principal Desk</Link>
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('clubsAndSocieties')}
+                  onMouseLeave={() => handleMouseLeave('clubsAndSocieties')}
+                >
+                  <Link to="/about/institutionalCommittees" className="dropdown-link">Institutional Committees</Link>
+                  {subDropdownOpen.clubsAndSocieties && (
+                    <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
+                      <Link to="/about/institutionalCommittees/iqac" className="dropdown-link">IQAC</Link>
+                      <Link to="/about/institutionalCommittees/swo" className="dropdown-link">Student Welfare</Link>
+                      <Link to="/about/institutionalCommittees/nss" className="dropdown-link">Anti Ragging</Link>
+                      <Link to="/about/institutionalCommittees/yoga" className="dropdown-link">Internal Complaint Cell</Link>
+                      <Link to="/about/institutionalCommittees/technicalclub" className="dropdown-link">Discipline Monitoring Cell</Link>
+                      <Link to="/about/institutionalCommittees/artliterature" className="dropdown-link">Grievance Redressal Committee</Link>
+                      <Link to="/about/institutionalCommittees/redcross" className="dropdown-link">SC/ST Cell</Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
 
           {/* Academics Dropdown */}
           <div className="relative group">
@@ -155,8 +191,26 @@ const Navbar = () => {
             )}
           </div>
 
-          <Link to="/placements" className="nav-link">Placements</Link>
-          <Link to="/contact-us" className="nav-link">Alumni</Link>
+
+          <div className="relative group">
+            <button
+              onClick={() => toggleDropdown('importantLinks')}
+              className="nav-link"
+            >
+              Important Links
+            </button>
+            {dropdownOpen.importantLinks && (
+              <div className="dropdown-content">
+                <Link to="/importantLinks/placements" className="dropdown-link">Placements</Link>
+                <Link to="/importantLinks/contact-us" className="dropdown-link">Alumni</Link>
+                <Link to="/importantLinks/iste" className="dropdown-link">ISTE</Link>
+                <Link to="/importantLinks/contact-us" className="dropdown-link">CCTEK</Link>
+                <Link to="/importantLinks/contact-us" className="dropdown-link">AICTE</Link>
+                <Link to="/importantLinks/contact-us" className="dropdown-link">RTI</Link>
+              </div>
+            )}
+          </div>
+
           <Link to="/contact-us" className="nav-link">Contact</Link>
         </div>
       </div>

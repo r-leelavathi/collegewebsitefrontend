@@ -1,0 +1,120 @@
+.club_app-container {
+    padding: 1.5rem;
+  }
+  
+  .club_wrapper {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .club_info-section {
+    width: 65%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .club_club-name {
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .club_description {
+    color: black;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+  
+  .club_vision-mission {
+    color: black;
+  }
+  
+  .club_vision-title, .club_mission-title {
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: semibold;
+  }
+  
+  .club_vision-description, .club_mission-description {
+    margin-bottom: 0.5rem;
+    text-align: justify;
+  }
+  
+  .club_incharge-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .club_incharge-info {
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+  }
+  
+  .club_incharge-photo {
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 0.25rem solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .club_incharge-name, .club_incharge-designation, .club_incharge-phone, .club_incharge-email {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .club_events-intro {
+    padding: 1.5rem;
+    text-align: justify;
+    font-size: 1.125rem;
+  }
+  
+  .club_table-container {
+    padding: 1.5rem;
+  }
+  
+  .club_table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .club_table th, .club_table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+  }
+  
+  .club_table th {
+    background-color: #4f46e5;
+    color: white;
+  }
+  
+  .club_event-link {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+  
+  .club_event-link:hover {
+    text-decoration: underline;
+  }
+  

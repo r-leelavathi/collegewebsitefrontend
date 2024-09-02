@@ -18,6 +18,8 @@ import NSSTable from './Components/StudentLife/ClubSocieties/NSS/NSSTable';
 import ArtLiteratureTable from './Components/StudentLife/ClubSocieties/ArtLiterature/ArtLiteratureTable';
 import ClubSocietiesForm from './Components/StudentLife/ClubSocieties/ClubSocietiesForm';
 import ClubSocietiesTable from './Components/StudentLife/ClubSocieties/ClubSocietiesTable';
+import LoginHome from './Components/AfterSignIn.jsx/LoginHome';
+import FacultyForm from './Components/faculty/FacultyForm';
 function App() {
   return (
     <>
@@ -26,9 +28,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />
-          <Route path="/about" element={<CircularTable />} />
+          <Route path="/about/*" element={<CircularTable />} >
+            <Route path="instituteProfiles" element={''} />
+          </Route>
 
 
+
+          <Route path="/academics/faculty" element={<FacultyForm />} />
           <Route path="/news/circulars" element={<Circular />} />
           <Route path="/news/press" element={<Press />} />
 
@@ -44,6 +50,8 @@ function App() {
             <Route path="artliterature" element={<ArtLiteratureTable />} />
             <Route path="redcross" element={<RedCrossTable />} />
           </Route>
+
+          <Route path="/loginHome" element={<LoginHome />} />
         </Routes>
       </BrowserRouter>
       <Footer />
