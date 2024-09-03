@@ -70,11 +70,11 @@ const Navbar = () => {
                     <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
                       <Link to="/about/institutionalCommittees/iqac" className="dropdown-link">IQAC</Link>
                       <Link to="/about/institutionalCommittees/swo" className="dropdown-link">Student Welfare</Link>
-                      <Link to="/about/institutionalCommittees/nss" className="dropdown-link">Anti Ragging</Link>
-                      <Link to="/about/institutionalCommittees/yoga" className="dropdown-link">Internal Complaint Cell</Link>
-                      <Link to="/about/institutionalCommittees/technicalclub" className="dropdown-link">Discipline Monitoring Cell</Link>
-                      <Link to="/about/institutionalCommittees/artliterature" className="dropdown-link">Grievance Redressal Committee</Link>
-                      <Link to="/about/institutionalCommittees/redcross" className="dropdown-link">SC/ST Cell</Link>
+                      <Link to="/about/institutionalCommittees/antiragging" className="dropdown-link">Anti Ragging</Link>
+                      <Link to="/about/institutionalCommittees/internalcomplaintcell" className="dropdown-link">Internal Complaint Cell</Link>
+                      <Link to="/about/institutionalCommittees/disciplinemonitoringcell" className="dropdown-link">Discipline Monitoring Cell</Link>
+                      <Link to="/about/institutionalCommittees/grievanceredressalcommittee" className="dropdown-link">Grievance Redressal Committee</Link>
+                      <Link to="/about/institutionalCommittees/scstcell" className="dropdown-link">SC/ST Cell</Link>
                     </div>
                   )}
                 </div>
