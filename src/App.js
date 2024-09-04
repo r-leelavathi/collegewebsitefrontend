@@ -30,6 +30,10 @@ import InternalComplaintCell from './Components/About/InstitutionalCommittees/In
 import DisciplineMonitoringCell from './Components/About/InstitutionalCommittees/DisciplineMonitoringCell/DisciplineMonitoringCell';
 import GrievanceRedressalCell from './Components/About/InstitutionalCommittees/GrievanceRedressalCell/GrievanceRedressalCell';
 import ScStCell from './Components/About/InstitutionalCommittees/ScStCell/ScStCell';
+import EligibilityCriteria from './Components/Admissions/EligibilityCriteria/EligibilityCriteria';
+import ApplicationForms from './Components/Admissions/ApplicationForms/ApplicationForms';
+import ScholarshipsFinancialAid from './Components/Admissions/ScholarshipsFinancialAid/ScholarshipsFinancialAid';
+import AdmissionProcess from './Components/Admissions/AdmissionProcess/AdmissionProcess';
 function App() {
   return (
     <>
@@ -73,8 +77,23 @@ function App() {
           </Route>
 
           <Route path="/loginHome" element={<LoginHome />} />
+
+
+          <Route path="/admissions/process" element={<AdmissionProcess />} />
+          <Route
+            path="/admissions/scholarships"
+            element={<ScholarshipsFinancialAid />}
+          />
+          <Route path="/admissions/forms" element={<ApplicationForms />} />
+          <Route
+            path="/admissions/eligibility"
+            element={<EligibilityCriteria />}
+          />
+
         </Routes>
-      </BrowserRouter>
+
+
+      </BrowserRouter >
       <Footer />
 
     </>

@@ -1,0 +1,51 @@
+.principal-message-container {
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f3f4f6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.message-section {
+  flex: 1;
+  /* padding-right: 20px; */
+}
+
+.principal-message {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.photo-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 40vw;
+  /* border-radius: 10%; */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.principal-photo {
+  width: 100%;
+  height: auto;
+  /* border-radius: 50%; */
+}
+
+.principalname {
+  font-size: larger;
+}
+
+.principal_msg_heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-stretch: expanded;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-style: oblique; */
+}

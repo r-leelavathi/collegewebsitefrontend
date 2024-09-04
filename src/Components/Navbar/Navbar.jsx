@@ -15,8 +15,8 @@ const Navbar = () => {
   const [subDropdownOpen, setSubDropdownOpen] = useState({
     clubsAndSocieties: false,
   });
-  const [aboutDropDownOpen, setAboutDropDownOpen] = useState({
-    aboutDropDown: false,
+  const [facilities, setFacilities] = useState({
+    facilities: false,
   })
   const toggleDropdown = (menu) => {
     setDropdownOpen((prevState) => ({
@@ -69,12 +69,24 @@ const Navbar = () => {
                   {subDropdownOpen.clubsAndSocieties && (
                     <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
                       <Link to="/about/institutionalCommittees/iqac" className="dropdown-link">IQAC</Link>
-                      <Link to="/about/institutionalCommittees/swo" className="dropdown-link">Student Welfare</Link>
                       <Link to="/about/institutionalCommittees/antiragging" className="dropdown-link">Anti Ragging</Link>
-                      <Link to="/about/institutionalCommittees/internalcomplaintcell" className="dropdown-link">Internal Complaint Cell</Link>
+                      <Link to="/about/institutionalCommittees/internalcomplaintcell" className="dropdown-link">Internal Complaint Committee</Link>
                       <Link to="/about/institutionalCommittees/disciplinemonitoringcell" className="dropdown-link">Discipline Monitoring Cell</Link>
                       <Link to="/about/institutionalCommittees/grievanceredressalcommittee" className="dropdown-link">Grievance Redressal Committee</Link>
-                      <Link to="/about/institutionalCommittees/scstcell" className="dropdown-link">SC/ST Cell</Link>
+                    </div>
+                  )}
+                </div>
+                <div
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter('facilities')}
+                  onMouseLeave={() => handleMouseLeave('facilities')}
+                >
+                  <Link to="/about/institutionalCommittees" className="dropdown-link">Facilities</Link>
+                  {subDropdownOpen.facilities && (
+                    <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
+                      <Link to="/about/institutionalCommittees/iqac" className="dropdown-link">Library</Link>
+                      <Link to="/about/institutionalCommittees/antiragging" className="dropdown-link">Canteen</Link>
+                      <Link to="/about/institutionalCommittees/internalcomplaintcell" className="dropdown-link">College Ground</Link>
                     </div>
                   )}
                 </div>
@@ -125,12 +137,16 @@ const Navbar = () => {
               onClick={() => toggleDropdown('studentLife')}
               className="nav-link"
             >
-              Student Life
+              Activities
             </button>
             {dropdownOpen.studentLife && (
               <div className="dropdown-content">
-                <Link to="/student-life/campus" className="dropdown-link">Campus Life</Link>
-
+                <Link to="/student-life/campus" className="dropdown-link">Student Union</Link>
+                <Link to="/student-life/campus" className="dropdown-link">Sports</Link>
+                <Link to="/student-life/campus" className="dropdown-link">NSS</Link>
+                <Link to="/student-life/campus" className="dropdown-link">Youth Red Cross</Link>
+                <Link to="/student-life/campus" className="dropdown-link">NCC</Link>
+                <Link to="/student-life/campus" className="dropdown-link">WID</Link>
                 {/* Clubs & Societies with Submenu */}
                 <div
                   className="relative"
@@ -138,23 +154,17 @@ const Navbar = () => {
                   onMouseLeave={() => handleMouseLeave('clubsAndSocieties')}
                 >
                   <Link to="/student-life/clubs" className="dropdown-link">
-                    Clubs & Societies
+                    Clubs
                   </Link>
                   {subDropdownOpen.clubsAndSocieties && (
                     <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
-                      <Link to="/student-life/clubs/sports" className="dropdown-link">Sports</Link>
-                      <Link to="/student-life/clubs/ncc" className="dropdown-link">NCC</Link>
-                      <Link to="/student-life/clubs/nss" className="dropdown-link">NSS</Link>
                       <Link to="/student-life/clubs/yoga" className="dropdown-link">Yoga</Link>
                       <Link to="/student-life/clubs/technicalclub" className="dropdown-link">Technical Club</Link>
-                      <Link to="/student-life/clubs/artliterature" className="dropdown-link">Art & Literature Club</Link>
-                      <Link to="/student-life/clubs/redcross" className="dropdown-link">Red Cross</Link>
+                      <Link to="/student-life/clubs/artliterature" className="dropdown-link">Art Literature & Cultural Club</Link>
                     </div>
                   )}
                 </div>
-
-                <Link to="/student-life/events" className="dropdown-link">Events & Activities</Link>
-                <Link to="/student-life/housing" className="dropdown-link">Housing & Dining</Link>
+                {/* <Link to="/student-life/housing" className="dropdown-link">Housing & Dining</Link> */}
               </div>
             )}
           </div>
