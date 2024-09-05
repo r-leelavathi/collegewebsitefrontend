@@ -1,39 +1,55 @@
-.login-home-container {
-  padding: 20px;
-}
-
-.menu-cards-container {
+.loginHome-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
 }
 
-.menu-card {
+.collapsible-section {
+  flex: 1 1 30%;
+  min-width: 250px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.collapsible-header {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  background: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s;
+  /* transition: box-shadow 0.3s; */
 }
 
-.menu-card h3 {
-  margin-top: 0;
+.collapsible-header:hover {
+  background: #e0e0e0;
 }
 
-.menu-card ul {
-  list-style-type: none;
-  padding-left: 0;
+.accordion-wrapper {
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
 }
 
-.menu-card ul li {
-  margin-bottom: 10px;
-}
 
-.menu-card button {
-  margin-left: 10px;
-}
+/* .accordion-wrapper {
+  flex: 1 1 30%;
+  min-width: 250px;
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+ 
+} */
 
-.edit-form,
-.add-form {
-  margin-top: 10px;
+.accordion-wrapper:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

@@ -1,0 +1,90 @@
+.circular-form-container {
+  background-color: #ffffff;
+  /* White background for better contrast */
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  /* Slightly deeper shadow for better depth */
+}
+
+.circular-form-container h2 {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+  /* Center-align heading for better aesthetics */
+  font-size: 1.5rem;
+  /* Slightly larger font size for emphasis */
+}
+
+.circular-form .form-group {
+  margin-bottom: 1.25rem;
+  /* Reduced spacing for a more compact layout */
+}
+
+.circular-form .form-group label {
+  display: block;
+  font-family: var(--paragraph-font);
+  color: var(--text-color);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  /* Slightly bolder text for labels */
+}
+
+.circular-form .form-group input,
+.circular-form .form-group textarea,
+.circular-form .form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: var(--paragraph-font);
+  border: 1px solid #d1d5db;
+  /* Softer border color for a modern look */
+  border-radius: var(--card-border-radius);
+  box-sizing: border-box;
+  background-color: #f9fafb;
+  /* Light gray background for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circular-form .form-group input:focus,
+.circular-form .form-group textarea:focus,
+.circular-form .form-group select:focus {
+  border-color: var(--primary-color);
+  /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+  /* Light shadow on focus */
+  outline: none;
+}
+
+.circular-form .form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  /* Slightly taller for better usability */
+}
+
+.submit-button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: var(--heading-font);
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  /* Full-width button for balanced layout */
+  margin-top: 1rem;
+}
+
+.submit-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+  /* Slight lift on hover for interaction */
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+  /* Slight press effect on click */
+}

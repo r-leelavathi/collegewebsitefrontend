@@ -14,6 +14,28 @@
   /* You can change the font family to match your design */
 }
 
+:root {
+  --primary-color: #3498db;
+  /* Primary color - Light Blue */
+  --secondary-color: #2c3e50;
+  /* Secondary color - Dark Gray */
+  --accent-color: #e67e22;
+  /* Accent color - Orange */
+  --background-color: #ecf0f1;
+  /* Background color - Light Gray */
+  --text-color: #2d3436;
+  /* Text color - Dark Gray */
+  --heading-font: 'Montserrat', sans-serif;
+  /* Font for headings */
+  --paragraph-font: 'Roboto', sans-serif;
+  /* Font for paragraphs */
+  --card-border-radius: 16px;
+  /* Border radius for cards */
+  --button-border-radius: 24px;
+  /* Border radius for buttons */
+  --button-padding: 12px 24px;
+  /* Padding for buttons */
+}
 
 html,
 body {

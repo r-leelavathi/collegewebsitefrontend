@@ -6,7 +6,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState({
     academics: false,
     admissions: false,
-    studentLife: false,
+    activities: false,
     events: false,
     alumni: false,
     news: false,
@@ -60,6 +60,7 @@ const Navbar = () => {
                 <Link to="/about/instituteProfile" className="dropdown-link">Institue Profile</Link>
                 <Link to="/about/visionMission" className="dropdown-link">Vision & Mission</Link>
                 <Link to="/about/fromPrincipalDesk" className="dropdown-link">From Principal Desk</Link>
+                <Link to="/about/organizationstructure" className="dropdown-link">Organization Structure</Link>
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter('clubsAndSocieties')}
@@ -134,37 +135,37 @@ const Navbar = () => {
           {/* Student Life Dropdown */}
           <div className="relative group">
             <button
-              onClick={() => toggleDropdown('studentLife')}
+              onClick={() => toggleDropdown('activities')}
               className="nav-link"
             >
               Activities
             </button>
-            {dropdownOpen.studentLife && (
+            {dropdownOpen.activities && (
               <div className="dropdown-content">
-                <Link to="/student-life/campus" className="dropdown-link">Student Union</Link>
-                <Link to="/student-life/campus" className="dropdown-link">Sports</Link>
-                <Link to="/student-life/campus" className="dropdown-link">NSS</Link>
-                <Link to="/student-life/campus" className="dropdown-link">Youth Red Cross</Link>
-                <Link to="/student-life/campus" className="dropdown-link">NCC</Link>
-                <Link to="/student-life/campus" className="dropdown-link">WID</Link>
+                <Link to="/activities/studentunion" className="dropdown-link">Student Union</Link>
+                <Link to="/activities/sports" className="dropdown-link">Sports</Link>
+                <Link to="/activities/nss" className="dropdown-link">NSS</Link>
+                <Link to="/activities/redcross" className="dropdown-link">Youth Red Cross</Link>
+                <Link to="/activities/ncc" className="dropdown-link">NCC</Link>
+                <Link to="/activities/wid" className="dropdown-link">WID</Link>
                 {/* Clubs & Societies with Submenu */}
                 <div
                   className="relative"
                   onMouseEnter={() => handleMouseEnter('clubsAndSocieties')}
                   onMouseLeave={() => handleMouseLeave('clubsAndSocieties')}
                 >
-                  <Link to="/student-life/clubs" className="dropdown-link">
+                  <Link to="/activities/clubs" className="dropdown-link">
                     Clubs
                   </Link>
                   {subDropdownOpen.clubsAndSocieties && (
                     <div className="submenu-content absolute left-full top-0 mt-0 bg-white shadow-md">
-                      <Link to="/student-life/clubs/yoga" className="dropdown-link">Yoga</Link>
-                      <Link to="/student-life/clubs/technicalclub" className="dropdown-link">Technical Club</Link>
-                      <Link to="/student-life/clubs/artliterature" className="dropdown-link">Art Literature & Cultural Club</Link>
+                      <Link to="/activities/clubs/yoga" className="dropdown-link">Yoga</Link>
+                      <Link to="/activities/clubs/technicalclub" className="dropdown-link">Technical Club</Link>
+                      <Link to="/activities/clubs/artliterature" className="dropdown-link">Art Literature & Cultural Club</Link>
                     </div>
                   )}
                 </div>
-                {/* <Link to="/student-life/housing" className="dropdown-link">Housing & Dining</Link> */}
+                {/* <Link to="/activities/housing" className="dropdown-link">Housing & Dining</Link> */}
               </div>
             )}
           </div>
@@ -214,9 +215,9 @@ const Navbar = () => {
                 <Link to="/importantLinks/placements" className="dropdown-link">Placements</Link>
                 <Link to="/importantLinks/contact-us" className="dropdown-link">Alumni</Link>
                 <Link to="/importantLinks/iste" className="dropdown-link">ISTE</Link>
-                <Link to="/importantLinks/contact-us" className="dropdown-link">CCTEK</Link>
-                <Link to="/importantLinks/contact-us" className="dropdown-link">AICTE</Link>
-                <Link to="/importantLinks/contact-us" className="dropdown-link">RTI</Link>
+                <Link to="/importantLinks/cctek" className="dropdown-link">CCTEK</Link>
+                <Link to="/importantLinks/aicte" className="dropdown-link">AICTE</Link>
+                <Link to="/importantLinks/rti" className="dropdown-link">RTI</Link>
               </div>
             )}
           </div>

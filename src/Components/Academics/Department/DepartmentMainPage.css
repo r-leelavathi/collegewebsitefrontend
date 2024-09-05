@@ -1,0 +1,65 @@
+.department-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.department-box {
+    width: 48%;
+    /* Two boxes per row */
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    position: relative;
+    height: 150px;
+    /* Small box size */
+    overflow: hidden;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center text vertically */
+    align-items: center;
+    /* Center text horizontally */
+}
+
+.department-box h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    /* Always visible */
+}
+
+.department-box p {
+    font-size: 1.2em;
+    color: #555;
+    margin: 10px 0 0 0;
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.department-box:hover {
+    background-color: #e0f7fa;
+    /* Light blue effect on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.department-box:hover h3 {
+    transform: translateY(-10px);
+    /* Move the title up slightly */
+}
+
+.department-box:hover p {
+    opacity: 1;
+    /* Show HOD name on hover */
+    transform: translateY(0);
+    /* Bring HOD name into place */
+}

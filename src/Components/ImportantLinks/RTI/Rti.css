@@ -1,0 +1,70 @@
+.rti-container {
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+  }
+  
+  .rti-heading {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .rti-description {
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: #333;
+    text-align: center; /* Center the text */
+    width: 50%; /* Use 50% of the center area */
+  }
+  
+  .rti-list {
+    list-style-type: decimal; /* Use decimal numbers for the list */
+    padding-left: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    text-align: left; /* Align list items to the left */
+  }
+  
+  .rti-list li {
+    margin-bottom: 8px; /* Add spacing between list items */
+  }
+  
+  .rti-table {
+    border-collapse: collapse;
+    width: 55%; /* Use 50% of the center area */
+    margin-top: 20px; /* Add space above the table */
+  }
+  
+  .rti-table th,
+  .rti-table td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Increase padding for larger table cells */
+    text-align: left; /* Align text to the left */
+    font-size: 18px; /* Increase font size for table content */
+  }
+  
+  .rti-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .rti-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .rti-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .rti-table a {
+    color: #1a73e8;
+    text-decoration: none;
+  }
+  
+  .rti-table a:hover {
+    text-decoration: underline;
+  }
+  

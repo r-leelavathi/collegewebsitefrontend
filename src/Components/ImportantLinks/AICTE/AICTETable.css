@@ -1,0 +1,69 @@
+.aicte-table-container {
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center the content horizontally */
+}
+
+.aicte-heading {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.aicte-description {
+  margin-bottom: 20px;
+  font-size: 19px;
+  color: #333;
+  text-align: center;
+  /* Center the text */
+  width: 50%;
+  /* Use 50% of the center area */
+}
+
+.aicte-table {
+  border-collapse: collapse;
+  width: 50%;
+  /* Use 50% of the center area */
+  margin-top: 20px;
+  /* Add space above the table */
+}
+
+.aicte-table th,
+.aicte-table td {
+  border: 1px solid #ddd;
+  padding: 16px;
+  /* Increase padding for larger table cells */
+  text-align: center;
+  /* Center content horizontally in cells */
+  vertical-align: middle;
+  /* Center content vertically in cells */
+  font-size: 20px;
+  /* Increase font size for table content */
+}
+
+.aicte-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  /* Ensure headers are bold */
+}
+
+.aicte-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.aicte-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.aicte-table a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.aicte-table a:hover {
+  text-decoration: underline;
+}
