@@ -37,16 +37,16 @@ const WidTable = () => {
           <div className="club_info-section">
             <h2 className="club_club-name">{club.clubName}</h2>
             <p className="club_description">
-              The Sports Club at our college is more than just a place for physical activity; it is a thriving community that champions the spirit of teamwork, discipline, and resilience. We believe in the power of sports to shape character, build leadership, and promote a healthy, balanced lifestyle. By engaging students in a variety of sports and fitness activities, the club fosters camaraderie and instills a sense of fair play, encouraging every member to strive for excellence both on and off the field.
+              The Women in Development (WID) club is dedicated to empowering women by fostering a supportive environment that promotes personal growth, leadership, and professional development. The club is committed to addressing gender disparities, advocating for equal opportunities, and equipping women with the skills and confidence to excel in all spheres of life. Through workshops, mentorship programs, and community outreach, WID aims to create a platform where women can connect, learn, and inspire each other, driving positive change within the college and beyond.
             </p>
             <div className="club_vision-mission">
               <h3 className="club_vision-title">Vision</h3>
               <p className="club_vision-description">
-                To cultivate a vibrant sporting culture that nurtures physical fitness, sportsmanship, and personal growth, empowering students to achieve their full potential through the joy of sports.
+                To cultivate a progressive and inclusive community where women are empowered to lead, innovate, and make significant contributions to society, breaking barriers and redefining their roles in development.
               </p>
               <h3 className="club_mission-title">Mission</h3>
               <p className="club_mission-description">
-                To provide a diverse range of sports and recreational opportunities that encourage participation, develop athletic skills, and promote wellness, while building a community that values teamwork, perseverance, and mutual respect.
+                To support and inspire women through education, mentorship, and advocacy, providing opportunities for skill enhancement, leadership development, and active engagement in social and professional spheres. Our mission is to champion gender equality, nurture talent, and drive initiatives that uplift and empower women to achieve their fullest potential.
               </p>
             </div>
           </div>

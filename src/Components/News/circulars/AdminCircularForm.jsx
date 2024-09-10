@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import axios from 'axios';
-import './CircularForm.css';
+import './../../../AdminForm.css';
 
-const CircularForm = () => {
+const AdminCircularForm = () => {
   const [circular, setCircular] = useState({
     date: " ",
     description: " "
   });
   const [image, setImage] = useState(null);
+
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,9 +51,14 @@ const CircularForm = () => {
   };
 
   return (
-    <div className="circular-form-container">
+    <div className="admin-form-container">
+      {/* Back to Login Button */}
+      <button className="back-button" onClick={() => navigate('/loginHome')}>
+        Back to Login
+      </button>
+
       <h2>Add New Circular</h2>
-      <form onSubmit={handleSubmit} className="circular-form">
+      <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
           <label htmlFor="date">Date</label>
           <input
@@ -92,4 +100,4 @@ const CircularForm = () => {
   );
 };
 
-export default CircularForm;
+export default AdminCircularForm;

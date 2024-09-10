@@ -109,8 +109,7 @@ const ResearchAndPublicaationsTable = () => {
 
   return (
     <div className="circular-table-container">
-      {/* <CircularForm /> */}
-      <h2>Circulars</h2>
+      <h2>Research and Publications</h2>
       <table className="circular-table">
         <thead>
           <tr>

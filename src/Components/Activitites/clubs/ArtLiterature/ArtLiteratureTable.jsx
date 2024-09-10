@@ -36,12 +36,12 @@ const ArtLiteratureTable = () => {
         <div key={club.id} className="club_wrapper">
           <div className="club_info-section">
             <h2 className="club_club-name">{club.clubName}</h2>
-            <p className="club_description">The National Service Scheme (NSS) Club at our college is a vibrant platform for students to engage in meaningful community service, develop leadership skills, and foster a spirit of social responsibility. Committed to the ideal of "Not Me, But You," the club encourages students to contribute to the welfare of society and to work towards the development of the community. Through diverse outreach programs, awareness campaigns, and hands-on initiatives, we nurture a generation of socially conscious and proactive citizens.</p>
+            <p className="club_description">The Art, Literature, and Cultural Club is a dynamic hub for students who are passionate about the arts, literature, and cultural heritage. It is a space where creativity meets expression, allowing students to explore their artistic talents, delve into the world of literature, and celebrate diverse cultures. Through various activities like workshops, exhibitions, literary meets, and cultural festivals, the club aims to foster an appreciation for the rich tapestry of human expression and inspire students to contribute to the vibrant cultural fabric of our college.</p>
             <div className="club_vision-mission">
               <h3 className="club_vision-title">Vision</h3>
-              <p className="club_vision-description">To build a socially responsible and self-reliant community of young leaders who are dedicated to national development, ethical service, and the upliftment of society.</p>
+              <p className="club_vision-description">"To create a vibrant and inspiring environment that nurtures artistic talent, literary excellence, and cultural appreciation, enriching the college community with creativity and diverse perspectives."</p>
               <h3 className="club_mission-title">Mission</h3>
-              <p className="club_mission-description">To instill a sense of civic duty and social commitment in students by providing opportunities for community engagement, developing empathy and leadership through service, and fostering a culture of inclusivity, sustainability, and selfless contribution to the nation.</p>
+              <p className="club_mission-description">"To bring together students passionate about art, literature, and culture through events, workshops, and exhibitions that celebrate creativity and heritage. Our mission is to foster an inclusive space where students can explore their artistic potential, share ideas, and contribute to a richer cultural life within the college."</p>
             </div>
           </div>
           <div className="club_incharge-section">

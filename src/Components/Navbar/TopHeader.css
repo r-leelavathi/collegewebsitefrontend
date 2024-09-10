@@ -1,0 +1,62 @@
+/* Header Container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 1rem 2rem; */
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #d1d5db;
+  position: relative;
+}
+
+/* College Logo */
+.college-logo {
+  width: 9rem;
+  height: auto;
+  /* margin-right: 1rem; */
+}
+
+/* Department Logo */
+.amrith-logo {
+  width: 9rem;
+  height: auto;
+}
+
+/* Name Section */
+.name-section {
+  flex: 1;
+  text-align: center;
+}
+
+/* College Name in English */
+.college-name-english {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0;
+}
+
+/* College Name in Kannada */
+.college-name-kannada {
+  font-family: 'Noto Sans Kannada', sans-serif;
+  font-size: 1.5rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .college-logo,
+  .amrith-logo {
+    width: 60px;
+  }
+
+  .college-name-english {
+    font-size: 1.5rem;
+  }
+
+  .college-name-kannada {
+    font-size: 1.2rem;
+  }
+}

@@ -6,10 +6,10 @@ export const homeItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/principalDeskForm">Insert</Link>
+          <Link to="/loginhome/principalDeskForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/principalDeskTable">Delete/Update</Link>
+          <Link to="/loginhome/principalDeskTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -22,10 +22,10 @@ export const aboutItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/principalDeskForm">Insert</Link>
+          <Link to="/loginhome/principalDeskForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/principalDeskTable">Delete/Update</Link>
+          <Link to="/loginhome/principalDeskTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -35,10 +35,10 @@ export const aboutItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/iqacForm">Insert</Link>
+          <Link to="/loginhome/iqacForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/iqacTable">Delete/Update</Link>
+          <Link to="/loginhome/iqacTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -48,10 +48,10 @@ export const aboutItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/antiraggingForm">Insert</Link>
+          <Link to="/loginhome/antiraggingForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/antiraggingTable">Delete/Update</Link>
+          <Link to="/loginhome/antiraggingTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -91,10 +91,10 @@ export const academicsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/programsAndCoursesForm">Insert</Link>
+          <Link to="/loginhome/programsAndCoursesForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/programsAndCoursesTable">Delete/Update</Link>
+          <Link to="/loginhome/programsAndCoursesTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -104,10 +104,10 @@ export const academicsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/facultyForm">Insert</Link>
+          <Link to="/loginhome/facultyForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/facultyTable">Delete/Update</Link>
+          <Link to="/loginhome/facultyTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -117,10 +117,10 @@ export const academicsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/researchAndPublicationForm">Insert</Link>
+          <Link to="/loginhome/researchAndPublicationForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/researchAndPublicationTable">Delete/Update</Link>
+          <Link to="/loginhome/researchAndPublicationTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -129,14 +129,27 @@ export const academicsItems = [
 
 export const admissionsItems = [
   {
+    title: 'Admission Process Circular',
+    content: (
+      <ul>
+        <li>
+          <Link to="/loginhome/admissionProcessForm">Insert</Link>
+        </li>
+        <li>
+          <Link to="/loginhome/admissionProcessTable">Delete/Update</Link>
+        </li>
+      </ul>
+    ),
+  },
+  {
     title: 'Application Form',
     content: (
       <ul>
         <li>
-          <Link to="/login/circularForm">Insert</Link>
+          <Link to="/loginhome/circularForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/circulars">Delete/Update</Link>
+          <Link to="/loginhome/circularTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -161,10 +174,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/studentUnionForm">Insert</Link>
+          <Link to="/loginhome/studentUnionForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/studentUnionTable">Delete/Update</Link>
+          <Link to="/loginhome/studentUnionTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -174,10 +187,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/sportsForm">Insert</Link>
+          <Link to="/loginhome/sportsForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/sportsTable">Delete/Update</Link>
+          <Link to="/loginhome/sportsTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -187,10 +200,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/nssForm">Insert</Link>
+          <Link to="/loginhome/nssForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/nssTable">Delete/Update</Link>
+          <Link to="/loginhome/nssTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -200,10 +213,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/youthRedCrossForm">Insert</Link>
+          <Link to="/loginhome/youthRedCrossForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/youthRedCrossTable">Delete/Update</Link>
+          <Link to="/loginhome/youthRedCrossTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -213,10 +226,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/nccForm">Insert</Link>
+          <Link to="/loginhome/nccForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/nccTable">Delete/Update</Link>
+          <Link to="/loginhome/nccTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -226,10 +239,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/widForm">Insert</Link>
+          <Link to="/loginhome/widForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/widTable">Delete/Update</Link>
+          <Link to="/loginhome/widTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -239,10 +252,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/yogaForm">Insert</Link>
+          <Link to="/loginhome/yogaForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/yogaTable">Delete/Update</Link>
+          <Link to="/loginhome/yogaTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -252,10 +265,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/technicalClubForm">Insert</Link>
+          <Link to="/loginhome/technicalClubForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/technicalClubTable">Delete/Update</Link>
+          <Link to="/loginhome/technicalClubTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -265,10 +278,10 @@ export const activitiesItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/artLiteratureForm">Insert</Link>
+          <Link to="/loginhome/artLiteratureForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/artLiteratureTable">Delete/Update</Link>
+          <Link to="/loginhome/artLiteratureTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -281,10 +294,10 @@ export const eventsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/archievesForm">Insert</Link>
+          <Link to="/loginhome/archievesForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/archievesTable">Delete/Update</Link>
+          <Link to="/loginhome/archievesTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -294,10 +307,10 @@ export const eventsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/upcomingEventsForm">Insert</Link>
+          <Link to="/loginhome/upcomingEventsForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/upcomingEventsTable">Delete/Update</Link>
+          <Link to="/loginhome/upcomingEventsTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -310,10 +323,10 @@ export const newsAndAnnouncementsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/circularForm">Insert</Link>
+          <Link to="/loginhome/circularForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/circularTable">Delete/Update</Link>
+          <Link to="/loginhome/circularTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -323,10 +336,10 @@ export const newsAndAnnouncementsItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/pressReleaseForm">Insert</Link>
+          <Link to="/loginhome/pressReleaseForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/pressReleaseTable">Delete/Update</Link>
+          <Link to="/loginhome/pressReleaseTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -339,10 +352,10 @@ export const importantLinksItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/cctekForm">Insert</Link>
+          <Link to="/loginhome/cctekForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/cctekTable">Delete/Update</Link>
+          <Link to="/loginhome/cctekTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -352,10 +365,10 @@ export const importantLinksItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/AicteForm">Insert</Link>
+          <Link to="/loginhome/AicteForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/AicteTable">Delete/Update</Link>
+          <Link to="/loginhome/AicteTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -365,10 +378,10 @@ export const importantLinksItems = [
     content: (
       <ul>
         <li>
-          <Link to="/login/RtiForm">Insert</Link>
+          <Link to="/loginhome/RtiForm">Insert</Link>
         </li>
         <li>
-          <Link to="/login/RtiTable">Delete/Update</Link>
+          <Link to="/loginhome/RtiTable">Delete/Update</Link>
         </li>
       </ul>
     ),

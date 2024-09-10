@@ -1,0 +1,47 @@
+.research_container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .research_container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .research_container-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .research_container-table th, .research_container-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .research_container-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .research_container-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .research_container-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .research_container-table a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .research_container-table a:hover {
+    text-decoration: underline;
+  }
+  

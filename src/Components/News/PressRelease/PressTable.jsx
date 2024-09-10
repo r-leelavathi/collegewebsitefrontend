@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Circular.css'
+// import './Circular.css'
 
-const Circular = () => {
+const Press = () => {
   const [circulars, setCirculars] = useState([]);
   const [editing, setEditing] = useState(null);
   const [editedData, setEditedData] = useState({});
@@ -26,38 +26,7 @@ const Circular = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    setEditing(id);
-    const circular = circulars.find(c => c.id === id);
-    setEditedData({ ...circular });
-  };
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/circulars/delete/${id}`);
-      setCirculars(circulars.filter(c => c.id !== id));
-    } catch (error) {
-      console.error('Error deleting circular:', error);
-    }
-  };
-
-  const handleSave = async (id) => {
-    try {
-      await axios.put(`http://localhost:8080/api/circulars/${id}`, editedData);
-      setEditing(null);
-      fetchCirculars(); // Refresh the data
-    } catch (error) {
-      console.error('Error saving circular:', error);
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEditedData({
-      ...editedData,
-      [name]: value,
-    });
-  };
   const handleView = async (id) => {
     try {
       const response = await fetch(`http://localhost:8080/api/circulars/${id}/image`);
@@ -102,21 +71,18 @@ const Circular = () => {
       console.error('Error downloading image:', error);
     }
   };
-
-
-
-
   return (
     <div className="circular-table-container">
-      <h2>Circulars</h2>
+      <h2>Press Releases</h2>
       <table className="circular-table">
         <thead>
           <tr>
             <th>Sl. No</th>
             <th>Date</th>
+            <th>Paper Name</th>
             <th>Description</th>
             <th>View</th>
-            <th>Download</th>
+            {/* <th>Download</th> */}
           </tr>
         </thead>
         <tbody>
@@ -124,28 +90,13 @@ const Circular = () => {
             <tr key={circular.id}>
               <td>{index + 1}</td>
               <td>
-                {editing === circular.id ? (
-                  <input
-                    type="date"
-                    name="date"
-                    value={editedData.date || ''}
-                    onChange={handleChange}
-                  />
-                ) : (
-                  circular.date
-                )}
+                {circular.date}
               </td>
               <td>
-                {editing === circular.id ? (
-                  <input
-                    type="text"
-                    name="description"
-                    value={editedData.description || ''}
-                    onChange={handleChange}
-                  />
-                ) : (
-                  circular.description
-                )}
+                {circular.paperName}
+              </td>
+              <td>
+                {circular.description}
               </td>
               <td>
                 <button
@@ -155,14 +106,14 @@ const Circular = () => {
                   View
                 </button>
               </td>
-              <td>
+              {/* <td>
                 <button
                   className="action-button download-button"
                   onClick={() => handleDownload(circular.id)}
                 >
                   Download
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
@@ -171,4 +122,4 @@ const Circular = () => {
   );
 };
 
-export default Circular;
+export default Press;

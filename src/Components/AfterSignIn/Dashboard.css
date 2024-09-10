@@ -1,0 +1,49 @@
+/* Dashboard.css */
+.dashboard-container {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container>table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.dashboard-container>th,
+.dashboard-container>td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.dashboard-container>th {
+  background-color: #0056b3;
+  color: white;
+}
+
+.dashboard-container>tr:hover {
+  background-color: #f1f1f1;
+}
+
+.dashboard-container>button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #0056b3;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.dashboard-container>button:hover {
+  color: #050505;
+  background-color: wheat;
+}
+
+.dashboard-container>.error-message {
+  color: red;
+  font-weight: bold;
+}

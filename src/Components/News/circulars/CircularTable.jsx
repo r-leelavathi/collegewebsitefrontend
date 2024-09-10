@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './CircularTable.css';
+import './CircularTable.css'
 
-const CircularTable = () => {
+const Circular = () => {
   const [circulars, setCirculars] = useState([]);
   const [editing, setEditing] = useState(null);
   const [editedData, setEditedData] = useState({});
@@ -117,8 +117,6 @@ const CircularTable = () => {
             <th>Description</th>
             <th>View</th>
             <th>Download</th>
-            <th>Edit</th>
-            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -151,7 +149,7 @@ const CircularTable = () => {
               </td>
               <td>
                 <button
-                  className="circular-table-action-button circular-table-view-button"
+                  className="action-button view-button"
                   onClick={() => handleView(circular.id)}
                 >
                   View
@@ -159,50 +157,18 @@ const CircularTable = () => {
               </td>
               <td>
                 <button
-                  className="circular-table-action-button circular-table-download-button"
+                  className="action-button download-button"
                   onClick={() => handleDownload(circular.id)}
                 >
                   Download
-                </button>
-              </td>
-              <td>
-                {editing === circular.id ? (
-                  <button
-                    className="circular-table-action-button circular-table-save-button"
-                    onClick={() => handleSave(circular.id)}
-                  >
-                    Save
-                  </button>
-                ) : (
-                  <button
-                    className="circular-table-action-button circular-table-edit-button"
-                    onClick={() => handleEdit(circular.id)}
-                  >
-                    Edit
-                  </button>
-                )}
-              </td>
-              <td>
-                <button
-                  className="circular-table-action-button circular-table-delete-button"
-                  onClick={() => handleDelete(circular.id)}
-                >
-                  Delete
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      {/* {imageSrc && (
-        <div className="image-preview">
-          <h3>Image Preview</h3>
-          <img src={imageSrc} alt="Circular" />
-        </div>
-      )} */}
     </div>
   );
 };
 
-export default CircularTable;
+export default Circular;

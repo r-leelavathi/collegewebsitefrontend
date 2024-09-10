@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { getDecryptedItem } from '../AfterSignIn/cryptoUtils';
+
 
 const Navbar = () => {
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userRole');
+    window.location.href = '/';
+  };
+
+  const isLoggedIn = getDecryptedItem('isLoggedIn') === 'false';
   const [dropdownOpen, setDropdownOpen] = useState({
     academics: false,
     admissions: false,
@@ -42,9 +52,6 @@ const Navbar = () => {
   return (
     <nav className="navbar-container bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg">
       <div className="navbar-content flex justify-between items-center px-2 py-1">
-        <div className="navbar-logo text-white text-2xl font-bold">
-          <Link to="/">Karnataka (Govt.) Polytechnic</Link>
-        </div>
         <div className="navbar-links flex space-x-6  ">
           <Link to="/" className="nav-link">Home</Link>
 
@@ -223,6 +230,15 @@ const Navbar = () => {
           </div>
 
           <Link to="/contact-us" className="nav-link">Contact</Link>
+
+          {!isLoggedIn && (
+            <Link to="/login" className="nav-link">LogIn</Link>
+          )}
+          {isLoggedIn && (
+            <Link onClick={handleLogout} className="nav-link"> Logout  </Link>
+          )}
+
+
         </div>
       </div>
     </nav>

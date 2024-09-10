@@ -33,6 +33,7 @@ const NCCTable = () => {
   const convertGoogleDriveLink = (url) => {
     const fileIdMatch = url.match(/d\/(.+?)\//);
     if (fileIdMatch && fileIdMatch[1]) {
+      console.log(`----********------- https://drive.google.com/uc?export=view&id=${fileIdMatch[1]}`);
       return `https://drive.google.com/uc?export=view&id=${fileIdMatch[1]}`;
     }
     return url;
@@ -54,8 +55,11 @@ const NCCTable = () => {
           </div>
           <div className="club_incharge-section">
             <div className="club_incharge-info">
+              {/* <iframe src={convertGoogleDriveLink(club.clubInchargePhoto)} width="300" height="300" title="Person Image"></iframe> */}
+
               <img
-                src={convertGoogleDriveLink(club.clubInchargePhoto)}
+                src={`https://res.cloudinary.com/dfdhfiwas/image/upload/v1725554939/principal_mrvkxp.jpg`}
+                // src={imageUrl}
                 alt={club.clubIncharge}
                 className="club_incharge-photo"
               />
