@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 export const homeItems = [
   {
-    title: 'PrincipalDesk',
+    title: 'Staff Incharge',
     content: (
       <ul>
         <li>
-          <Link to="/loginhome/principalDeskForm">Insert</Link>
+          <Link to="/loginhome/adminStaffInchargeForm">Insert</Link>
         </li>
         <li>
-          <Link to="/loginhome/principalDeskTable">Delete/Update</Link>
+          <Link to="/loginhome/adminStaffInchargeTable">Delete/Update</Link>
         </li>
       </ul>
     ),

@@ -1,5 +1,4 @@
 import React from 'react';
-// import fileToDownload from "assets/organisationStructure.jpg"
 import "./ApplicationForms.css"
 
 const ApplicationForms = () => {

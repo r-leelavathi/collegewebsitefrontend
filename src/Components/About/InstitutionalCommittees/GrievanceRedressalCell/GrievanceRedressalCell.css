@@ -1,0 +1,112 @@
+.grievanceredressal-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  gap: 20px;
+  /* Adds some spacing between content and in-charge section */
+}
+
+.grievanceredressal-content {
+  flex: 2;
+  padding-right: 20px;
+  /* Adds space between content and in-charge section */
+}
+
+.grievanceredressal-incharge-section {
+  flex: 1;
+}
+
+.grievanceredressal-incharge-info {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  /* Adds space between multiple incharge cards */
+}
+
+.grievanceredressal-incharge-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  /* Adds space between photo and details */
+}
+
+.grievanceredressal-incharge-name,
+.grievanceredressal-incharge-designation,
+.grievanceredressal-incharge-phone,
+.grievanceredressal-incharge-email {
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 500;
+  /* Makes the text more prominent */
+}
+
+.grievanceredressal-members-list-link {
+  display: block;
+  margin-top: 15px;
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 600;
+  /* Emphasizes the link */
+}
+
+.grievanceredressal-members-list-link:hover {
+  text-decoration: underline;
+  color: #2b6cb0;
+  /* Changes color slightly on hover */
+}
+
+.grievanceredressal-page-title {
+  color: #4c51bf;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.8rem;
+  /* Larger font size for the title */
+  font-weight: 700;
+}
+
+.grievanceredressal-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.grievanceredressal-section-title {
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.grievanceredressal-section-content {
+  color: #333;
+  line-height: 1.6;
+  /* Improves readability */
+}
+
+.grievanceredressal-section-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.grievanceredressal-list-item {
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.grievanceredressal-link {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.grievanceredressal-link:hover {
+  text-decoration: underline;
+  color: #2b6cb0;
+}

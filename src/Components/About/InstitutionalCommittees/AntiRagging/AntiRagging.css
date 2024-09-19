@@ -1,0 +1,193 @@
+/* Container for the page */
+.anti-ragging-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+/* Content Section */
+.anti-ragging-content {
+  flex: 2;
+}
+
+/* In-charge Section */
+.incharge-section {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.incharge-info {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.incharge-photo {
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  border: 0.25rem solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* 
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px; */
+}
+
+.incharge-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.incharge-designation,
+.incharge-phone,
+.incharge-email {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.members-list-link {
+  display: block;
+  margin-top: 20px;
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.members-list-link:hover {
+  text-decoration: underline;
+}
+
+/* Page Title */
+.page-title {
+  color: #4c51bf;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.section-title {
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.section-content {
+  color: #333;
+  line-height: 1.6;
+}
+
+.section-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.list-item {
+  margin-bottom: 10px;
+}
+
+.link {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-title {
+  margin-top: 0;
+  color: #4c51bf;
+  font-size: 1.25rem;
+}
+
+/* Form Styles */
+.complaint-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.complaint-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.complaint-form input,
+.complaint-form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.complaint-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #4c51bf;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #434190;
+}

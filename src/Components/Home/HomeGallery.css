@@ -1,0 +1,40 @@
+.gallery {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.gallery h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.gallery-slider {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.slick-dots {
+  bottom: -30px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+  /* Arrow color */
+}
+
+@media (max-width: 768px) {
+  .slick-slide img {
+    height: 200px;
+  }
+}

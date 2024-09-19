@@ -1,0 +1,48 @@
+.librarygallery-gallery {
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.librarygallery-gallery h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.librarygallery-slider {
+  display: flex;
+  justify-content: center;
+}
+
+
+.librarygallery-img {
+  width: 100%;
+  height: 350px;
+  /* Set uniform height */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove dots */
+.slick-dots {
+  display: none;
+  color: black;
+}
+
+/* Custom arrows */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px;
+  color: black;
+}
+
+/* Center the arrows vertically */
+.slick-prev,
+.slick-next {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: black;
+}

@@ -1,65 +1,55 @@
-.department-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 20px;
-}
-
-.department-box {
-    width: 48%;
-    /* Two boxes per row */
+/* Container for the departments page */
+.departments-container {
     padding: 20px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+    max-width: 1200px;
+    margin: auto;
     text-align: center;
-    position: relative;
-    height: 150px;
-    /* Small box size */
-    overflow: hidden;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* Center text vertically */
-    align-items: center;
-    /* Center text horizontally */
 }
 
-.department-box h3 {
-    font-size: 1.5em;
+/* Title of the page */
+.page-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: bold;
     color: #333;
-    margin: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    /* Always visible */
 }
 
-.department-box p {
-    font-size: 1.2em;
-    color: #555;
-    margin: 10px 0 0 0;
-    opacity: 0;
-    /* Initially hidden */
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+/* Grid layout for department cards */
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.department-box:hover {
-    background-color: #e0f7fa;
-    /* Light blue effect on hover */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+/* Style for each department card */
+.department-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-.department-box:hover h3 {
-    transform: translateY(-10px);
-    /* Move the title up slightly */
+/* Image inside each card */
+.department-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
-.department-box:hover p {
-    opacity: 1;
-    /* Show HOD name on hover */
-    transform: translateY(0);
-    /* Bring HOD name into place */
+/* Name of the department below the image */
+.department-name {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eaeaea;
+}
+
+/* Hover effects for the cards */
+.department-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }

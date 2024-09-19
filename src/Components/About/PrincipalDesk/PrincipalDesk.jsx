@@ -25,7 +25,7 @@ const PrincipalDesk = () => {
       </div>
       <div className="photo-section">
         <img
-          src="/assets/principaldesk.jpg"
+          src="/assets/staffs/principaldesk.jpg"
           alt="Principal"
           className="principal-photo"
         />

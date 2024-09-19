@@ -29,36 +29,61 @@ const ArtLiteratureTable = () => {
       console.error('Error fetching events:', error);
     }
   };
-
+  const getIframeLink = (googleDriveLink) => {
+    if (typeof googleDriveLink === 'string') {
+      const fileIdMatch = googleDriveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (fileIdMatch) {
+        const fileId = fileIdMatch[1];
+        return `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+    }
+    return googleDriveLink;
+  };
   return (
     <div className="club_app-container">
-      {clubInfo.map((club) => (
-        <div key={club.id} className="club_wrapper">
-          <div className="club_info-section">
-            <h2 className="club_club-name">{club.clubName}</h2>
-            <p className="club_description">The Art, Literature, and Cultural Club is a dynamic hub for students who are passionate about the arts, literature, and cultural heritage. It is a space where creativity meets expression, allowing students to explore their artistic talents, delve into the world of literature, and celebrate diverse cultures. Through various activities like workshops, exhibitions, literary meets, and cultural festivals, the club aims to foster an appreciation for the rich tapestry of human expression and inspire students to contribute to the vibrant cultural fabric of our college.</p>
-            <div className="club_vision-mission">
-              <h3 className="club_vision-title">Vision</h3>
-              <p className="club_vision-description">"To create a vibrant and inspiring environment that nurtures artistic talent, literary excellence, and cultural appreciation, enriching the college community with creativity and diverse perspectives."</p>
-              <h3 className="club_mission-title">Mission</h3>
-              <p className="club_mission-description">"To bring together students passionate about art, literature, and culture through events, workshops, and exhibitions that celebrate creativity and heritage. Our mission is to foster an inclusive space where students can explore their artistic potential, share ideas, and contribute to a richer cultural life within the college."</p>
+      {clubInfo
+        .filter((club) => club.clubName === "Art, Literature & Culture Club")
+        .map((club) => (
+          <div key={club.id} className="club_wrapper">
+            <div className="club_info-section">
+              <h2 className="club_club-name">{club.clubName}</h2>
+              <p className="club_description">The Art, Literature, and Cultural Club is a dynamic hub for students who are passionate about the arts, literature, and cultural heritage. It is a space where creativity meets expression, allowing students to explore their artistic talents, delve into the world of literature, and celebrate diverse cultures. Through various activities like workshops, exhibitions, literary meets, and cultural festivals, the club aims to foster an appreciation for the rich tapestry of human expression and inspire students to contribute to the vibrant cultural fabric of our college.</p>
+              <div className="club_vision-mission">
+                <h3 className="club_vision-title">Vision</h3>
+                <p className="club_vision-description">"To create a vibrant and inspiring environment that nurtures artistic talent, literary excellence, and cultural appreciation, enriching the college community with creativity and diverse perspectives."</p>
+                <h3 className="club_mission-title">Mission</h3>
+                <p className="club_mission-description">"To bring together students passionate about art, literature, and culture through events, workshops, and exhibitions that celebrate creativity and heritage. Our mission is to foster an inclusive space where students can explore their artistic potential, share ideas, and contribute to a richer cultural life within the college."</p>
+              </div>
+            </div>
+            <div className="club_incharge-section">
+              <div className="club_incharge-info">
+                <div className="club_incharge-photo-container">
+                  <iframe
+                    src={getIframeLink(club.clubInchargeImageLink)}
+                    title={club.clubIncharge}
+                    className="club_incharge-photo"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                  <div className="overlay"></div>
+                </div>
+                <p className="club_incharge-name">Incharge : {club.clubIncharge}</p>
+                <p className="club_incharge-designation">Designation : {club.clubInchargeDesignation}</p>
+                <p className="club_incharge-designation">Department : {club.clubInchargeDepartment}</p>
+                <p className="club_incharge-phone">Phone Number : {club.clubInchargePhoneNumer}</p>
+                <p className="club_incharge-email">Mail Id : {club.clubInchargeEmail}</p>
+                <a
+                  href={club.collegeOrderCopyImageLink}
+                  className="club_incharge-designation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Committee Members List
+                </a>
+              </div>
             </div>
           </div>
-          <div className="club_incharge-section">
-            <div className="club_incharge-info">
-              <img
-                src={club.clubInchargePhoto}
-                alt={club.clubIncharge}
-                className="club_incharge-photo"
-              />
-              <p className="club_incharge-name">Incharge : {club.clubIncharge}</p>
-              <p className="club_incharge-designation">Department : {club.clubInchargeDesigntion}</p>
-              <p className="club_incharge-phone">Phone Number : {club.clubInchargePhoneNumer}</p>
-              <p className="club_incharge-email">Mail Id : {club.clubInchargeEmail}</p>
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
       <div className="club_events-intro">
         Below is a list of activities conducted by the aforementioned club at Karnataka (Govt.) Polytechnic, Mangalore, showcasing the diverse range of events and initiatives undertaken to enrich the student experience and foster holistic development.
       </div>

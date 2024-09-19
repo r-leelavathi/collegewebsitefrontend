@@ -1,55 +1,100 @@
 .eligibility-container {
-  margin: 30px ;
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: left;
-  
+  border: 1px solid #e0e0e0;
 }
 
 .eligibility-container h2 {
-  font-size: 28px;
-  color: #333;
+  font-size: 32px;
+  color: #1a202c;
   text-align: center;
-  margin-bottom: 25px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
+  letter-spacing: 1px;
 }
 
 .criteria-section {
-  margin-bottom: 30px;
-  
+  margin-bottom: 35px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
+.content-with-image {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.left-image img {
+  order: 1;
+  width: 40%;
+  border-radius: 8px;
+}
+
+.right-image img {
+  order: 2;
+  width: 40%;
+  border-radius: 8px;
+}
+
+.content {
+  width: 60%;
 }
 
 .criteria-section h3 {
-  font-size: 22px;
-  color: hsl(236, 66%, 61%);
-  margin-bottom: 15px;
+  font-size: 24px;
+  color: #2b6cb0;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .criteria-section ul {
-  list-style: inside disc;
-  padding-left: 20px;
+  list-style: none;
+  padding-left: 0;
+  font-size: 17px;
 }
 
 .criteria-section ul li {
-  margin-bottom: 10px;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 15px;
   font-size: 16px;
-  color: #555;
+  color: #4a5568;
+  line-height: 1.7;
+}
+
+.criteria-section ul li:before {
+  content: '•';
+  color: #2b6cb0;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  font-size: 24px;
 }
 
 .criteria-section .note {
-  background-color: #fff3cd;
-  padding: 15px;
-  border-left: 5px solid #ffecb5;
-  margin-top: 15px;
-  font-size: 14px;
-  color: #856404;
-  border-radius: 5px;
+  background-color: #fef9c3;
+  padding: 18px;
+  border-left: 6px solid #facc15;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #d97706;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
 .criteria-section p {
   font-size: 16px;
-  color: #555;
-  margin-top: 15px;
+  color: #4a5568;
+  margin-top: 20px;
+  line-height: 1.6;
 }

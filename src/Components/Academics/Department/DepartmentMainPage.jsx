@@ -1,26 +1,32 @@
 import React from 'react';
 import './DepartmentMainPage.css';
+import { Link } from 'react-router-dom';
 
+// Array of department details
 const departments = [
-    { slNo: 1, title: 'Automobile Engineering', hod: 'Devraju.D' },
-    { slNo: 2, title: 'Chemical Engineering', hod: 'Rekha T' },
-    { slNo: 3, title: 'Civil Engineering', hod: 'Deepak Talekar' },
-    { slNo: 4, title: 'Computer Science and Engineering', hod: 'P D Talawar' },
-    { slNo: 5, title: 'Electrical and Electronics Engineering', hod: 'Ravindra Mahabaleshwar Keni' },
-    { slNo: 6, title: 'Electronics and Communication Engineering', hod: 'Satheesha K M' },
-    { slNo: 7, title: 'Mechanical Engineering', hod: 'Girish Babu B P' },
-    { slNo: 8, title: 'Polymer Technology', hod: 'Santhosh Kumar P' },
+    { name: 'Automobile Engineering', image: '/assets/department/at.jpeg' },
+    { name: 'Chemical Engineering', image: '/assets/department/ch.jpeg' },
+    { name: 'Civil Engineering', image: '/assets/department/ce.jpeg' },
+    { name: 'Computer Science and Engineering', image: '/assets/department/cs.jpeg' },
+    { name: 'Electrical and Electronics Engineering', image: '/assets/department/eee.jpeg' },
+    { name: 'Electronics and Communication', image: '/assets/department/ec.jpeg' },
+    { name: 'Mechanical Engineering', image: '/assets/department/me.jpeg' },
+    { name: 'Polymer Technology', image: '/assets/department/po.jpeg' },
 ];
 
 const DepartmentMainPage = () => {
     return (
-        <div className="department-container">
-            {departments.map((dept) => (
-                <div key={dept.slNo} className="department-box">
-                    <h3>{dept.title}</h3>
-                    <p><strong>HOD:</strong> {dept.hod}</p>
-                </div>
-            ))}
+        <div className="departments-container">
+            <div className="departments-grid">
+                {departments.map((dept, index) => (
+                    <div key={index} className="department-card">
+                        <img src={dept.image} alt={dept.name} className="department-image" />
+                        <Link to="cs">
+                            <div className="department-name">{dept.name}</div>
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

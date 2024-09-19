@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import axios from 'axios';
 import './../../../AdminForm.css';
 
@@ -52,10 +52,8 @@ const AdminCircularForm = () => {
 
   return (
     <div className="admin-form-container">
-      {/* Back to Login Button */}
-      <button className="back-button" onClick={() => navigate('/loginHome')}>
-        Back to Login
-      </button>
+
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
 
       <h2>Add New Circular</h2>
       <form onSubmit={handleSubmit} className="admin-form">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './RtiTable.css';
+import { Link } from 'react-router-dom';
+import './../../../AdminTable.css';
 
 const AdminRtiTable = () => {
   const [rtiFiles, setRtiFiles] = useState([]);
@@ -83,7 +84,10 @@ const AdminRtiTable = () => {
   }
 
   return (
-    <div className="rti-container">
+    <div className="admin-edit-table-container">
+      <Link
+        to="/loginhome" className="back-button">Back to Login</Link>
+
       <h1>RTI Files</h1>
       <p>
         The document 4(1) contains the following:
@@ -125,18 +129,47 @@ const AdminRtiTable = () => {
                 )}
               </td>
               <td>
+                <button
+                  className="admin-edit-table-action-button admin-edit-table-view-button"
+                  onClick={() => handleView(file.rtiId)}
+                >
+                  View
+                </button>
+              </td>
+              <td>
+                <button
+                  className="admin-edit-table-action-button admin-edit-table-download-button"
+                  onClick={() => handleDownload(file.rtiId)}
+                >
+                  Download
+                </button>
+              </td>
+              <td>
                 {editing === file.rtiId ? (
-                  <button onClick={() => handleSave(file.rtiId)}>Save</button>
+                  <button
+                    className="admin-edit-table-action-button admin-edit-table-save-button"
+                    onClick={() => handleSave(file.rtiId)}
+                  >
+                    Save
+                  </button>
                 ) : (
-                  <>
-                    <button onClick={() => handleEdit(file.rtiId)}>Edit</button>
-                    <button onClick={() => handleDelete(file.rtiId)}>Delete</button>
-                    <button onClick={() => handleView(file.rtiId)}>View</button>
-                    <button onClick={() => handleDownload(file.rtiId)}>Download</button>
-                  </>
+                  <button
+                    className="admin-edit-table-action-button admin-edit-table-edit-button"
+                    onClick={() => handleEdit(file.rtiId)}
+                  >
+                    Edit
+                  </button>
                 )}
               </td>
-              
+              <td>
+                <button
+                  className="admin-edit-table-action-button admin-edit-table-delete-button"
+                  onClick={() => handleDelete(file.rtiId)}
+                >
+                  Delete
+                </button>
+              </td>
+
             </tr>
           ))}
         </tbody>

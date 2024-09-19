@@ -1,0 +1,56 @@
+.about-section {
+  padding: 40px;
+  background-color: #f9f9f9;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about-image img {
+  width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  max-width: 600px;
+  text-align: justify;
+  padding-left: 20px;
+}
+
+.about-text h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  text-align: justify;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.about-more-button {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #4c51bf;
+  /* Match with your site's theme */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 24px;
+  /* Using your preferred border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.about-more-button:hover {
+  background-color: #6b46c1;
+  /* Slightly darker on hover */
+}

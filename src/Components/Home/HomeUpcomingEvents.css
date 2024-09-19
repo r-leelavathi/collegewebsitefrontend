@@ -1,0 +1,79 @@
+.event-bar {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  /* Add horizontal padding to ensure content isn't flush with edges */
+}
+
+.ribbon {
+  position: absolute;
+  background-color: #ff6347;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.event-scroll {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+  margin-left: 180px;
+  /* Ensure sufficient space for the ribbon */
+}
+
+.event-items {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  /* Adjust speed here */
+}
+
+.home-event-item {
+  display: inline-flex;
+  /* Use inline-flex to align items vertically */
+  align-items: center;
+  margin-right: 50px;
+  font-size: 16px;
+}
+
+.event-icon {
+  margin-right: 10px;
+  /* Space between the icon and text */
+  color: #007bff;
+  /* Icon color */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+    /* Start off-screen to the right */
+  }
+
+  100% {
+    transform: translateX(-100%);
+    /* End off-screen to the left */
+  }
+}
+
+.read-more-btn {
+  margin-left: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.read-more-btn:hover {
+  background-color: #0056b3;
+}

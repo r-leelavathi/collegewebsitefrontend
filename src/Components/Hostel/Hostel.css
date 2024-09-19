@@ -1,0 +1,90 @@
+/* Hostel.css */
+
+.hostel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hostel-note {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.warden-details {
+  margin-bottom: 50px;
+}
+
+.warden-details h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.warden {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.warden h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.warden p {
+  font-size: 1.1em;
+  color: #333;
+}
+
+.hostel-photos {
+  margin-top: 40px;
+}
+
+.hostel-photos h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.photo-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.photo-grid img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .photo-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .warden {
+    margin-bottom: 30px;
+  }
+}

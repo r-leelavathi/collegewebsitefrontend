@@ -1,182 +1,141 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FacultyTable.css';
 
 const FacultyTable = () => {
-  const [faculties, setFaculties] = useState([]);
-  const [editingId, setEditingId] = useState(null);
-  const [formData, setFormData] = useState({
-    facultyName: '',
-    facultyDesignation: '',
-    facultyPhone: '',
-    facultyEmail: '',
-  });
+  const [facultyData, setFacultyData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [activeTab, setActiveTab] = useState('all');
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/faculties')
       .then(response => {
-        setFaculties(response.data);
+        setFacultyData(response.data);
+        setFilteredData(response.data); // Initialize with all data
       })
       .catch(error => {
-        console.error('There was an error fetching the faculty data!', error);
+        console.error('Error fetching faculty data:', error);
       });
   }, []);
 
-  const handleDelete = (id) => {
-    axios.delete(`http://localhost:8080/api/faculties/${id}`)
-      .then(() => {
-        setFaculties(faculties.filter(faculty => faculty.facultyId !== id));
-      })
-      .catch(error => {
-        console.error('There was an error deleting the faculty!', error);
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    filterData(tab);
+  };
+
+  const filterData = (tab) => {
+    let filtered = facultyData;
+
+    if (tab !== 'all') {
+      filtered = filtered.filter(faculty => {
+        switch (tab) {
+          case 'Computer Science and Engineering':
+          case 'Mechanical Engineering':
+          case 'Polymer Technology':
+          case 'Civil Engineering':
+          case 'Chemical Engineering':
+          case 'Electrical and Electronics Engineering':
+          case 'Electronics and Communication Engineering':
+          case 'Automobile Engineering':
+            return faculty.facultyDepartment === tab;
+          case 'Office Staff':
+            return faculty.facultyLocation.toLowerCase().includes('office');
+          case 'Object Staff':
+            return !faculty.facultyLocation.toLowerCase().includes('office');
+          default:
+            return true;
+        }
       });
-  };
+    }
 
-  const handleEdit = (faculty) => {
-    setEditingId(faculty.facultyId);
-    setFormData({
-      facultyName: faculty.facultyName,
-      facultyDesignation: faculty.facultyDesignation,
-      facultyPhone: faculty.facultyPhone,
-      facultyEmail: faculty.facultyEmail,
-    });
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSave = (id) => {
-    axios.put(`http://localhost:8080/api/faculties/${id}`, formData)
-      .then(response => {
-        setFaculties(faculties.map(faculty =>
-          faculty.facultyId === id ? response.data : faculty
-        ));
-        setEditingId(null);
-      })
-      .catch(error => {
-        console.error('There was an error updating the faculty data!', error);
-      });
-  };
-
-  const handleCancel = () => {
-    setEditingId(null);
+    setFilteredData(filtered);
   };
 
   return (
-    <div className="faculty-table-container">
-      <h2 className="table-heading">Faculty List</h2>
-      <table className="faculty-table">
-        <thead>
-          <tr>
-            <th>Sl No</th>
-            <th>Name</th>
-            <th>Designation</th>
-            <th>Phone</th>
-            <th>Mail</th>
-            <th>More</th>
-            <th>Update</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {faculties.map((faculty, index) => (
-            <tr key={faculty.facultyId}>
-              <td>{index + 1}</td>
-              <td>
-                {editingId === faculty.facultyId ? (
-                  <input
-                    type="text"
-                    name="facultyName"
-                    value={formData.facultyName}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  faculty.facultyName
-                )}
-              </td>
-              <td>
-                {editingId === faculty.facultyId ? (
-                  <input
-                    type="text"
-                    name="facultyDesignation"
-                    value={formData.facultyDesignation}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  faculty.facultyDesignation
-                )}
-              </td>
-              <td>
-                {editingId === faculty.facultyId ? (
-                  <input
-                    type="text"
-                    name="facultyPhone"
-                    value={formData.facultyPhone}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  faculty.facultyPhone
-                )}
-              </td>
-              <td>
-                {editingId === faculty.facultyId ? (
-                  <input
-                    type="email"
-                    name="facultyEmail"
-                    value={formData.facultyEmail}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  faculty.facultyEmail
-                )}
-              </td>
-              <td>
-                <button
-                  className="table-button more-button"
-                  onClick={() => console.log('More details for:', faculty.facultyId)}
-                >
-                  More
-                </button>
-              </td>
-              <td>
-                {editingId === faculty.facultyId ? (
-                  <>
-                    <button
-                      className="table-button save-button"
-                      onClick={() => handleSave(faculty.facultyId)}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="table-button cancel-button"
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <button
-                    className="table-button update-button"
-                    onClick={() => handleEdit(faculty)}
-                  >
-                    Update
-                  </button>
-                )}
-              </td>
-              <td>
-                <button
-                  className="table-button delete-button"
-                  onClick={() => handleDelete(faculty.facultyId)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="faculty-list-container">
+      <div className="tabs">
+        <button
+          className={`tab ${activeTab === 'all' ? 'active' : ''}`}
+          onClick={() => handleTabClick('all')}
+        >
+          All
+        </button>
+        <button
+          className={`tab ${activeTab === 'CS' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Computer Science and Engineering')}
+        >
+          CS
+        </button>
+        <button
+          className={`tab ${activeTab === 'Mechanical Engineering' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Mechanical Engineering')}
+        >
+          ME
+        </button>
+        <button
+          className={`tab ${activeTab === 'PO' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Polymer Technology')}
+        >
+          PO
+        </button>
+        <button
+          className={`tab ${activeTab === 'CE' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Civil Engineering')}
+        >
+          CE
+        </button>
+        <button
+          className={`tab ${activeTab === 'CH' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Chemical Engineering')}
+        >
+          CH
+        </button>
+        <button
+          className={`tab ${activeTab === 'EEE' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Electrical and Electronics Engineering')}
+        >
+          EEE
+        </button>
+        <button
+          className={`tab ${activeTab === 'EC' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Electronics and Communication Engineering')}
+        >
+          EC
+        </button>
+        <button
+          className={`tab ${activeTab === 'AT' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Automobile Engineering')}
+        >
+          AT
+        </button>
+        <button
+          className={`tab ${activeTab === 'Office Staff' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Office Staff')}
+        >
+          Office Staffs
+        </button>
+        <button
+          className={`tab ${activeTab === 'Object Staff' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Object Staff')}
+        >
+          Object Staffs
+        </button>
+      </div>
+
+      <div className="faculty-list">
+        {filteredData.map(faculty => (
+          <div className="faculty-card" key={faculty.facultyId}>
+            <h3 className="faculty-name">{faculty.facultyName}</h3>
+            <p><strong>Designation:</strong> {faculty.facultyDesignation}</p>
+            <p><strong>Department:</strong> {faculty.facultyDepartment}</p>
+            <p><strong>Location:</strong> {faculty.facultyLocation}</p>
+            <p><strong>Phone:</strong> {faculty.facultyPhone}</p>
+            <p><strong>Email:</strong> {faculty.facultyEmail}</p>
+            <p><strong>Address:</strong> {faculty.facultyAddress}</p>
+            <a href={faculty.facultyLink} target="_blank" rel="noopener noreferrer">More Details</a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

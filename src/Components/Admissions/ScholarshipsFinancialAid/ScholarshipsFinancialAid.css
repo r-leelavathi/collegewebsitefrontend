@@ -1,0 +1,97 @@
+.scholarship-page {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.scholarship-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* Align items to the top */
+  margin-bottom: 20px;
+}
+
+.scholarship-intro {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.scholarship-intro h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.scholarship-intro p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.scholarship-incharge {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scholarship-incharge-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.scholarship-incharge-photo {
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.scholarship-incharge-info {
+  font-size: 14px;
+  /* margin-top: 10px; */
+}
+
+.scholarship-incharge-name,
+.scholarship-incharge-designation,
+.scholarship-incharge-department,
+.scholarship-incharge-phone,
+.scholarship-incharge-email {
+  margin: 1px 0;
+}
+
+.scholarship-links {
+  margin-top: 20px;
+}
+
+.scholarship-links h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  /* text-align: center; */
+}
+
+.scholarship-links table {
+  width: 95%;
+  border-collapse: collapse;
+}
+
+.scholarship-links th,
+.scholarship-links td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.scholarship-links td>a {
+  color: blue;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.scholarship-links th {
+  background-color: #f1f1f1;
+  text-align: left;
+}

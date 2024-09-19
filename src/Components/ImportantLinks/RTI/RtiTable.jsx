@@ -16,7 +16,7 @@ const RtiTable = () => {
   }, []);
 
   return (
-    <div className="rti-container">
+    <div className="admin-edit-table-container">
       <h1>RTI Files</h1>
       <p>
         The document 4(1) contains the following:
@@ -40,7 +40,7 @@ const RtiTable = () => {
         <tbody>
           {rtiFiles.map((file, index) => (
             <tr key={file.rtiId}>
-              <td>{index + 1}</td>
+              <td style={{ textAlign: 'center' }}>{index + 1}</td>
               <td>{file.rtiYear}</td>
               <td><a href={file.rtiLink} target="_blank" rel="noopener noreferrer">View RTI</a></td>
             </tr>
@@ -51,5 +51,4 @@ const RtiTable = () => {
   );
 };
 
-
-export default RtiTable
+export default RtiTable;

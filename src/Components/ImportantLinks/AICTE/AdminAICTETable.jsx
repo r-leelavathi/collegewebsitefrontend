@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './AICTETable.css';
+import './../../../AdminTable.css';
+import { Link } from 'react-router-dom';
 
 const AdminAICTETable = () => {
   const [aicteFiles, setAicteFiles] = useState([]);
@@ -8,7 +9,6 @@ const AdminAICTETable = () => {
   const [editedData, setEditedData] = useState({}); // Hold the edited data
 
   useEffect(() => {
-    // Fetch data from the backend
     axios.get('http://localhost:8013/api/aicte') // Ensure your backend endpoint is correct
       .then(response => {
         setAicteFiles(response.data);
@@ -66,7 +66,8 @@ const AdminAICTETable = () => {
   };
 
   return (
-    <div className="aicte-table-container">
+    <div className="admin-edit-table-container"><Link
+      to="/loginhome" className="back-button">Back to Login</Link>
       <h2 className="aicte-heading">AICTE Files</h2>
       <p className="aicte-description">
         The All India Council for Technical Education (AICTE) is the statutory body and a national-level council for technical education under the Department of Higher Education, Ministry of Human Resource Development. It gives approvals for every program in every year. The Extension of Approval (EOA) letters are listed here.

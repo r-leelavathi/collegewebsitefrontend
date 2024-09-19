@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './../../../AdminTable.css';
+import { Link } from 'react-router-dom';
 
 const AdminPressTable = () => {
   const [circulars, setCirculars] = useState([]);
   const [editing, setEditing] = useState(null);
   const [editedData, setEditedData] = useState({});
-  const [imageSrc, setImageSrc] = useState(null);
 
   useEffect(() => {
     fetchCirculars();
@@ -107,9 +107,10 @@ const AdminPressTable = () => {
 
 
   return (
-    <div className="circular-table-container">
+    <div className="admin-edit-table-container">
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
       <h2>Circulars</h2>
-      <table className="circular-table">
+      <table className="admin-edit-table">
         <thead>
           <tr>
             <th>Sl. No</th>
@@ -151,7 +152,7 @@ const AdminPressTable = () => {
               </td>
               <td>
                 <button
-                  className="circular-table-action-button circular-table-view-button"
+                  className="admin-edit-table-action-button admin-edit-table-view-button"
                   onClick={() => handleView(circular.id)}
                 >
                   View
@@ -159,7 +160,7 @@ const AdminPressTable = () => {
               </td>
               <td>
                 <button
-                  className="circular-table-action-button circular-table-download-button"
+                  className="admin-edit-table-action-button admin-edit-table-download-button"
                   onClick={() => handleDownload(circular.id)}
                 >
                   Download
@@ -168,14 +169,14 @@ const AdminPressTable = () => {
               <td>
                 {editing === circular.id ? (
                   <button
-                    className="circular-table-action-button circular-table-save-button"
+                    className="admin-edit-table-action-button admin-edit-table-save-button"
                     onClick={() => handleSave(circular.id)}
                   >
                     Save
                   </button>
                 ) : (
                   <button
-                    className="circular-table-action-button circular-table-edit-button"
+                    className="admin-edit-table-action-button admin-edit-table-edit-button"
                     onClick={() => handleEdit(circular.id)}
                   >
                     Edit
@@ -184,7 +185,7 @@ const AdminPressTable = () => {
               </td>
               <td>
                 <button
-                  className="circular-table-action-button circular-table-delete-button"
+                  className="admin-edit-table-action-button admin-edit-table-delete-button"
                   onClick={() => handleDelete(circular.id)}
                 >
                   Delete
@@ -194,13 +195,6 @@ const AdminPressTable = () => {
           ))}
         </tbody>
       </table>
-
-      {/* {imageSrc && (
-        <div className="image-preview">
-          <h3>Image Preview</h3>
-          <img src={imageSrc} alt="Circular" />
-        </div>
-      )} */}
     </div>
   );
 };

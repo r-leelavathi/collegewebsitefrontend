@@ -16,6 +16,7 @@
 
 .nav-link {
   color: white;
+  /* display: inline-flex; */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
@@ -62,6 +63,7 @@
   color: white;
   padding: 8px 12px;
   display: block;
+  /* display: inline-flex; */
   white-space: nowrap;
   text-decoration: none;
   font-weight: 500;

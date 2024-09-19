@@ -1,16 +1,25 @@
-import React from 'react'
-// import kptImg from './college logo.jpg'
-
+import React from 'react';
+import './InstituteProfile.css';
 
 const InstituteProfile = () => {
   return (
-    <div className='profile_container'>
-      <div className="profile_container-img" style={{ width: '100%', height: '350px' }}>
-        <img src='/assets/clgimg1.jpg' alt="kpt image" style={{ width: '50%', height: '100%', borderRadius: '8px', margin: '30px auto' }} />
+    <div className="profile_container">
+      <div className="profile_content">
+        <div className="profile_text">
+          <h2>Institute Profile</h2>
+          <p>
+            Karnataka (Govt.) Polytechnic, Mangalore, established in 1946, is a government-run institution aimed at providing quality technical education to students, especially those from rural and economically weaker backgrounds. Located just 2 km from the heart of Mangaluru city, the polytechnic campus spans 19 acres and offers a conducive environment for both academic learning and personal growth.
+          </p>
+          <p>
+            Currently, the polytechnic offers eight diploma engineering programs with an annual intake of over 1500 students. KPT is known for its strong focus on technical education, industry collaboration, and self-employment opportunities for its students. The institution has also earned recognition for its community development programs and numerous government-aided projects. Over the years, KPT has established itself as one of the top government diploma engineering institutions in Karnataka.
+          </p>
+        </div>
+        <div className="profile_image">
+          <img src="/assets/clgimages/clgimg1.jpg" alt="KPT Image" />
+        </div>
       </div>
-      <h3 style={{ margin: '30px' }}>Established in 1946 with four diploma engineering branches namely Civil, Mechanical, Electrical and Automobile, today KPT offers 8 Diploma Engineering programmes. The diploma engineering branches in Chemical, Polymer technology, Electronics and Communication and Computer Science were added to the existing courses later. Located 2 km from the heart of Mangaluru City the Coastal city of Karnataka, on Panvel-Gao-Edapally NH17 Road. Sprawling campus spread over an area of 19 acres. Provides an ideal ambience to stimulate the teaching-learning process, helping in bringing out skilled and disciplined Diploma Engineers. Rated one amongst the top Government Diploma Engineering Institutions in the state. Current annual student intake for Diploma Engineering is in excess of 1500. Highly qualified and dedicated faculty.</h3>
     </div>
-  )
-}
+  );
+};
 
-export default InstituteProfile
+export default InstituteProfile;

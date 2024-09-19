@@ -29,44 +29,61 @@ const TechnicalClubTable = () => {
       console.error('Error fetching events:', error);
     }
   };
-
+  const getIframeLink = (googleDriveLink) => {
+    if (typeof googleDriveLink === 'string') {
+      const fileIdMatch = googleDriveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (fileIdMatch) {
+        const fileId = fileIdMatch[1];
+        return `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+    }
+    return googleDriveLink;
+  };
   return (
     <div className="club_app-container">
-      {clubInfo.map((club) => (
-        <div key={club.id} className="club_wrapper">
-          <div className="club_info-section">
-            <h2 className="club_club-name">
-              {club.clubName}
-            </h2>
-            <p className="club_description">
-              The Technical Club at our college is a dynamic platform for students to explore, innovate, and excel in the ever-evolving world of technology. We strive to ignite curiosity and passion for technical learning, providing opportunities for hands-on experience, creative problem-solving, and interdisciplinary collaboration. By embracing cutting-edge advancements and nurturing a spirit of innovation, the club equips students with the skills and confidence to shape the future of technology.
-            </p>
-            <div className="club_vision-mission">
-              <h3 className="club_vision-title">Vision</h3>
-              <p className="club_vision-description">
-                To become a beacon of technological excellence, fostering a culture of innovation, critical thinking, and leadership among students to meet the challenges of a rapidly changing digital world.
+      {clubInfo
+        .filter((club) => club.clubName === "Technical Club")
+        .map((club) => (
+          <div key={club.id} className="club_wrapper">
+            <div className="club_info-section">
+              <h2 className="club_club-name">
+                {club.clubName}
+              </h2>
+              <p className="club_description">
+                The Technical Club at our college is a dynamic platform for students to explore, innovate, and excel in the ever-evolving world of technology. We strive to ignite curiosity and passion for technical learning, providing opportunities for hands-on experience, creative problem-solving, and interdisciplinary collaboration. By embracing cutting-edge advancements and nurturing a spirit of innovation, the club equips students with the skills and confidence to shape the future of technology.
               </p>
-              <h3 className="club_mission-title">Mission</h3>
-              <p className="club_mission-description">
-                To empower students with advanced technical knowledge and practical skills through workshops, projects, and collaborative learning experiences, preparing them to be pioneers and thought leaders in the global tech community.
-              </p>
+              <div className="club_vision-mission">
+                <h3 className="club_vision-title">Vision</h3>
+                <p className="club_vision-description">
+                  To become a beacon of technological excellence, fostering a culture of innovation, critical thinking, and leadership among students to meet the challenges of a rapidly changing digital world.
+                </p>
+                <h3 className="club_mission-title">Mission</h3>
+                <p className="club_mission-description">
+                  To empower students with advanced technical knowledge and practical skills through workshops, projects, and collaborative learning experiences, preparing them to be pioneers and thought leaders in the global tech community.
+                </p>
+              </div>
+            </div>
+            <div className="club_incharge-section">
+              <div className="club_incharge-info">
+                <div className="club_incharge-photo-container">
+                  <iframe
+                    src={getIframeLink(club.clubInchargeImageLink)}
+                    title={club.clubIncharge}
+                    className="club_incharge-photo"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                  <div className="overlay"></div>
+                </div>
+                <p className="club_incharge-name">Incharge : {club.clubIncharge}</p>
+                <p className="club_incharge-designation">Designation : {club.clubInchargeDesignation}</p>
+                <p className="club_incharge-designation">Department : {club.clubInchargeDepartment}</p>
+                <p className="club_incharge-phone">Phone Number : {club.clubInchargePhoneNumer}</p>
+                <p className="club_incharge-email">Mail Id : {club.clubInchargeEmail}</p>
+              </div>
             </div>
           </div>
-          <div className="club_incharge-section">
-            <div className="club_incharge-info">
-              <img
-                src={club.clubInchargePhoto}
-                alt={club.clubIncharge}
-                className="club_incharge-photo"
-              />
-              <p className="club_incharge-name">Incharge: {club.clubIncharge}</p>
-              <p className="club_incharge-designation">Department: {club.clubInchargeDesigntion}</p>
-              <p className="club_incharge-phone">Phone Number: {club.clubInchargePhoneNumer}</p>
-              <p className="club_incharge-email">Mail Id: {club.clubInchargeEmail}</p>
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
       <div className="club_events-intro">
         Below is a list of activities conducted by the aforementioned club at Karnataka (Govt.) Polytechnic, Mangalore, showcasing the diverse range of events and initiatives undertaken to enrich the student experience and foster holistic development.
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './../../../../App.css'; // Ensure you import the new CSS file
+import { Link } from 'react-router-dom';
 
 const AdminYogaTable = () => {
   const [events, setEvents] = useState([]);
@@ -109,13 +110,14 @@ const AdminYogaTable = () => {
   };
 
   return (
-    <div className="club_app-container">
+    <div className="admin-edit-table-container">
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
       {clubInfo.map((club) => (
         <div key={club.id} className="club_wrapper">
           <div className="club_info-section">
             <h2 className="club_club-name">{club.clubName}</h2>
             <p className="club_description">
-              The Yoga Club at our college is a sanctuary for students to connect with their inner selves and find balance amidst their academic pursuits. We aim to create a nurturing environment where both body and mind are strengthened through the practice of yoga.
+              <br />The Yoga Club at our college is a sanctuary for students to connect with their inner selves and find balance amidst their academic pursuits. We aim to create a nurturing environment where both body and mind are strengthened through the practice of yoga.
             </p>
             <div className="club_vision-mission">
               <h3 className="club_vision-title">Vision</h3>

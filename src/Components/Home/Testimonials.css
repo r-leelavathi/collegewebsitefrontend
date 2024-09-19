@@ -1,0 +1,97 @@
+.testimonials {
+  padding: 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+  position: relative;
+  /* Make sure relative positioning is enabled for the section */
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.testimonial-scroll {
+  display: flex;
+  overflow-x: hidden;
+  /* Prevent automatic horizontal scrolling */
+  scroll-behavior: smooth;
+  max-width: 80%;
+  /* Adjust based on your layout */
+}
+
+.testimonial-wrapper {
+  display: flex;
+  transition: transform 0.3s ease;
+  /* Smooth transition for scrolling */
+}
+
+.testimonial-card {
+  min-width: 300px;
+  /* Set card width */
+  margin: 0 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+}
+
+.testimonial-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.testimonial-content {
+  font-family: 'Roboto', sans-serif;
+}
+
+.testimonial-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.testimonial-text {
+  font-size: 14px;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.testimonial-details {
+  font-size: 12px;
+  color: #666;
+}
+
+.arrow {
+  background-color: #4c51bf;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 60%;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.left-arrow {
+  left: 0;
+  /* Position left arrow on the left side */
+}
+
+.right-arrow {
+  right: 0;
+  /* Position right arrow on the right side */
+}
+
+.arrow:hover {
+  background-color: #6b46c1;
+}

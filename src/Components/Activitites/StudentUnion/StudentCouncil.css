@@ -1,51 +1,146 @@
-/* StudentCouncil.css */
+.studentCouncil-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb;
+}
 
-.council-header {
-    margin-bottom: 20px;
-  }
-  
-  .title {
-    color: #2c3e50;
-    font-size: 2.2rem;
-    text-align: center;
-    border-bottom: 2px solid #2980b9;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-  }
-  
-  .table-container {
-    width: 80%;
-    margin: 0 auto 40px;
-    text-align: center;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-  }
-  
-  .custom-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table-header {
-    background-color: #2980b9;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px;
-  }
-  
-  .table-row:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .table-cell {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .officer-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
+.studentCouncil-info-and-incharge {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.studentCouncil-info-section {
+  flex: 1;
+  max-width: 60%;
+}
+
+.studentCouncil-club-name {
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+}
+
+
+.studentCouncil-escription {
+  color: black;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.studentCouncil-vision-mission {
+  color: black;
+}
+
+.studentCouncil-vision-title,
+.studentCouncil-mission-title {
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: semibold;
+}
+
+.studentCouncil-vision-description,
+.studentCouncil-mission-description {
+  margin-bottom: 0.5rem;
+  text-align: justify;
+}
+
+
+.studentCouncil-incharge-details {
+  flex: 1;
+  max-width: 35%;
+}
+
+.studentCouncil-incharge-section {
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.studentCouncil-incharge-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.studentCouncil-incharge-photo {
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  border: 0.25rem solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* .studentCouncil-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+} */
+
+.studentCouncil-events-intro {
+  margin-top: 40px;
+  font-size: 1.125rem;
+  color: #374151;
+  text-align: justify;
+}
+
+.studentCouncil-table-container {
+  margin-top: 20px;
+  padding: 1.5rem;
+}
+
+.studentCouncil-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.studentCouncil-table th,
+.studentCouncil-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.studentCouncil-table th {
+  background-color: #4f46e5;
+  color: white;
+  font-size: 1rem;
+}
+
+.studentCouncil-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.studentCouncil-event-link {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.studentCouncil-event-link:hover {
+  text-decoration: underline;
+}

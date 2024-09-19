@@ -1,63 +1,94 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import './App.css'; 
+import './../../../AdminForm.css'; // Assuming you have a common CSS for forms
 
-function AdminAICTEForm() {
-  const [formData, setFormData] = useState({
-    aicteYear: '',
-    aicteLink: '',
+const AdminAICTEForm = () => {
+  const [pressRelease, setPressRelease] = useState({
+    pressReleaseDate: "",
+    pressReleaseNewPaperName: "",
+    pressReleaseDescription: ""
   });
+  const [image, setImage] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    setPressRelease({
+      ...pressRelease,
+      [name]: value
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleFileChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
-    axios.post('http://localhost:8013/api/aicte', formData)
-      .then((response) => {
-        console.log('AICTE file created:', response.data);
-        // Optionally reset the form after successful submission
-        setFormData({ aicteYear: '', aicteLink: '' });
-      })
-      .catch((error) => {
-        console.error('Error creating AICTE file:', error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append("imageFile", image);
+    formdata.append(
+      "pressRelease", new Blob([JSON.stringify(pressRelease)], { type: "application/json" })
+    );
+
+    try {
+      const response = await axios.post('http://localhost:8080/api/pressreleases/add', formdata, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
+      console.log('Press Release added successfully:', response.data);
+      setPressRelease({
+        pressReleaseDate: '',
+        pressReleaseNewPaperName: '',
+        pressReleaseDescription: ''
+      });
+      setImage(null);
+    } catch (error) {
+      console.error('Error adding press release:', error.response ? error.response.data : error.message);
+    }
   };
 
   return (
-    <div className="App">
-      <h2>Add AICTE File</h2>
-      <form onSubmit={handleSubmit} className="aicte-form">
+    <div className="admin-form-container">
+      {/* Back to Login Button */}
+      <button className="back-button" onClick={() => navigate('/loginHome')}>
+        Back to Login
+      </button>
+
+      <h2>Add AICTE Details</h2>
+      <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
-          <label>AICTE Year:</label>
+          <label htmlFor="pressReleaseDate">Year</label>
+          <input
+            type="number"
+            id="pressReleaseDate"
+            name="pressReleaseDate"
+            value={pressRelease.pressReleaseDate}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="pressReleaseNewPaperName">Link of an Image</label>
           <input
             type="text"
-            name="aicteYear"
-            value={formData.aicteYear}
+            id="pressReleaseNewPaperName"
+            name="pressReleaseNewPaperName"
+            value={pressRelease.pressReleaseNewPaperName}
             onChange={handleChange}
             required
           />
         </div>
-        <div className="form-group">
-          <label>AICTE Link:</label>
-          <input
-            type="url"
-            name="aicteLink"
-            value={formData.aicteLink}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Add File</button>
+
+        <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
   );
-}
+};
 
 
 export default AdminAICTEForm

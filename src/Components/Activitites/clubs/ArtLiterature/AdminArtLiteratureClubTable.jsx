@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './../../ClubTable.css'; // Ensure you import the new CSS file
+import { Link } from 'react-router-dom';
 
 const AdminArtLiteratureClubTable = () => {
   const [events, setEvents] = useState([]);
@@ -67,6 +68,7 @@ const AdminArtLiteratureClubTable = () => {
 
   return (
     <div className="club_app-container">
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
       {clubInfo.map((club) => (
         <div key={club.id} className="club_wrapper">
           <div className="club_info-section">

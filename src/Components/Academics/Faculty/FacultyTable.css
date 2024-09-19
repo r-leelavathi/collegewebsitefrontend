@@ -1,134 +1,58 @@
-/* Variables for colors and sizes */
-:root {
-  --background-color: #eef2f3;
-  --card-background-color: #ffffff;
-  --primary-color: #4a90e2;
-  /* Cool blue */
-  --secondary-color: #62727b;
-  /* Muted slate */
-  --accent-color: #8aacc8;
-  /* Soft blue-grey */
-  --heading-font: 'Arial Black', sans-serif;
-  --paragraph-font: 'Arial', sans-serif;
-  --card-border-radius: 8px;
-  --button-border-radius: 4px;
+.faculty-list-container {
+  padding: 20px;
 }
 
-.faculty-table-container {
-  background-color: var(--card-background-color);
-  padding: 2rem;
-  border-radius: var(--card-border-radius);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  margin: 2rem auto;
-  font-family: var(--paragraph-font);
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.table-heading {
-  font-family: var(--heading-font);
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.faculty-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--paragraph-font);
-}
-
-.faculty-table th,
-.faculty-table td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid #d1d1d1;
-}
-
-.faculty-table th {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  font-family: var(--heading-font);
-}
-
-.faculty-table tr:hover {
-  background-color: #e1e8ed;
-  /* Light cool grey */
-  color: #333333;
-}
-
-.table-button {
-  background-color: var(--secondary-color);
-  color: #ffffff;
-  border: none;
-  border-radius: var(--button-border-radius);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.table-button:hover {
-  background-color: #0599ef;
-  /* Darker muted slate */
-}
-
-.delete-button {
-  background-color: #d32f2f;
-  /* Soft red */
-}
-
-.delete-button:hover {
-  background-color: #c62828;
-  /* Dark red */
-}
-
-.update-button {
-  background-color: var(--accent-color);
-}
-
-.update-button:hover {
-  background-color: var(--primary-color);
-}
-
-.more-button {
-  background-color: #f7c47b;
-  /* Muted teal */
-}
-
-.more-button:hover {
-  background-color: #fba835;
-  ;
-  /* Cool teal */
-}
-
-.save-button {
-  background-color: var(--accent-color);
-}
-
-.save-button:hover {
-  background-color: var(--primary-color);
-}
-
-.cancel-button {
-  background-color: #b0bec5;
-  /* Cool grey */
-}
-
-.cancel-button:hover {
-  background-color: #90a4ae;
-  /* Darker cool grey */
-}
-
-.faculty-table input[type="text"],
-.faculty-table input[type="email"] {
-  padding: 0.5rem;
-  border-radius: var(--card-border-radius);
+.tab {
+  background-color: #f1f1f1;
   border: 1px solid #ccc;
-  width: 100%;
-  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.faculty-table input[type="text"]:focus,
-.faculty-table input[type="email"]:focus {
-  border-color: var(--secondary-color);
-  outline: none;
+.tab.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.faculty-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.faculty-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faculty-name {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.faculty-card p {
+  margin: 5px 0;
+}
+
+.faculty-card a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.faculty-card a:hover {
+  text-decoration: underline;
 }

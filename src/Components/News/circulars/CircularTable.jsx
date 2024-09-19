@@ -26,31 +26,6 @@ const Circular = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    setEditing(id);
-    const circular = circulars.find(c => c.id === id);
-    setEditedData({ ...circular });
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/circulars/delete/${id}`);
-      setCirculars(circulars.filter(c => c.id !== id));
-    } catch (error) {
-      console.error('Error deleting circular:', error);
-    }
-  };
-
-  const handleSave = async (id) => {
-    try {
-      await axios.put(`http://localhost:8080/api/circulars/${id}`, editedData);
-      setEditing(null);
-      fetchCirculars(); // Refresh the data
-    } catch (error) {
-      console.error('Error saving circular:', error);
-    }
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditedData({

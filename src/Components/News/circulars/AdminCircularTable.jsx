@@ -1,208 +1,124 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './../../../AdminTable.css';
+// import './../ClubTable.css'; // Ensure you import the new CSS file
 
-const AdminCircularTable = () => {
-  const [circulars, setCirculars] = useState([]);
-  const [editing, setEditing] = useState(null);
-  const [editedData, setEditedData] = useState({});
-  const [imageSrc, setImageSrc] = useState(null);
+const StudentCouncil = () => {
+  const [officers, setOfficers] = useState([]);
+  const [coordinators, setCoordinators] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    fetchCirculars();
+    fetchOfficers();
+    fetchCoordinators();
+    fetchActivities();
   }, []);
 
-  const fetchCirculars = async () => {
+  const fetchOfficers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/circulars/all');
-      // Convert byte array to Base64 string
-      const circularsWithBase64 = response.data.map(circular => ({
-        ...circular,
-        base64Image: `data:image/jpeg;base64,${btoa(String.fromCharCode(...new Uint8Array(circular.imageFile)))}`
-      }));
-      setCirculars(circularsWithBase64);
+      const response = await axios.get('http://localhost:8080/api/student-welfare-officers');
+      setOfficers(response.data);
     } catch (error) {
-      console.error('Error fetching circulars:', error);
+      console.error('Error fetching officers:', error);
     }
   };
 
-  const handleEdit = (id) => {
-    setEditing(id);
-    const circular = circulars.find(c => c.id === id);
-    setEditedData({ ...circular });
-  };
-
-  const handleDelete = async (id) => {
+  const fetchCoordinators = async () => {
     try {
-      await axios.delete(`http://localhost:8080/api/circulars/delete/${id}`);
-      setCirculars(circulars.filter(c => c.id !== id));
+      const response = await axios.get('http://localhost:8080/api/student-welfare-coordinators');
+      setCoordinators(response.data);
     } catch (error) {
-      console.error('Error deleting circular:', error);
+      console.error('Error fetching coordinators:', error);
     }
   };
 
-  const handleSave = async (id) => {
+  const fetchActivities = async () => {
     try {
-      await axios.put(`http://localhost:8080/api/circulars/${id}`, editedData);
-      setEditing(null);
-      fetchCirculars(); // Refresh the data
+      const response = await axios.get('http://localhost:8080/api/student-council-activities');
+      setActivities(response.data);
     } catch (error) {
-      console.error('Error saving circular:', error);
+      console.error('Error fetching activities:', error);
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEditedData({
-      ...editedData,
-      [name]: value,
-    });
+  const extractDriveId = (link) => {
+    const match = link ? link.match(/\/d\/(.*?)\//) : null;
+    return match ? match[1] : null;
   };
-  const handleView = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/circulars/${id}/image`);
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-
-        // Open a new window and set the image source
-        const newWindow = window.open('', '_blank');
-        if (newWindow) {
-          newWindow.document.write(
-            `<html><head><title>Image Preview</title></head><body style="margin:0"><img src="${url}" alt="Circular Image" style="max-width:100%; height:auto;"/></body></html>`
-          );
-          newWindow.document.close();
-        } else {
-          console.error('Failed to open new window');
-        }
-      } else {
-        console.error('Failed to fetch image');
-      }
-    } catch (error) {
-      console.error('Error fetching image:', error);
-    }
-  };
-  const handleDownload = async (id) => {
-    try {
-      // Make an axios request to fetch the image as a blob
-      const response = await axios.get(`http://localhost:8080/api/circulars/${id}/image`, {
-        responseType: 'blob', // Important to specify the response type as 'blob'
-      });
-
-      // Create a temporary download link
-      const url = URL.createObjectURL(response.data);
-      const downloadLink = document.createElement('a');
-      downloadLink.href = url;
-      downloadLink.download = 'circular-image.jpg'; // Set the filename
-      downloadLink.click();
-
-      // Clean up the URL object
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Error downloading image:', error);
-    }
-  };
-
-
-
 
   return (
-    <div className="circular-table-container">
-      <h2>Circulars</h2>
-      <table className="circular-table">
-        <thead>
-          <tr>
-            <th>Sl. No</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>View</th>
-            <th>Download</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {circulars.map((circular, index) => (
-            <tr key={circular.id}>
-              <td>{index + 1}</td>
-              <td>
-                {editing === circular.id ? (
-                  <input
-                    type="date"
-                    name="date"
-                    value={editedData.date || ''}
-                    onChange={handleChange}
-                  />
-                ) : (
-                  circular.date
-                )}
-              </td>
-              <td>
-                {editing === circular.id ? (
-                  <input
-                    type="text"
-                    name="description"
-                    value={editedData.description || ''}
-                    onChange={handleChange}
-                  />
-                ) : (
-                  circular.description
-                )}
-              </td>
-              <td>
-                <button
-                  className="circular-table-action-button circular-table-view-button"
-                  onClick={() => handleView(circular.id)}
-                >
-                  View
-                </button>
-              </td>
-              <td>
-                <button
-                  className="circular-table-action-button circular-table-download-button"
-                  onClick={() => handleDownload(circular.id)}
-                >
-                  Download
-                </button>
-              </td>
-              <td>
-                {editing === circular.id ? (
-                  <button
-                    className="circular-table-action-button circular-table-save-button"
-                    onClick={() => handleSave(circular.id)}
-                  >
-                    Save
-                  </button>
-                ) : (
-                  <button
-                    className="circular-table-action-button circular-table-edit-button"
-                    onClick={() => handleEdit(circular.id)}
-                  >
-                    Edit
-                  </button>
-                )}
-              </td>
-              <td>
-                <button
-                  className="circular-table-action-button circular-table-delete-button"
-                  onClick={() => handleDelete(circular.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* {imageSrc && (
-        <div className="image-preview">
-          <h3>Image Preview</h3>
-          <img src={imageSrc} alt="Circular" />
+    <div className="club_app-container">
+      <div className="club_info-section">
+        <h2 className="club_club-name">Student Council</h2>
+        <p className="club_description">
+          The Student Council at our college serves as the representative body for students, working to create a bridge between the administration and the student community. Our goal is to provide a platform for student voices, facilitate positive change, and promote academic, social, and extracurricular well-being for every student.
+        </p>
+        <div className="club_vision-mission">
+          <h3 className="club_vision-title">Vision</h3>
+          <p className="club_vision-description">
+            To empower students to develop leadership, responsibility, and community engagement through collaborative efforts that promote the holistic development of individuals and the enhancement of the student experience.
+          </p>
+          <h3 className="club_mission-title">Mission</h3>
+          <p className="club_mission-description">
+            To foster a dynamic and inclusive environment where students can actively participate in shaping their academic journey, engage in meaningful extracurricular activities, and contribute to the welfare of the institution and the wider community.
+          </p>
         </div>
-      )} */}
+      </div>
+      {officers.map((officer) => {
+        const imageId = extractDriveId(officer.studentWelfareOfficerImage);
+        const imageSrc = imageId ? `https://drive.google.com/uc?export=view&id=${imageId}` : '';
+
+        return (
+          <div key={officer.studentWelfareOfficerId} className="club_wrapper">
+
+            <div className="club_incharge-section">
+              <div className="club_incharge-info">
+                {imageSrc && (
+                  <iframe
+                    src={imageSrc}
+                    title={officer.studentWelfareOfficerName}
+                    className="club_incharge-photo"
+                    frameBorder="0"
+                    style={{ width: '200px', height: '200px', border: 'none' }}
+                  />
+                )}
+                <p className="club_incharge-name">Incharge: {officer.studentWelfareOfficerName}</p>
+                <p className="club_incharge-department">Department: {officer.studentWelfareOfficerDepartment}</p>
+                <p className="club_incharge-designation">Designation: {officer.studentWelfareOfficerDesignation}</p>
+                <p className="club_incharge-phone">Phone Number: {officer.studentWelfareOfficerContactNumber}</p>
+                <p className="club_incharge-email">Mail Id: {officer.studentWelfareOfficerMailId}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      <div className="club_events-intro">
+        Below is a list of activities conducted by the Student Council...
+      </div>
+      <div className="club_table-container">
+        <table className="club_table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {activities.map((event) => (
+              <tr key={event.id}>
+                <td>{event.topic}</td>
+                <td>{event.description}</td>
+                <td>{event.date}</td>
+                <td><a href={event.link} target="_blank" rel="noopener noreferrer" className="club_event-link">View Link</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
-export default AdminCircularTable;
+export default StudentCouncil;

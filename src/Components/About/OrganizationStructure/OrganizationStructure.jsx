@@ -13,8 +13,8 @@ const OrganizationStructure = () => {
 
         </p>
       </div>
-      <div>
-        <img src="/assets/organisationStructure.jpg" alt="organisationStructure" />
+      <div className="organization-structure-container">
+        <img src="/assets/flowcharts/organisationStructure.jpg" alt="organisationStructure" />
       </div>
     </>
   );

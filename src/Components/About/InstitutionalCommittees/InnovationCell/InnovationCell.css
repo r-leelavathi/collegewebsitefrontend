@@ -1,0 +1,94 @@
+/* Container for the page */
+.innovation-cell-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+/* Content Section */
+.innovation-cell-content {
+  flex: 2;
+}
+
+/* In-charge Section */
+.innovation-cell-incharge {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.innovation-cell-incharge-details {
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.innovation-cell-incharge-photo {
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  border: 0.25rem solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.innovation-cell-incharge-info {
+  margin-top: 10px;
+}
+
+.incharge-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.innovation-cell-incharge-info>.incharge-designation,
+.innovation-cell-incharge-info>.incharge-department,
+.innovation-cell-incharge-info>.incharge-phone,
+.innovation-cell-incharge-info>.incharge-email {
+  color: #333;
+  margin: 0;
+  /* color: red; */
+}
+
+/* Important Links Section */
+.innovation-cell-links {
+  margin-top: 30px;
+}
+
+.innovation-cell-links h3 {
+  color: #4c51bf;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.innovation-cell-links table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.innovation-cell-links th,
+.innovation-cell-links td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.innovation-cell-links th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+.innovation-cell-links a {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.innovation-cell-links a:hover {
+  text-decoration: underline;
+}

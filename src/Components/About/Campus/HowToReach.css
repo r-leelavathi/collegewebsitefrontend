@@ -1,0 +1,95 @@
+.reach-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: var(--card-border-radius, 10px);
+  background: #f9f9f9;
+  font-family: var(--paragraph-font, 'Arial, sans-serif');
+}
+
+.reach-heading {
+  font-size: 24px;
+  font-family: var(--heading-font, 'Montserrat, sans-serif');
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.intro-map-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 2rem 0;
+}
+
+.intro-text {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: var(--card-border-radius, 10px);
+  font-family: var(--paragraph-font, 'Arial, sans-serif');
+  color: #333;
+  text-align: justify;
+}
+
+.map-container {
+  flex: 1;
+  min-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: var(--card-border-radius, 10px);
+  overflow: hidden;
+}
+
+.tables-container {
+  display: flex;
+  gap: 20px;
+}
+
+.table-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: var(--heading-font, 'Montserrat, sans-serif');
+  color: #333;
+  text-align: center;
+}
+
+.reach-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.reach-table th,
+.reach-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+.reach-table th:first-child,
+.reach-table td:first-child {
+  width: 60%;
+  /* Adjust the width to balance the table layout */
+}
+
+.reach-table th {
+  background-color: var(--accent-color, #4c51bf);
+  color: white;
+}
+
+.travel-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.travel-table th,
+.travel-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+.travel-table th {
+  background-color: var(--accent-color, #4c51bf);
+  color: white;
+}

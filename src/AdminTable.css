@@ -1,64 +1,44 @@
-.admin-edit-table-action-button,
-.admin-edit-table-view-button,
-.admin-edit-table-download-button,
-.admin-edit-table-edit-button,
-.admin-edit-table-save-button,
-.admin-edit-table-delete-button {
-  color: white;
-  padding: var(--button-padding);
-  border: none;
-  border-radius: var(--button-border-radius);
-  cursor: pointer;
-  font-family: var(--heading-font);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.admin-edit-table-container {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 2rem 0;
 }
 
-/* Specific Button Styles */
-.admin-edit-table-action-button {
-  background-color: var(--accent-color);
+.admin-edit-table-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
 }
 
-.admin-edit-table-view-button {
-  background-color: var(--secondary-color);
+.admin-edit-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
 }
 
-.admin-edit-table-download-button {
-  background-color: var(--primary-color);
+.admin-edit-table th,
+.admin-edit-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
-.admin-edit-table-edit-button {
-  background-color: #1abc9c;
-  /* Teal for edit actions */
+.admin-edit-table th {
+  background-color: #f1f1f1;
+  color: #333;
 }
 
-.admin-edit-table-save-button {
-  background-color: #27ae60;
-  /* Green for save actions */
+.admin-edit-table td {
+  color: #555;
 }
 
-.admin-edit-table-delete-button {
-  background-color: #e74c3c;
-  /* Red for delete actions */
-}
-
-/* Hover Effects */
-.admin-edit-table-action-button:hover,
-.admin-edit-table-view-button:hover,
-.admin-edit-table-download-button:hover,
-.admin-edit-table-edit-button:hover,
-.admin-edit-table-save-button:hover,
-.admin-edit-table-delete-button:hover {
-  background-color: #2980b9;
-  /* Darker blue shade for hover */
-  transform: translateY(-2px);
-}
-
-/* Active Effects */
-.admin-edit-table-action-button:active,
-.admin-edit-table-view-button:active,
-.admin-edit-table-download-button:active,
-.admin-edit-table-edit-button:active,
-.admin-edit-table-save-button:active,
-.admin-edit-table-delete-button:active {
-  transform: scale(0.98);
+.admin-edit-table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }

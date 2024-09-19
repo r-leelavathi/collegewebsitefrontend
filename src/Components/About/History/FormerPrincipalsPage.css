@@ -1,0 +1,100 @@
+/* FormerPrincipalsPage.css */
+
+.principals-page {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.principals-page h1 {
+  font-size: 19px;
+  text-align: center;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.principals-page p {
+  font-size: 16px;
+  color: #7f8c8d;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.principals-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.principals-table th,
+.principals-table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: left;
+  color: #34495e;
+  font-size: 14px;
+}
+
+.principals-table th {
+  background-color: #ecf0f1;
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+}
+
+.principals-table td img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.principals-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.principals-table tr:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .principals-page {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .principals-table th,
+  .principals-table td {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .principals-table td img {
+    width: 70px;
+  }
+}
+
+/* Enhanced mobile view */
+@media (max-width: 480px) {
+  .principals-page h1 {
+    font-size: 26px;
+  }
+
+  .principals-table th,
+  .principals-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .principals-table td img {
+    width: 50px;
+  }
+}

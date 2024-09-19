@@ -1,0 +1,91 @@
+/* Container for the page */
+.iqac-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.iqac-content {
+  flex: 2;
+}
+
+.incharge-section {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.incharge-info {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.incharge-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.incharge-name,
+.incharge-designation,
+.incharge-phone,
+.incharge-email {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.members-list-link {
+  display: block;
+  margin-top: 20px;
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.members-list-link:hover {
+  text-decoration: underline;
+}
+
+.page-title {
+  color: #4c51bf;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.section-title {
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.section-content {
+  color: #333;
+}
+
+.section-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: justify;
+}
+
+.list-item {
+  margin-bottom: 10px;
+}
+
+.link {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
