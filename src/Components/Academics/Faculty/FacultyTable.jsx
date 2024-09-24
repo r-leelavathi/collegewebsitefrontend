@@ -29,19 +29,22 @@ const FacultyTable = () => {
     if (tab !== 'all') {
       filtered = filtered.filter(faculty => {
         switch (tab) {
-          case 'Computer Science and Engineering':
+          case 'Computer Science & Engineering':
           case 'Mechanical Engineering':
           case 'Polymer Technology':
           case 'Civil Engineering':
           case 'Chemical Engineering':
-          case 'Electrical and Electronics Engineering':
-          case 'Electronics and Communication Engineering':
+          case 'Electrical & Electronics Engineering':
+          case 'Electronics & Communication Engineering':
           case 'Automobile Engineering':
-            return faculty.facultyDepartment === tab;
           case 'Office Staff':
-            return faculty.facultyLocation.toLowerCase().includes('office');
           case 'Object Staff':
-            return !faculty.facultyLocation.toLowerCase().includes('office');
+          case 'Science & Humanities':
+            return faculty.facultyDepartment === tab;
+          // case 'Office Staff':
+          //   return faculty.facultyLocation.toLowerCase().includes('office');
+          // case 'Object Staff':
+          //   return !faculty.facultyLocation.toLowerCase().includes('office');
           default:
             return true;
         }
@@ -49,6 +52,17 @@ const FacultyTable = () => {
     }
 
     setFilteredData(filtered);
+  };
+
+  const convertDriveLink = (driveLink) => {
+    if (typeof driveLink === 'string') {
+      const fileIdMatch = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (fileIdMatch) {
+        const fileId = fileIdMatch[1];
+        return `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+    }
+    return driveLink;
   };
 
   return (
@@ -61,10 +75,40 @@ const FacultyTable = () => {
           All
         </button>
         <button
+          className={`tab ${activeTab === 'AT' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Automobile Engineering')}
+        >
+          AT
+        </button>
+        <button
+          className={`tab ${activeTab === 'CH' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Chemical Engineering')}
+        >
+          CH
+        </button>
+        <button
+          className={`tab ${activeTab === 'CE' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Civil Engineering')}
+        >
+          CE
+        </button>
+        <button
           className={`tab ${activeTab === 'CS' ? 'active' : ''}`}
-          onClick={() => handleTabClick('Computer Science and Engineering')}
+          onClick={() => handleTabClick('Computer Science & Engineering')}
         >
           CS
+        </button>
+        <button
+          className={`tab ${activeTab === 'EEE' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Electrical & Electronics Engineering')}
+        >
+          EEE
+        </button>
+        <button
+          className={`tab ${activeTab === 'EC' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Electronics & Communication Engineering')}
+        >
+          EC
         </button>
         <button
           className={`tab ${activeTab === 'Mechanical Engineering' ? 'active' : ''}`}
@@ -79,34 +123,10 @@ const FacultyTable = () => {
           PO
         </button>
         <button
-          className={`tab ${activeTab === 'CE' ? 'active' : ''}`}
-          onClick={() => handleTabClick('Civil Engineering')}
+          className={`tab ${activeTab === 'Science' ? 'active' : ''}`}
+          onClick={() => handleTabClick('Science & Humanities')}
         >
-          CE
-        </button>
-        <button
-          className={`tab ${activeTab === 'CH' ? 'active' : ''}`}
-          onClick={() => handleTabClick('Chemical Engineering')}
-        >
-          CH
-        </button>
-        <button
-          className={`tab ${activeTab === 'EEE' ? 'active' : ''}`}
-          onClick={() => handleTabClick('Electrical and Electronics Engineering')}
-        >
-          EEE
-        </button>
-        <button
-          className={`tab ${activeTab === 'EC' ? 'active' : ''}`}
-          onClick={() => handleTabClick('Electronics and Communication Engineering')}
-        >
-          EC
-        </button>
-        <button
-          className={`tab ${activeTab === 'AT' ? 'active' : ''}`}
-          onClick={() => handleTabClick('Automobile Engineering')}
-        >
-          AT
+          Science
         </button>
         <button
           className={`tab ${activeTab === 'Office Staff' ? 'active' : ''}`}
@@ -125,14 +145,22 @@ const FacultyTable = () => {
       <div className="faculty-list">
         {filteredData.map(faculty => (
           <div className="faculty-card" key={faculty.facultyId}>
+            {faculty.facultyLink && (
+              <iframe
+                src={convertDriveLink(faculty.facultyLink)}
+                title={`${faculty.facultyName}'s Image`}
+                className="faculty-image"
+                frameBorder="0" allowFullScreen
+              ></iframe>
+            )}
             <h3 className="faculty-name">{faculty.facultyName}</h3>
             <p><strong>Designation:</strong> {faculty.facultyDesignation}</p>
             <p><strong>Department:</strong> {faculty.facultyDepartment}</p>
-            <p><strong>Location:</strong> {faculty.facultyLocation}</p>
-            <p><strong>Phone:</strong> {faculty.facultyPhone}</p>
+            {/* <p><strong>Location:</strong> {faculty.facultyLocation}</p> */}
+            {/* <p><strong>Phone:</strong> {faculty.facultyPhone}</p> */}
             <p><strong>Email:</strong> {faculty.facultyEmail}</p>
-            <p><strong>Address:</strong> {faculty.facultyAddress}</p>
-            <a href={faculty.facultyLink} target="_blank" rel="noopener noreferrer">More Details</a>
+            {/* <p><strong>Address:</strong> {faculty.facultyAddress}</p> */}
+            <a href={faculty.facultyLink} target="_blank" rel="noopener noreferrer" className="faculty_view_profile">View Profile</a>
           </div>
         ))}
       </div>

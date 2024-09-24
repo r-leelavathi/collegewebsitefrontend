@@ -4,49 +4,42 @@ import axios from 'axios';
 import './../../../../AdminForm.css';
 
 const AdminYogaForm = () => {
-  const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+  const [yogaData, setYogaData] = useState({
+    date: '',
+    topic: '',
+    description: '',
+    link: ''
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCircular({
-      ...circular,
+    setYogaData({
+      ...yogaData,
       [name]: value
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
-
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
+      console.log(yogaData);
+      const response = await axios.post('http://localhost:8080/api/yoga', yogaData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
-      console.log('Circular added successfully:', response.data);
-      setCircular({
+      console.log('Yoga activity added successfully:', response.data);
+      setYogaData({
         date: '',
+        topic: '',
         description: '',
-        imageFile: null,
+        link: ''
       });
+      navigate('/loginhome'); // Redirect after submission
     } catch (error) {
-      console.error('Error adding circular:', error.response ? error.response.data : error.message);
+      console.error('Error adding activity:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -57,13 +50,26 @@ const AdminYogaForm = () => {
 
       <h2>Add New Yoga Activity</h2>
       <form onSubmit={handleSubmit} className="admin-form">
+
         <div className="form-group">
           <label htmlFor="date">Date</label>
           <input
             type="date"
             id="date"
             name="date"
-            value={circular.date}
+            value={yogaData.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="topic">Topic</label>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            value={yogaData.topic}
             onChange={handleChange}
             required
           />
@@ -74,20 +80,21 @@ const AdminYogaForm = () => {
           <textarea
             id="description"
             name="description"
-            value={circular.description}
+            value={yogaData.description}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="link">Image Link</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="text"
+            id="link"
+            name="link"
+            value={yogaData.link}
+            onChange={handleChange}
+            placeholder="Enter image URL"
             required
           />
         </div>
@@ -98,4 +105,4 @@ const AdminYogaForm = () => {
   );
 };
 
-export default AdminYogaForm
+export default AdminYogaForm;

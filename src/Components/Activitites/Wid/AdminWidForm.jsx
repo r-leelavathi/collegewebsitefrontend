@@ -5,10 +5,10 @@ import './../../../AdminForm.css';
 
 const AdminWidForm = () => {
   const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+    date: '',
+    topic: '',
+    link: '',
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
@@ -16,46 +16,30 @@ const AdminWidForm = () => {
     const { name, value } = e.target;
     setCircular({
       ...circular,
-      [name]: value
+      [name]: value,
     });
-  };
-
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
-
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log('Circular added successfully:', response.data);
+      const response = await axios.post('http://localhost:8080/api/womeninddevelopment', circular);
+      console.log('Activity added successfully:', response.data);
       setCircular({
         date: '',
-        description: '',
-        imageFile: null,
+        topic: '',
+        link: '',
       });
     } catch (error) {
-      console.error('Error adding circular:', error.response ? error.response.data : error.message);
+      console.error('Error adding activity:', error.response ? error.response.data : error.message);
     }
   };
 
   return (
     <div className="admin-form-container">
-
       <Link to="/loginhome" className="back-button">Back to Login</Link>
 
-      <h2>Add New WID Activity Details</h2>
+      <h2>Add New Women In Development Activity</h2>
       <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
           <label htmlFor="date">Date</label>
@@ -70,25 +54,26 @@ const AdminWidForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={circular.description}
+          <label htmlFor="topic">Topic</label>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            value={circular.topic}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="link">Link</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
-            required
+            type="text"
+            id="link"
+            name="link"
+            value={circular.link}
+            onChange={handleChange}
+            placeholder="Activity Link"
           />
         </div>
 
@@ -98,6 +83,4 @@ const AdminWidForm = () => {
   );
 };
 
-
-
-export default AdminWidForm
+export default AdminWidForm;

@@ -1,0 +1,67 @@
+.cs-section {
+  padding: 20px;
+}
+
+.cs-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.cs-lab-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.cs-lab-info {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.cs-lab-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cs-lab-description {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.cs-lab-equipment,
+.cs-lab-hours {
+  margin-bottom: 5px;
+  text-align: justify;
+}
+
+.cs-carousel {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cs-carousel-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.cs-carousel-btn {
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.cs-carousel-image {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 5px;
+}

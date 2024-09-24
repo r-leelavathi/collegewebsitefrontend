@@ -25,34 +25,54 @@
 }
 
 .faculty-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  justify-content: center;
 }
 
 .faculty-card {
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+.faculty-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* .faculty-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+} */
+
 
 .faculty-name {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.faculty-card p {
-  margin: 5px 0;
-}
-
-.faculty-card a {
-  color: #4CAF50;
+.faculty_view_profile {
+  color: #007bff;
   text-decoration: none;
 }
 
-.faculty-card a:hover {
+.faculty-card>p {
+  margin: 0;
+}
+
+.faculty_view_profile:hover {
   text-decoration: underline;
 }

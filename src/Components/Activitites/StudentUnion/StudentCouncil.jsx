@@ -87,12 +87,9 @@ const StudentCouncil = () => {
         </div>
       </div>
 
-      <div className="studentCouncil-events-intro">
-        The table below provides a comprehensive list of coordinators who play an essential role in the Student Council. These student coordinators are actively involved in various council activities and initiatives, contributing to the vibrant and dynamic environment of the Student Council at Karnataka (Govt.) Polytechnic, Mangalore. Their involvement is crucial in organizing events, leading projects, and ensuring effective communication between students and the administration.
-      </div>
-
-
+      {/* Coordinators Table */}
       <div className="studentCouncil-table-container">
+        <h3 className="studentCouncil-table-title">Student Welfare Coordinators</h3>
         <table className="studentCouncil-table">
           <thead>
             <tr>
@@ -101,16 +98,20 @@ const StudentCouncil = () => {
               <th>Branch</th>
               <th>Year</th>
               <th>Role</th>
+              <th>Email</th>
+              <th>Phone</th>
             </tr>
           </thead>
           <tbody>
-            {coordinator.map((event) => (
-              <tr key={event.id}>
-                <td>{event.studentWelfareCoordinatorId}</td>
-                <td>{event.studentWelfareCoordinatorName}</td>
-                <td>{event.studentWelfareCoordinatorBranch}</td>
-                <td>{event.studentWelfareCoordinatorYear}</td>
-                <td>{event.studentWelfareCoordinatorRole}</td>
+            {coordinator.map((coord, index) => (
+              <tr key={coord.studentWelfareCoordinatorId}>
+                <td>{index + 1}</td>
+                <td>{coord.studentWelfareCoordinatorName}</td>
+                <td>{coord.studentWelfareCoordinatorBranch}</td>
+                <td>{coord.studentWelfareCoordinatorYear}</td>
+                <td>{coord.studentWelfareCoordinatorRole}</td>
+                <td>{coord.studentWelfareCoordinatorEmail}</td>
+                <td>{coord.studentWelfareCoordinatorPhone}</td>
               </tr>
             ))}
           </tbody>

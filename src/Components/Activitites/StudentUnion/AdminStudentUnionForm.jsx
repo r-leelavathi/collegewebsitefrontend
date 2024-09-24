@@ -4,90 +4,117 @@ import axios from 'axios';
 import './../../../AdminForm.css';
 
 const AdminStudentUnionForm = () => {
-  const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+  const [coordinator, setCoordinator] = useState({
+    studentWelfareCoordinatorName: '',
+    studentWelfareCoordinatorBranch: '',
+    studentWelfareCoordinatorYear: '',
+    studentWelfareCoordinatorRole: '',
+    studentWelfareCoordinatorEmail: '',
+    studentWelfareCoordinatorPhone: '',
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCircular({
-      ...circular,
-      [name]: value
+    setCoordinator({
+      ...coordinator,
+      [name]: value,
     });
-  };
-
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
-
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log('Circular added successfully:', response.data);
-      setCircular({
-        date: '',
-        description: '',
-        imageFile: null,
+      const response = await axios.post('http://localhost:8080/api/studentwelfarecoordinator', coordinator);
+      console.log('Coordinator added successfully:', response.data);
+      setCoordinator({
+        studentWelfareCoordinatorName: '',
+        studentWelfareCoordinatorBranch: '',
+        studentWelfareCoordinatorYear: '',
+        studentWelfareCoordinatorRole: '',
+        studentWelfareCoordinatorEmail: '',
+        studentWelfareCoordinatorPhone: '',
       });
     } catch (error) {
-      console.error('Error adding circular:', error.response ? error.response.data : error.message);
+      console.error('Error adding coordinator:', error.response ? error.response.data : error.message);
     }
   };
 
   return (
     <div className="admin-form-container">
-
       <Link to="/loginhome" className="back-button">Back to Login</Link>
 
-      <h2>Add New Circular</h2>
+      <h2>Add New Student Welfare Coordinator</h2>
       <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
-          <label htmlFor="date">Date</label>
+          <label htmlFor="studentWelfareCoordinatorName">Name</label>
           <input
-            type="date"
-            id="date"
-            name="date"
-            value={circular.date}
+            type="text"
+            id="studentWelfareCoordinatorName"
+            name="studentWelfareCoordinatorName"
+            value={coordinator.studentWelfareCoordinatorName}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={circular.description}
+          <label htmlFor="studentWelfareCoordinatorBranch">Branch</label>
+          <input
+            type="text"
+            id="studentWelfareCoordinatorBranch"
+            name="studentWelfareCoordinatorBranch"
+            value={coordinator.studentWelfareCoordinatorBranch}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="studentWelfareCoordinatorYear">Year</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="number"
+            id="studentWelfareCoordinatorYear"
+            name="studentWelfareCoordinatorYear"
+            value={coordinator.studentWelfareCoordinatorYear}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="studentWelfareCoordinatorRole">Role</label>
+          <input
+            type="text"
+            id="studentWelfareCoordinatorRole"
+            name="studentWelfareCoordinatorRole"
+            value={coordinator.studentWelfareCoordinatorRole}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="studentWelfareCoordinatorEmail">Email</label>
+          <input
+            type="email"
+            id="studentWelfareCoordinatorEmail"
+            name="studentWelfareCoordinatorEmail"
+            value={coordinator.studentWelfareCoordinatorEmail}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="studentWelfareCoordinatorPhone">Phone</label>
+          <input
+            type="tel"
+            id="studentWelfareCoordinatorPhone"
+            name="studentWelfareCoordinatorPhone"
+            value={coordinator.studentWelfareCoordinatorPhone}
+            onChange={handleChange}
             required
           />
         </div>
@@ -98,5 +125,4 @@ const AdminStudentUnionForm = () => {
   );
 };
 
-
-export default AdminStudentUnionForm
+export default AdminStudentUnionForm;

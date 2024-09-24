@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Accordion from './Accordion';
 import './LoginHome.css';
-import { homeItems, aboutItems, academicsItems, admissionsItems, activitiesItems, eventsItems, newsAndAnnouncementsItems, importantLinksItems } from './LoginHomeData'
+import { homeItems, aboutItems, academicsItems, admissionsItems, activitiesItems, eventsItems, newsAndAnnouncementsItems, importantLinksItems, footerItems } from './LoginHomeData'
 
 const LoginHome = () => {
   // State to manage the collapse state of each section
@@ -14,6 +14,7 @@ const LoginHome = () => {
     events: true,
     news: true,
     links: true,
+    footer: true,
   });
 
   // Toggle function to handle collapsing and expanding
@@ -110,6 +111,17 @@ const LoginHome = () => {
         {!collapsedSections.links && (
           <div className="loginHome-accordion-wrapper">
             <Accordion items={importantLinksItems} />
+          </div>
+        )}
+      </div>
+
+      <div className="loginHome-collapsible-section">
+        <h2 onClick={() => toggleSection('footer')} className="loginHome-collapsible-header">
+          Footer
+        </h2>
+        {!collapsedSections.footer && (
+          <div className="loginHome-accordion-wrapper">
+            <Accordion items={footerItems} />
           </div>
         )}
       </div>

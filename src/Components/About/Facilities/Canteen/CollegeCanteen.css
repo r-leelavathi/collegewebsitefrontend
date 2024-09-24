@@ -1,63 +1,91 @@
 .canteen-container {
   display: flex;
-  gap: 20px;
-  /* Space between the gallery and the content */
+  justify-content: space-between;
   padding: 20px;
 }
 
-.gallery-section {
-  flex: 1;
-  max-width: 40%;
-  /* Adjust the width of the gallery section as needed */
+.canteen-gallery-section {
+  padding-left: 20px;
+  padding-top: 20px;
+  /* max-height: 120vh; */
+  width: 40%;
+  /* No need for overflow hidden */
 }
 
-.gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  /* Space between images */
-  overflow: hidden;
-}
-
-.gallery-image {
+.canteen-gallery-slider {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+}
+
+/* Style the gallery items */
+.canteen-gallery-item {
+  display: flex;
+  justify-content: center;
+}
+
+.canteen-gallery-image {
+  width: 100%;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.content-section {
-  flex: 2;
-  /* Takes up more space compared to the gallery */
+.slick-prev:before {
+  /* margin-left: 10px; */
 }
 
-.page-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center;
+/* Custom arrows */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px;
+  color: black !important;
 }
 
-.section {
-  margin-bottom: 20px;
+/* Center the arrows vertically */
+.slick-prev,
+.slick-next {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: black;
 }
 
-.section-title {
-  font-size: 1.5rem;
+/* Style for dots */
+.slick-dots {
+  bottom: 10px;
+  /* Adjust position of dots from bottom */
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  /* Adjust size of dots */
+  color: black;
+  /* Dot color */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #007bff;
+  /* Active dot color */
+}
+
+.canteen-content-section {
+  width: 55%;
+  padding-left: 20px;
+}
+
+.canteen-section-title {
+  font-size: 24px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.section-content {
-  font-size: 1rem;
+.canteen-section-content,
+.canteen-menu-list,
+.canteen-facilities-list {
+  font-size: 16px;
   line-height: 1.6;
 }
 
-.menu-list,
-.facilities-list {
+.canteen-menu-list,
+.canteen-facilities-list {
   list-style-type: disc;
   margin-left: 20px;
-}
-
-.menu-list li,
-.facilities-list li {
-  margin-bottom: 10px;
 }

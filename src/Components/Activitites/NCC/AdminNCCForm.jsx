@@ -4,49 +4,42 @@ import axios from 'axios';
 import './../../../AdminForm.css';
 
 const AdminNCCForm = () => {
-  const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+  const [nccData, setNccData] = useState({
+    date: '',
+    topic: '',
+    description: '',
+    link: ''
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCircular({
-      ...circular,
+    setNccData({
+      ...nccData,
       [name]: value
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
-
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
+      console.log(nccData);
+      const response = await axios.post('http://localhost:8080/api/ncc', nccData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
-      console.log('Circular added successfully:', response.data);
-      setCircular({
+      console.log('NCC activity added successfully:', response.data);
+      setNccData({
         date: '',
+        topic: '',
         description: '',
-        imageFile: null,
+        link: ''
       });
+      navigate('/loginhome'); // Redirect after submission
     } catch (error) {
-      console.error('Error adding circular:', error.response ? error.response.data : error.message);
+      console.error('Error adding activity:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -55,15 +48,28 @@ const AdminNCCForm = () => {
 
       <Link to="/loginhome" className="back-button">Back to Login</Link>
 
-      <h2>Add New Circular</h2>
+      <h2>Add New NCC Activity</h2>
       <form onSubmit={handleSubmit} className="admin-form">
+
         <div className="form-group">
           <label htmlFor="date">Date</label>
           <input
             type="date"
             id="date"
             name="date"
-            value={circular.date}
+            value={nccData.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="topic">Topic</label>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            value={nccData.topic}
             onChange={handleChange}
             required
           />
@@ -74,20 +80,21 @@ const AdminNCCForm = () => {
           <textarea
             id="description"
             name="description"
-            value={circular.description}
+            value={nccData.description}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="link">Image Link</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="text"
+            id="link"
+            name="link"
+            value={nccData.link}
+            onChange={handleChange}
+            placeholder="Enter image URL"
             required
           />
         </div>
@@ -98,5 +105,4 @@ const AdminNCCForm = () => {
   );
 };
 
-
-export default AdminNCCForm
+export default AdminNCCForm;

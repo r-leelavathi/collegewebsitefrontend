@@ -28,7 +28,7 @@ const RecruitmentPage = () => {
           <tr>
             <th>Date</th>
             <th>Description</th>
-            <th>Image</th>
+            <th>File</th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@ const RecruitmentPage = () => {
               <td>{recruitment.description}</td>
               <td>
                 <a href={recruitment.imgLink} target="_blank" rel="noopener noreferrer">
-                  View Image
+                  View
                 </a>
               </td>
             </tr>

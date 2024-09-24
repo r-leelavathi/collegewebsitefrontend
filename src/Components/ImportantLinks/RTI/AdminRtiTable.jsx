@@ -52,7 +52,6 @@ const AdminRtiTable = () => {
   const handleDelete = (id) => {
     axios.delete(`http://localhost:8080/api/rti/${id}`)
       .then(() => {
-        // Remove file from state after successful deletion
         setRtiFiles(prevFiles => prevFiles.filter(file => file.rtiId !== id));
       })
       .catch(error => {
@@ -60,14 +59,30 @@ const AdminRtiTable = () => {
       });
   };
 
-  const handleView = (id) => {
-    console.log(`View RTI with id: ${id}`);
-    // Additional logic for viewing can be added here
+  const handleView = (rtiLink) => {
+    const newWindow = window.open(rtiLink, '_blank');
+    if (!newWindow) {
+      console.error('Failed to open new window');
+    }
   };
 
-  const handleDownload = (id) => {
-    console.log(`Download RTI with id: ${id}`);
-    // Additional logic for downloading can be added here
+
+
+  const handleDownload = (imageLink) => {
+    const fileIdMatch = imageLink.match(/[-\w]{25,}/);
+    if (fileIdMatch) {
+      const fileId = fileIdMatch[0];
+      const directDownloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = directDownloadLink;
+      downloadLink.download = ''; // This will use the default filename
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink); // Cleanup
+    } else {
+      console.error('Invalid Google Drive link:', imageLink);
+    }
   };
 
   // Show loading or error state
@@ -85,61 +100,58 @@ const AdminRtiTable = () => {
 
   return (
     <div className="admin-edit-table-container">
-      <Link
-        to="/loginhome" className="back-button">Back to Login</Link>
-
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
       <h1>RTI Files</h1>
-      <p>
-        The document 4(1) contains the following:
-        <ol>
-          <li>The particulars of its organisation, functions, and duties.</li>
-          <li>The powers and duties of its officers and employees.</li>
-          <li>The procedure followed in the decision-making process, including channels of supervision and accountability.</li>
-          <li>The monthly remuneration received by each of its officers and employees, including the system of compensation as provided in its regulations.</li>
-          <li>A directory of its officers and employees.</li>
-          <li>The names, designations, and other particulars of the Public Information Officers.</li>
-        </ol>
-      </p>
-      <table>
+      <table className="aicte-table">
         <thead>
           <tr>
             <th>Sl No</th>
             <th>RTI Year</th>
-            <th>RTI Link</th>
-            <th>Description</th>
-            <th>Actions</th>
+            <th>RTI File</th>
+            <th>Download</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {rtiFiles.map((file, index) => (
             <tr key={file.rtiId}>
               <td>{index + 1}</td>
-              <td>{file.rtiYear}</td>
-              <td><a href={file.rtiLink} target="_blank" rel="noopener noreferrer">View RTI</a></td>
               <td>
                 {editing === file.rtiId ? (
                   <input
                     type="text"
-                    name="description"
-                    value={editedData.description || ''}
+                    className="edit-mode"
+                    name="rtiYear"
+                    value={editedData.rtiYear || ''}
                     onChange={handleChange}
                   />
                 ) : (
-                  file.description
+                  file.rtiYear
+                )}
+              </td>
+              <td>
+                {editing === file.rtiId ? (
+                  <input
+                    type="text"
+                    className="edit-mode"
+                    name="rtiLink"
+                    value={editedData.rtiLink || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <button
+                    className="action-button view-button"
+                    onClick={() => handleView(file.rtiLink)}
+                  >
+                    View
+                  </button>
                 )}
               </td>
               <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-view-button"
-                  onClick={() => handleView(file.rtiId)}
-                >
-                  View
-                </button>
-              </td>
-              <td>
-                <button
-                  className="admin-edit-table-action-button admin-edit-table-download-button"
-                  onClick={() => handleDownload(file.rtiId)}
+                  className="action-button download-button"
+                  onClick={() => handleDownload(file.rtiLink)}
                 >
                   Download
                 </button>
@@ -147,14 +159,14 @@ const AdminRtiTable = () => {
               <td>
                 {editing === file.rtiId ? (
                   <button
-                    className="admin-edit-table-action-button admin-edit-table-save-button"
+                    className="action-button save-button"
                     onClick={() => handleSave(file.rtiId)}
                   >
                     Save
                   </button>
                 ) : (
                   <button
-                    className="admin-edit-table-action-button admin-edit-table-edit-button"
+                    className="action-button edit-button"
                     onClick={() => handleEdit(file.rtiId)}
                   >
                     Edit
@@ -163,7 +175,7 @@ const AdminRtiTable = () => {
               </td>
               <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-delete-button"
+                  className="action-button delete-button"
                   onClick={() => handleDelete(file.rtiId)}
                 >
                   Delete

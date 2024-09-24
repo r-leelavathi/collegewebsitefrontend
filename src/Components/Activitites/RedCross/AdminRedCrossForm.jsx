@@ -1,111 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './../../../AdminForm.css';
 
 const AdminRedCrossForm = () => {
-  const [events, setEvents] = useState([]);
-  const [newEvent, setNewEvent] = useState({ topic: '', description: '', date: '', link: '' });
-  const [editEvent, setEditEvent] = useState(null);
+  const [event, setEvent] = useState({
+    date: '',
+    topic: '',
+    description: '',
+    link: '',
+  });
 
-  useEffect(() => {
-    fetchEvents();
-  }, []);
+  const navigate = useNavigate(); // Initialize navigate
 
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/api/technicalclub');
-      setEvents(response.data);
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEvent({
+      ...event,
+      [name]: value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (editEvent) {
-        await axios.put('http://localhost:8080/api/technicalclub/${editEvent.id}', newEvent);
-        setEditEvent(null);
-      } else {
-        await axios.post('http://localhost:8080/api/technicalclub', newEvent);
-      }
-      setNewEvent({ topic: '', description: '', date: '', link: '' });
-      fetchEvents();
+      const response = await axios.post('http://localhost:8080/api/redcross', event);
+      console.log('Event added successfully:', response.data);
+      setEvent({
+        date: '',
+        topic: '',
+        description: '',
+        link: '',
+      });
+      // Optionally navigate to another page after submission
+      navigate('/events'); // Adjust the route as needed
     } catch (error) {
-      console.error('Error saving event:', error);
-    }
-  };
-
-  const handleEdit = (event) => {
-    setNewEvent({ topic: event.topic, description: event.description, date: event.date, link: event.link });
-    setEditEvent(event);
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete('http://localhost:8080/api/technicalclub/${id}');
-      fetchEvents();
-
-    } catch (error) {
-      console.error('Error deleting event:', error);
+      console.error('Error adding event:', error.response ? error.response.data : error.message);
     }
   };
 
   return (
-    <div className="App">
-      <h1>Technical Club Events</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="topic"
-          value={newEvent.topic}
-          onChange={handleInputChange}
-          placeholder="Topic"
-          required
-        />
-        <input
-          type="text"
-          name="description"
-          value={newEvent.description}
-          onChange={handleInputChange}
-          placeholder="Description"
-          required
-        />
-        <input
-          type="date"
-          name="date"
-          value={newEvent.date}
-          onChange={handleInputChange}
-          required
-        />
-        <input
-          type="text"
-          name="link"
-          value={newEvent.link}
-          onChange={handleInputChange}
-          placeholder="Link"
-        />
-        <button type="submit">{editEvent ? 'Update Event' : 'Add Event'}</button>
-      </form>
+    <div className="admin-form-container">
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
 
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>
-            <h2>{event.topic}</h2>
-            <p>{event.description}</p>
-            <p>{event.date}</p>
-            <p><a href={event.link} target="_blank" rel="noopener noreferrer">Event Link</a></p>
-            <button onClick={() => handleEdit(event)}>Edit</button>
-            <button onClick={() => handleDelete(event.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <h2>Add New Red Cross Event</h2>
+      <form onSubmit={handleSubmit} className="admin-form">
+        <div className="form-group">
+          <label htmlFor="date">Date</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={event.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="topic">Topic</label>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            value={event.topic}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            value={event.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="link">Link</label>
+          <input
+            type="text"
+            id="link"
+            name="link"
+            value={event.link}
+            onChange={handleChange}
+            placeholder="Event Link"
+          />
+        </div>
+
+        <button type="submit" className="submit-button">Submit</button>
+      </form>
     </div>
   );
 };
 
-
-export default AdminRedCrossForm
+export default AdminRedCrossForm;

@@ -1,124 +1,193 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './../ClubTable.css'; // Ensure you import the new CSS file
+import './../../../AdminTable.css';
+import { Link } from 'react-router-dom';
 
-const StudentCouncil = () => {
-  const [officers, setOfficers] = useState([]);
-  const [coordinators, setCoordinators] = useState([]);
-  const [activities, setActivities] = useState([]);
+const AdminCircularTable = () => {
+  const [circulars, setCirculars] = useState([]);
+  const [editing, setEditing] = useState(null);
+  const [editedData, setEditedData] = useState({});
 
   useEffect(() => {
-    fetchOfficers();
-    fetchCoordinators();
-    fetchActivities();
+    fetchCirculars();
   }, []);
 
-  const fetchOfficers = async () => {
+  const fetchCirculars = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/student-welfare-officers');
-      setOfficers(response.data);
+      const response = await axios.get('http://localhost:8080/api/circulars/all');
+      setCirculars(response.data);
     } catch (error) {
-      console.error('Error fetching officers:', error);
+      console.error('Error fetching circulars:', error);
     }
   };
 
-  const fetchCoordinators = async () => {
+  const handleEdit = (id) => {
+    setEditing(id);
+    const circular = circulars.find((circ) => circ.id === id);
+    setEditedData({
+      date: circular.date,
+      description: circular.description,
+      imageLink: circular.imageLink,
+    });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditedData({
+      ...editedData,
+      [name]: value,
+    });
+  };
+
+  const handleSave = async (id) => {
     try {
-      const response = await axios.get('http://localhost:8080/api/student-welfare-coordinators');
-      setCoordinators(response.data);
+      await axios.put(`http://localhost:8080/api/circulars/${id}`, editedData);
+      fetchCirculars(); // Refresh the data after save
+      setEditing(null);
     } catch (error) {
-      console.error('Error fetching coordinators:', error);
+      console.error('Error updating circular:', error);
     }
   };
 
-  const fetchActivities = async () => {
+  const handleDelete = async (id) => {
     try {
-      const response = await axios.get('http://localhost:8080/api/student-council-activities');
-      setActivities(response.data);
+      await axios.delete(`http://localhost:8080/api/circulars/delete/${id}`);
+      fetchCirculars(); // Refresh the data after delete
     } catch (error) {
-      console.error('Error fetching activities:', error);
+      console.error('Error deleting circular:', error);
     }
   };
 
-  const extractDriveId = (link) => {
-    const match = link ? link.match(/\/d\/(.*?)\//) : null;
-    return match ? match[1] : null;
+  const handleView = (imageLink) => {
+    const newWindow = window.open(imageLink, '_blank');
+    if (!newWindow) {
+      console.error('Failed to open new window');
+    }
+  };
+
+  const handleDownload = (imageLink) => {
+    const fileIdMatch = imageLink.match(/[-\w]{25,}/);
+    if (fileIdMatch) {
+      const fileId = fileIdMatch[0];
+      const directDownloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = directDownloadLink;
+      downloadLink.download = ''; // This will use the default filename
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink); // Cleanup
+    } else {
+      console.error('Invalid Google Drive link:', imageLink);
+    }
   };
 
   return (
-    <div className="club_app-container">
-      <div className="club_info-section">
-        <h2 className="club_club-name">Student Council</h2>
-        <p className="club_description">
-          The Student Council at our college serves as the representative body for students, working to create a bridge between the administration and the student community. Our goal is to provide a platform for student voices, facilitate positive change, and promote academic, social, and extracurricular well-being for every student.
-        </p>
-        <div className="club_vision-mission">
-          <h3 className="club_vision-title">Vision</h3>
-          <p className="club_vision-description">
-            To empower students to develop leadership, responsibility, and community engagement through collaborative efforts that promote the holistic development of individuals and the enhancement of the student experience.
-          </p>
-          <h3 className="club_mission-title">Mission</h3>
-          <p className="club_mission-description">
-            To foster a dynamic and inclusive environment where students can actively participate in shaping their academic journey, engage in meaningful extracurricular activities, and contribute to the welfare of the institution and the wider community.
-          </p>
-        </div>
-      </div>
-      {officers.map((officer) => {
-        const imageId = extractDriveId(officer.studentWelfareOfficerImage);
-        const imageSrc = imageId ? `https://drive.google.com/uc?export=view&id=${imageId}` : '';
+    <div className="admin-edit-table-container">
 
-        return (
-          <div key={officer.studentWelfareOfficerId} className="club_wrapper">
+      <h2>Circulars</h2>
+      <Link to="/loginhome" className="back-button">Back to Login</Link>
 
-            <div className="club_incharge-section">
-              <div className="club_incharge-info">
-                {imageSrc && (
-                  <iframe
-                    src={imageSrc}
-                    title={officer.studentWelfareOfficerName}
-                    className="club_incharge-photo"
-                    frameBorder="0"
-                    style={{ width: '200px', height: '200px', border: 'none' }}
+      <table className="admin-edit-table">
+        <thead>
+          <tr>
+            <th>Sl. No</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>View</th>
+            <th>Download</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {circulars.map((circular, index) => (
+            <tr key={circular.id}>
+              <td>{index + 1}</td>
+              <td>
+                {editing === circular.id ? (
+                  <input
+                    type="date"
+                    name="date"
+                    className="edit-mode"
+                    value={editedData.date || ''}
+                    onChange={handleChange}
                   />
+                ) : (
+                  circular.date
                 )}
-                <p className="club_incharge-name">Incharge: {officer.studentWelfareOfficerName}</p>
-                <p className="club_incharge-department">Department: {officer.studentWelfareOfficerDepartment}</p>
-                <p className="club_incharge-designation">Designation: {officer.studentWelfareOfficerDesignation}</p>
-                <p className="club_incharge-phone">Phone Number: {officer.studentWelfareOfficerContactNumber}</p>
-                <p className="club_incharge-email">Mail Id: {officer.studentWelfareOfficerMailId}</p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+              </td>
+              <td>
+                {editing === circular.id ? (
+                  <input
+                    type="text"
+                    name="description"
+                    className="edit-mode"
+                    value={editedData.description || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  circular.description
+                )}
+              </td>
+              <td>
+                {editing === circular.id ? (
+                  <input
+                    type="text"
+                    name="imageLink"
+                    className="edit-mode"
+                    value={editedData.imageLink || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <button
+                    className="action-button view-button"
+                    onClick={() => handleView(circular.imageLink)}
+                  >
+                    View
+                  </button>
+                )}
+              </td>
 
-      <div className="club_events-intro">
-        Below is a list of activities conducted by the Student Council...
-      </div>
-      <div className="club_table-container">
-        <table className="club_table">
-          <thead>
-            <tr>
-              <th>Topic</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Link</th>
+              <td>
+                <button
+                  className="action-button download-button"
+                  onClick={() => handleDownload(circular.imageLink)}
+                >
+                  Download
+                </button>
+              </td>
+              <td>
+                {editing === circular.id ? (
+                  <button
+                    className="action-button save-button"
+                    onClick={() => handleSave(circular.id)}
+                  >
+                    Save
+                  </button>
+                ) : (
+                  <button
+                    className="action-button edit-button"
+                    onClick={() => handleEdit(circular.id)}
+                  >
+                    Edit
+                  </button>
+                )}
+              </td>
+              <td>
+                <button
+                  className="action-button delete-button"
+                  onClick={() => handleDelete(circular.id)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {activities.map((event) => (
-              <tr key={event.id}>
-                <td>{event.topic}</td>
-                <td>{event.description}</td>
-                <td>{event.date}</td>
-                <td><a href={event.link} target="_blank" rel="noopener noreferrer" className="club_event-link">View Link</a></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default StudentCouncil;
+export default AdminCircularTable;

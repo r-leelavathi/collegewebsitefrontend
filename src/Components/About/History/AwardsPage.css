@@ -68,19 +68,19 @@
   text-decoration: underline;
 }
 
-.view-button {
+.awards-view-button {
   background-color: #28a745;
 }
 
-.view-button:hover {
+.awards-view-button:hover {
   background-color: #218838;
 }
 
-.download-button {
+.awards-download-button {
   background-color: #ffc107;
 }
 
-.download-button:hover {
+.awards-download-button:hover {
   background-color: #e0a800;
 }
 

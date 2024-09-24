@@ -1,65 +1,102 @@
-/* Container for the gallery page */
+/* General styling */
 .gallery-container {
   padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* Title of the page */
-.page-title {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: #333;
 }
 
-/* Grid layout for images */
+.page-title {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
 }
 
-/* Style for each image in the grid */
-.gallery-image {
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.gallery-iframe {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  border: none;
   border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Hover effect for images */
-.gallery-image:hover {
+.gallery-item:hover .gallery-iframe {
   transform: scale(1.05);
 }
 
-/* Lightbox overlay style */
+.image-info {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.image-info h3 {
+  margin: 5px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.image-info p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.image-date {
+  font-size: 0.8em;
+  color: #999;
+}
+
+/* Lightbox styles */
 .lightbox {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
+  padding: 20px;
 }
 
-/* Style for the image inside the lightbox */
-.lightbox-image {
-  max-width: 90%;
-  max-height: 90%;
+.lightbox-iframe {
+  width: 90%;
+  height: 80%;
+  border: none;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
 }
 
-/* Close lightbox when clicking outside the image */
-.lightbox-image:hover {
-  transform: scale(1.02);
+.lightbox-info {
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.lightbox-info h3 {
+  font-size: 2em;
+}
+
+.lightbox-info p {
+  font-size: 1.2em;
+}
+
+.loading-message {
+  font-size: 1.5em;
+  color: #555;
+  margin-top: 20px;
+  text-align: center;
 }

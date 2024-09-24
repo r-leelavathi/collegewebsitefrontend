@@ -14,9 +14,9 @@ const Testimonials = () => {
   };
 
   const testimonials = [
-    { id: 1, name: 'Alice Johnson', image: 'path_to_image1.jpg', text: 'KPT Mangalore has been a transformative experience for me. The support from faculty is unparalleled.', department: 'Computer Science', year: '2024' },
-    { id: 2, name: 'Bob Smith', image: 'path_to_image2.jpg', text: 'The clubs and activities here have really enriched my college life. Highly recommend to all students!', department: 'Mechanical Engineering', year: '2024' },
-    { id: 3, name: 'Charlie Brown', image: 'path_to_image3.jpg', text: 'The learning environment at KPT is top-notch. The practical approach really prepares us for real-world challenges.', department: 'Electrical Engineering', year: '2024' },
+    { id: 1, name: 'Sushanth Rai (103CS21057)', image: '/assets/staticimages/47.jpg', text: 'KPT Mangalore has been a transformative experience for me. The support from faculty is unparalleled.', department: 'Computer Science', year: '2024' },
+    { id: 2, name: 'Mohammed Nousheef (103CH21021)', image: '/assets/staticimages/46.jpg', text: 'The clubs and activities here have really enriched my college life. Highly recommend to all students!', department: 'Chemical Engineering', year: '2024' },
+    { id: 3, name: 'Charlie Brown', image: '/assets/staticimages/46.jpg', text: 'The learning environment at KPT is top-notch. The practical approach really prepares us for real-world challenges.', department: 'Electrical Engineering', year: '2024' },
   ];
 
   return (

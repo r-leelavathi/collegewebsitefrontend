@@ -3,17 +3,6 @@ import './AdmissionProcess.css'; // Using the same CSS file for consistent styli
 import axios from "axios";
 
 const ChangeOfBranch = () => {
-  const [circulars, setCirculars] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/circulars')
-      .then(response => {
-        setCirculars(response.data);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the circulars!", error);
-      });
-  }, []);
 
   return (
     <div className="admission-page">
@@ -38,7 +27,7 @@ const ChangeOfBranch = () => {
 
         <div className="admission-flowchart">
           <h3 className="flowchart-title">Change of Branch Process Flowchart</h3>
-          <img src="/assets/flowcharts/changeofbranchprocess.jpg" alt="Change of Branch Process Flowchart" className="flowchart-image" />
+          <img src="/assets/flowcharts/changeofCourse.jpg" alt="Change of Branch Process Flowchart" className="flowchart-image" />
         </div>
       </div>
     </div>

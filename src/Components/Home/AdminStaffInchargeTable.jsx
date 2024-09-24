@@ -81,6 +81,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="clubName"
                     value={editedData.clubName || ''}
                     onChange={handleChange}
@@ -93,6 +94,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="clubIncharge"
                     value={editedData.clubIncharge || ''}
                     onChange={handleChange}
@@ -105,6 +107,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="clubInchargeDepartment"
                     value={editedData.clubInchargeDepartment || ''}
                     onChange={handleChange}
@@ -117,6 +120,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="clubInchargeDesigntion"
                     value={editedData.clubInchargeDesigntion || ''}
                     onChange={handleChange}
@@ -129,6 +133,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="clubInchargePhoneNumer"
                     value={editedData.clubInchargePhoneNumer || ''}
                     onChange={handleChange}
@@ -141,6 +146,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="email"
+                    className="edit-mode"
                     name="clubInchargeEmail"
                     value={editedData.clubInchargeEmail || ''}
                     onChange={handleChange}
@@ -153,6 +159,7 @@ const AdminStaffInchargeTable = () => {
                 {editing === club.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="clubInchargeImageLink"
                     value={editedData.clubInchargeImageLink || ''}
                     onChange={handleChange}

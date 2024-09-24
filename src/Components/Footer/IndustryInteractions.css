@@ -1,0 +1,30 @@
+.industry-interactions-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 95%;
+  margin: 2%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+}
+
+.industry-heading {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.interaction-details {
+  font-size: 16px;
+  color: #555;
+}
+
+.interaction-list {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.interaction-list li {
+  margin-bottom: 10px;
+}

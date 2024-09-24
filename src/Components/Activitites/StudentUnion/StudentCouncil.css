@@ -65,10 +65,10 @@
 }
 
 .studentCouncil-incharge-section {
-  background: linear-gradient(to right, #4f46e5, #7c3aed);
+  /* background: linear-gradient(to right, #4f46e5, #7c3aed); */
   border-radius: 0.5rem;
-  padding: 1.5rem;
-  color: white;
+  /* padding: 1.5rem; */
+  color: black;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -78,7 +78,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .studentCouncil-incharge-photo {
@@ -87,6 +87,11 @@
   border-radius: 50%;
   border: 0.25rem solid white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.studentCouncil-incharge-email,
+.studentCouncil-incharge-phone {
+  margin: 0;
 }
 
 /* .studentCouncil-overlay {
@@ -100,14 +105,15 @@
 } */
 
 .studentCouncil-events-intro {
-  margin-top: 40px;
+  margin-top: 0px;
   font-size: 1.125rem;
+  font-weight: bold;
   color: #374151;
   text-align: justify;
 }
 
 .studentCouncil-table-container {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding: 1.5rem;
 }
 

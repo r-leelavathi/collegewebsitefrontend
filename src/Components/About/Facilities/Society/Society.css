@@ -32,6 +32,10 @@
   border-radius: 8px;
 }
 
+.society-incharge-name {
+  font-weight: 900;
+}
+
 .society-incharge-name,
 .society-incharge-designation,
 .society-incharge-department,
@@ -78,21 +82,27 @@
   margin-top: 20px;
 }
 
-.society-gallery-slider .slick-slide {
-  display: flex;
-  justify-content: center;
-}
-
-.society-gallery-slider .society-gallery-item {
-  padding: 10px;
-}
-
 .society-gallery-image {
   width: 100%;
   height: auto;
-  object-fit: cover;
-  /* Ensure images cover the area */
-  border-radius: 8px;
+  /* Removes the fixed height */
+  object-fit: contain;
+  /* Ensures the entire image is visible */
+  object-position: center;
+}
+
+.society-gallery-slider .society-gallery-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: auto;
+  /* Adjusts based on content */
   max-height: 400px;
-  /* Adjust as needed to prevent excessive height */
+  /* Set a max height to prevent oversized images */
+}
+
+.society-gallery-slider {
+  max-height: 400px;
+  /* Prevent the slider itself from becoming too tall */
 }

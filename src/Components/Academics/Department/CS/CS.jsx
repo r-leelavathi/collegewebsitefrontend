@@ -1,103 +1,59 @@
-import React from 'react';
-import './CS.css'; // Ensure you have a corresponding CSS file
+import React, { useState } from 'react';
+import './../DepartmentHome.css'; // Ensure you have a corresponding CSS file
+import CSStaff from './CSStaff';
+import CSActivity from './CSActivity';
+import CSLab from './CSLab';
 
 const CS = () => {
+  const [activeSection, setActiveSection] = useState('vision-mission');
+
   return (
-    <div className="cs-department-page">
-      {/* Vision & Mission Section */}
-      <section className="cs-section cs-vision-mission">
-        <h2 className="cs-heading">Vision & Mission</h2>
-        <p className="cs-paragraph">
-          <strong>Vision:</strong> To be a leading department in providing world-class education in engineering and technology.
-        </p>
-        <p className="cs-paragraph">
-          <strong>Mission:</strong> To impart quality education, foster research, and nurture students to meet global challenges.
-        </p>
-      </section>
+    <div className="ch-page">
+      <div className="ch-sidebar">
+        <ul>
+          <li onClick={() => setActiveSection('vision-mission')}>Vision & Mission</li>
+          <li onClick={() => setActiveSection('staff')}>Staff</li>
+          <li onClick={() => setActiveSection('activities')}>Activities</li>
+          <li onClick={() => setActiveSection('lab')}>Lab Details</li>
+        </ul>
+      </div>
 
-      {/* Staff Details Section */}
-      <section className="cs-section cs-staff-details">
-        <h2 className="cs-heading">Staff Details</h2>
-        <table className="cs-table">
-          <thead>
-            <tr>
-              <th className="cs-table-header">Name</th>
-              <th className="cs-table-header">Position</th>
-              <th className="cs-table-header">Email</th>
-              <th className="cs-table-header">Phone</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="cs-table-cell">John Doe</td>
-              <td className="cs-table-cell">Professor</td>
-              <td className="cs-table-cell">john.doe@example.com</td>
-              <td className="cs-table-cell">123-456-7890</td>
-            </tr>
-            <tr>
-              <td className="cs-table-cell">Jane Smith</td>
-              <td className="cs-table-cell">Assistant Professor</td>
-              <td className="cs-table-cell">jane.smith@example.com</td>
-              <td className="cs-table-cell">123-456-7891</td>
-            </tr>
-            {/* Add more staff details here */}
-          </tbody>
-        </table>
-      </section>
+      <div className="ch-content">
+        {activeSection === 'vision-mission' && (
+          <section className="ch-section">
+            <h2 className="ch-heading">Introduction</h2>
+            <p>The Computer Science and Engineering (CSE) program was started in the year 2001. The main focus of the department is to educate students in Computer Science and Engineering domain. The course is an outcome based structured to help students to achieve this goal. The course is approved by All India Council for Technical Education (AICTE). Top rank holders from 10th Standard/SSLC and other aspirants prefers this program.Faculties in the department have outstanding teaching experience. The department has excellent infrastructure with state-of-the-art equipment and software tools. It is having computer centre with over 90+ computers catering to student needs.</p>
+            <h2 className="ch-heading">Vision & Mission</h2>
+            <p><strong>Vision:</strong> To achieve leadership in the field of Computer Science & Engineering by strengthening fundamentals and facilitating interdisciplinary sustainable research to meet the ever-growing needs of the society.</p>
+            <p><strong>Mission:</strong>
+              <li>To evolve continually as a centre of excellence in quality education in Computers and allied fields.
+              </li>
+              <li>To develop state of the art infrastructure and create environment capable for interdisciplinary research and skill enhancement.
+              </li>
+              <li>To collaborate with industries and institutions at national and international levels to enhance research in emerging areas.
+              </li>
+              <li>To develop professionals with ethical and societal values.</li></p>
 
-      {/* Lab Details Section */}
-      <section className="cs-section cs-lab-details">
-        <h2 className="cs-heading">Lab Details</h2>
-        <table className="cs-table">
-          <thead>
-            <tr>
-              <th className="cs-table-header">Lab Name</th>
-              <th className="cs-table-header">Equipment</th>
-              <th className="cs-table-header">Operating Hours</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="cs-table-cell">Computer Lab</td>
-              <td className="cs-table-cell">Desktops, Printers</td>
-              <td className="cs-table-cell">9 AM - 5 PM</td>
-            </tr>
-            <tr>
-              <td className="cs-table-cell">Electronics Lab</td>
-              <td className="cs-table-cell">Oscilloscopes, Multimeters</td>
-              <td className="cs-table-cell">10 AM - 6 PM</td>
-            </tr>
-            {/* Add more lab details here */}
-          </tbody>
-        </table>
-      </section>
+          </section>
+        )}
 
-      {/* Activities Section */}
-      <section className="cs-section cs-activities">
-        <h2 className="cs-heading">Activities</h2>
-        <table className="cs-table">
-          <thead>
-            <tr>
-              <th className="cs-table-header">Date</th>
-              <th className="cs-table-header">Activity</th>
-              <th className="cs-table-header">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="cs-table-cell">2024-01-15</td>
-              <td className="cs-table-cell">Guest Lecture</td>
-              <td className="cs-table-cell">Lecture by Dr. Alice Johnson on AI advancements.</td>
-            </tr>
-            <tr>
-              <td className="cs-table-cell">2024-03-20</td>
-              <td className="cs-table-cell">Workshop</td>
-              <td className="cs-table-cell">Workshop on IoT for beginners.</td>
-            </tr>
-            {/* Add more activities here */}
-          </tbody>
-        </table>
-      </section>
+        {activeSection === 'staff' && (
+          <section className="ch-section">
+            <h2 className="ch-heading">Staff Details</h2>
+            <CSStaff />
+          </section>
+        )}
+
+        {activeSection === 'activities' && (
+          <section className="ch-section">
+            <CSActivity />
+          </section>
+        )}
+
+        {activeSection === 'lab' && (
+          <CSLab />
+        )}
+      </div>
     </div>
   );
 };

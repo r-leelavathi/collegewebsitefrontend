@@ -24,9 +24,9 @@ const UpcomingEventsTable = () => {
   };
 
   return (
-    <div className="circular-table-container">
+    <div className="admin-edit-table-container">
       <h2>Upcoming Events</h2>
-      <table className="circular-table">
+      <table className="admin-edit-table">
         <thead>
           <tr>
             <th>Sl. No</th>

@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import './Society.css'; // Import the CSS file
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import SocietyGallery from './SocietyGallery';
 
 const Society = () => {
   const [shopInfo, setShopInfo] = useState([]);
@@ -65,7 +66,7 @@ const Society = () => {
           <section className="society-section society-operating-hours">
             <h2 className="society-section-title">Operating Hours</h2>
             <p className="society-section-content">
-              The Society Stationery Shop is open from 9 AM to 5 PM on all working days. Please visit during these hours to get the materials you need.
+              The Society Stationery Shop is open from 10:00 AM to 2:00 PM on all working days. Please visit during these hours to get the materials you need.
             </p>
           </section>
         </div>
@@ -86,8 +87,8 @@ const Society = () => {
                 ></iframe>
                 <div className="society-shop-incharge-details">
                   <p className="society-incharge-name">Incharge: {shop.clubIncharge}</p>
-                  <p className="society-incharge-designation">Designation: {shop.clubInchargeDesignation}</p>
-                  <p className="society-incharge-department">Department: {shop.clubInchargeDepartment}</p>
+                  <p className="society-incharge-department">Designation : {shop.clubInchargeDepartment}</p>
+                  <p className="society-incharge-designation">Department : {shop.clubInchargeDesignation}</p>
                   <p className="society-incharge-phone">Phone Number: {shop.clubInchargePhoneNumer}</p>
                   <p className="society-incharge-email">Mail Id: {shop.clubInchargeEmail}</p>
                 </div>
@@ -96,21 +97,7 @@ const Society = () => {
           }
         </div>
       </div>
-      <section className="society-section society-gallery">
-        <h2 className="society-section-title">Gallery</h2>
-        <Slider {...carouselSettings} className="society-gallery-slider">
-          <div className="society-gallery-item">
-            <img src="/assets/library/lib1.jpg" alt="Gallery Image 1" className="society-gallery-image" />
-          </div>
-          <div className="society-gallery-item">
-            <img src="/assets/library/lib4.jpg" alt="Gallery Image 2" className="society-gallery-image" />
-          </div>
-          <div className="society-gallery-item">
-            <img src="/assets/library/lib8.jpg" alt="Gallery Image 3" className="society-gallery-image" />
-          </div>
-          {/* Add more images as needed */}
-        </Slider>
-      </section>
+      <SocietyGallery />
     </>
   );
 };

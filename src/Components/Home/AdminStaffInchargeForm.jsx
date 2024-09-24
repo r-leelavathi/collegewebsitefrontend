@@ -82,15 +82,28 @@ const AdminStaffInchargeForm = () => {
 
         <div className="form-group">
           <label htmlFor="clubInchargeDepartment">Club Incharge Department</label>
-          <input
-            type="text"
+          <select
             id="clubInchargeDepartment"
             name="clubInchargeDepartment"
             value={clubDetails.clubInchargeDepartment}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Department</option> {/* Default placeholder */}
+            <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Polymer Technology">Polymer Technology</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+            <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
+            <option value="Automobile Engineering">Automobile Engineering</option>
+            <option value="Office Staff">Office Staff</option>
+            <option value="Object Staff">Object Staff</option>
+            <option value="Science & Humanities">Science & Humanities</option>
+          </select>
         </div>
+
 
         <div className="form-group">
           <label htmlFor="clubInchargeDesigntion">Club Incharge Designation</label>

@@ -1,55 +1,98 @@
-.visionMission_container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 30px;
-  background: #ffffff;
-  /* White background */
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  /* Soft shadow */
-  color: #212121;
-  font-family: 'Roboto', sans-serif;
-}
-
-.visionMission_container-vision,
-.visionMission_container-mission {
-  background: #fafafa;
-  /* Light background for sections */
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-  /* Very light shadow */
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.visionMission_container-vision:hover,
-.visionMission_container-mission:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  /* Enhanced shadow on hover */
-}
-
-.visionMission_container-vision>h1,
-.visionMission_container-mission>h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+/* Container Styling */
+.visionmission-container {
+  padding: 40px;
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
   color: #333;
-  border-bottom: 2px solid #2229ff;
-  /* Accent underline */
-  padding-bottom: 5px;
+  line-height: 1.8;
 }
 
-.visionMission_container-vision>p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 0;
+/* Section Styling */
+.visionmission-history,
+.visionmission-vision,
+.visionmission-mission {
+  margin-bottom: 50px;
+  border-left: 4px solid #007bff;
+  padding-left: 25px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Headings */
+.visionmission-history h1,
+.visionmission-vision h1,
+.visionmission-mission h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+/* Paragraph Text */
+.visionmission-history p,
+.visionmission-vision p,
+.visionmission-mission ol {
+  font-size: 18px;
+  text-align: justify;
   color: #555;
-  /* Slightly darker text for readability */
+  margin-bottom: 15px;
 }
 
-.visionMission_container-mission>ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Images Styling */
+.visionmission-images {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.visionmission-image {
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visionmission-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Ordered List Styling for Mission Section */
+.visionmission-mission ol {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.visionmission-mission ol li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .visionmission-images {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .visionmission-image {
+    width: 100%;
+  }
+
+  .visionmission-history h1,
+  .visionmission-vision h1,
+  .visionmission-mission h1 {
+    font-size: 28px;
+  }
+
+  .visionmission-history p,
+  .visionmission-vision p,
+  .visionmission-mission ol {
+    font-size: 16px;
+  }
 }

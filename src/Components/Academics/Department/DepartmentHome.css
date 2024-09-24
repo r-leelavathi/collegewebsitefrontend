@@ -1,0 +1,66 @@
+.ch-page {
+  display: flex;
+}
+
+.ch-sidebar {
+  width: 20%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.ch-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ch-sidebar li {
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.ch-sidebar li:hover {
+  background-color: #e0e0e0;
+}
+
+.ch-content {
+  width: 80%;
+  padding: 20px;
+}
+
+.ch-section {
+  padding: 20px;
+  max-width: 95%;
+  margin: auto;
+  text-align: justify;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ch-heading {
+  font-size: 22px;
+  color: black;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.ch-section p {
+  font-size: 16px;
+  /* Standard paragraph size */
+  line-height: 1.6;
+  /* Increased line height for better readability */
+  margin-bottom: 15px;
+  /* Space below paragraphs */
+  color: #333;
+  /* Dark text color for contrast */
+}
+
+.ch-section strong {
+  color: #007bff;
+}

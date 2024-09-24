@@ -5,10 +5,10 @@ import './../../../AdminForm.css';
 
 const AdminCircularForm = () => {
   const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+    date: '',
+    description: '',
+    imageLink: '' // Add the imageLink field
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
@@ -20,30 +20,21 @@ const AdminCircularForm = () => {
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
 
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
+      console.log(circular);
+      const response = await axios.post('http://localhost:8080/api/circulars/add', circular, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
       console.log('Circular added successfully:', response.data);
       setCircular({
         date: '',
         description: '',
-        imageFile: null,
+        imageLink: '' // Reset imageLink as well
       });
     } catch (error) {
       console.error('Error adding circular:', error.response ? error.response.data : error.message);
@@ -81,13 +72,14 @@ const AdminCircularForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="imageLink">Paste Image Link</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="text"
+            id="imageLink"
+            name="imageLink"
+            value={circular.imageLink}
+            onChange={handleChange}
+            placeholder="Paste image URL here"
             required
           />
         </div>

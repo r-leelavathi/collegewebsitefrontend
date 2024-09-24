@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './AdmissionProcess.css'; // Using the same CSS file as AdmissionProcess
-import axios from "axios";
 
 const Repeaters = () => {
-  const [circulars, setCirculars] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/circulars')
-      .then(response => {
-        setCirculars(response.data);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the circulars!", error);
-      });
-  }, []);
 
   return (
     <div className="admission-page">
@@ -39,7 +27,7 @@ const Repeaters = () => {
 
         <div className="admission-flowchart">
           <h3 className="flowchart-title">Re-admission Process Flowchart</h3>
-          <img src="/assets/flowcharts/repeatersprocess.jpg" alt="Re-admission Process Flowchart" className="flowchart-image" />
+          <img src="/assets/flowcharts/readmission.jpg" alt="Re-admission Process Flowchart" className="flowchart-image" />
         </div>
       </div>
     </div>

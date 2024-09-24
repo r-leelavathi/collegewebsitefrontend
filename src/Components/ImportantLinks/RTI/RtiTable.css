@@ -3,7 +3,6 @@
   background-color: #fafafa;
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  /* text-align: center; */
 }
 
 .admin-edit-table-container>h1 {
@@ -39,7 +38,7 @@
 
 /* Table Styling */
 .admin-edit-table-container>table {
-  width: 100%;
+  width: 50%;
   border-collapse: collapse;
   margin-top: 20px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);

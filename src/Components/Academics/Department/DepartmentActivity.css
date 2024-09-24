@@ -1,0 +1,47 @@
+.departmental-activities-container {
+  /* padding: 20px; */
+  max-width: 950px;
+  margin: auto;
+}
+
+.departmental-activities-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.departmental-activities-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.departmental-activities-header {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.departmental-activities-cell {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.departmental-activities-image {
+  border-radius: 4px;
+}
+
+.departmental-activities-view-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.departmental-activities-view-button:hover {
+  background-color: #0056b3;
+}

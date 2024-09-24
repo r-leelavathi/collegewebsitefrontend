@@ -1,0 +1,38 @@
+.pio-table-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+.pio-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pio-table th,
+.pio-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.pio-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.pio-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.pio-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.pio-table td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.pio-table td a:hover {
+  text-decoration: underline;
+}

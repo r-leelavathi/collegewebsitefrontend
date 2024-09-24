@@ -35,7 +35,7 @@ const LateralEntryProcess = () => {
 
         <div className="admission-flowchart">
           <h3 className="flowchart-title">Lateral Entry Admission Process Flowchart</h3>
-          <img src="/assets/flowcharts/admissionprocess.jpg" alt="Lateral Entry Admission Process Flowchart" className="flowchart-image" />
+          <img src="/assets/flowcharts/laterlentry.jpg" alt="Lateral Entry Admission Process Flowchart" className="flowchart-image" />
         </div>
       </div>
     </div>

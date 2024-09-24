@@ -1,17 +1,16 @@
-
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../AdminForm.css';
 
 const AdminArchievesForm = () => {
   const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+    date: "",
+    description: "",
+    link: "" // New field for the image URL
   });
-  const [image, setImage] = useState(null);
 
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,30 +20,21 @@ const AdminArchievesForm = () => {
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
 
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
+      console.log(circular);
+      const response = await axios.post('http://localhost:8080/api/events/add', circular, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
       console.log('Circular added successfully:', response.data);
       setCircular({
         date: '',
         description: '',
-        imageFile: null,
+        link: '', // Reset the image URL
       });
     } catch (error) {
       console.error('Error adding circular:', error.response ? error.response.data : error.message);
@@ -53,7 +43,6 @@ const AdminArchievesForm = () => {
 
   return (
     <div className="admin-form-container">
-
       <Link to="/loginhome" className="back-button">Back to Login</Link>
 
       <h2>Add Events Details</h2>
@@ -82,13 +71,13 @@ const AdminArchievesForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="link">Event Image URL (Google Drive link)</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="text"
+            id="link"
+            name="link"
+            value={circular.link}
+            onChange={handleChange}
             required
           />
         </div>
@@ -99,4 +88,4 @@ const AdminArchievesForm = () => {
   );
 };
 
-export default AdminArchievesForm
+export default AdminArchievesForm;

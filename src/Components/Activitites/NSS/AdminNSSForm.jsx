@@ -4,49 +4,42 @@ import axios from 'axios';
 import './../../../AdminForm.css';
 
 const AdminNSSForm = () => {
-  const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+  const [nssData, setNssData] = useState({
+    date: '',
+    topic: '',
+    description: '',
+    link: ''
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCircular({
-      ...circular,
+    setNssData({
+      ...nssData,
       [name]: value
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
-
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
+      console.log(nssData);
+      const response = await axios.post('http://localhost:8080/api/nss', nssData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
-      console.log('Circular added successfully:', response.data);
-      setCircular({
+      console.log('NSS activity added successfully:', response.data);
+      setNssData({
         date: '',
+        topic: '',
         description: '',
-        imageFile: null,
+        link: ''
       });
+      navigate('/loginhome'); // Redirect after submission
     } catch (error) {
-      console.error('Error adding circular:', error.response ? error.response.data : error.message);
+      console.error('Error adding activity:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -57,13 +50,26 @@ const AdminNSSForm = () => {
 
       <h2>Add New NSS Activity</h2>
       <form onSubmit={handleSubmit} className="admin-form">
+
         <div className="form-group">
           <label htmlFor="date">Date</label>
           <input
             type="date"
             id="date"
             name="date"
-            value={circular.date}
+            value={nssData.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="topic">Topic</label>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            value={nssData.topic}
             onChange={handleChange}
             required
           />
@@ -74,20 +80,21 @@ const AdminNSSForm = () => {
           <textarea
             id="description"
             name="description"
-            value={circular.description}
+            value={nssData.description}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="link">Image Link</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="text"
+            id="link"
+            name="link"
+            value={nssData.link}
+            onChange={handleChange}
+            placeholder="Enter image URL"
             required
           />
         </div>
@@ -98,5 +105,4 @@ const AdminNSSForm = () => {
   );
 };
 
-
-export default AdminNSSForm
+export default AdminNSSForm;

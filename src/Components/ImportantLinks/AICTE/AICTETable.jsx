@@ -11,6 +11,7 @@ const AICTETable = () => {
     axios.get('http://localhost:8080/api/aicte/all')
       .then(response => {
         setAicteFiles(response.data);
+        console.log(response.data)
       })
       .catch(error => {
         console.error('Error fetching AICTE data:', error);
@@ -45,6 +46,26 @@ const AICTETable = () => {
           <p className="aicte-description">
             The All India Council for Technical Education (AICTE) is the statutory body and a national-level council for technical education, under the Department of Higher Education, Ministry of Human Resource Development. It gives approvals for every program in every year. The Extension of Approval (EOA) letters are listed here.
           </p>
+
+          <table className="aicte-table">
+            <thead>
+              <tr>
+                <th>Sl. No.</th>
+                <th>Year</th>
+                <th>Extension of Approval</th>
+              </tr>
+            </thead>
+            <tbody>
+              {aicteFiles.map((file, index) => (
+                <tr key={file.slno}>
+                  <td>{index + 1}</td>
+                  <td>{file.year}</td>
+                  <td><a href={file.link} target="_blank" rel="noopener noreferrer"
+                    className="action-button view-button">View</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <div className="club-info">
           {clubInfo
@@ -62,7 +83,7 @@ const AICTETable = () => {
                 ></iframe>
                 <div className="club-incharge-details">
                   <p className="club-incharge-name">Incharge: {club.clubIncharge}</p>
-                  <p className="club-incharge-designation">Designation: {club.clubInchargeDesigntion}</p>
+                  <p className="club-incharge-designation">Designation: {club.clubInchargeDesignation}</p>
                   <p className="club-incharge-designation">Department: {club.clubInchargeDepartment}</p>
                   <p className="club-incharge-phone">Phone Number: {club.clubInchargePhoneNumer}</p>
                   <p className="club-incharge-email">Mail Id: {club.clubInchargeEmail}</p>
@@ -74,24 +95,7 @@ const AICTETable = () => {
       </div>
 
       {/* Display AICTE table */}
-      <table className="aicte-table">
-        <thead>
-          <tr>
-            <th>Sl. No.</th>
-            <th>Year</th>
-            <th>Extension of Approval</th>
-          </tr>
-        </thead>
-        <tbody>
-          {aicteFiles.map((file, index) => (
-            <tr key={file.slno}>
-              <td>{index + 1}</td>
-              <td>{file.year}</td>
-              <td><a href={file.link} target="_blank" rel="noopener noreferrer">View Document</a></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
     </div>
   );
 };

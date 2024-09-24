@@ -32,10 +32,7 @@ const ScholarshipsFinancialAid = () => {
         <div className="scholarship-intro">
           <h2>Scholarship Financial Aid</h2>
           <p>
-            Our institution is committed to helping students achieve their
-            academic goals through financial aid and scholarships. Explore the
-            various scholarships available and apply to the ones that suit your
-            needs.
+            At our institution, we are deeply committed to supporting students in reaching their academic potential, regardless of financial circumstances. To ease the burden of educational expenses, we offer a wide range of scholarships and financial aid programs aimed at helping students from diverse backgrounds. These scholarships cater to merit-based, need-based, and specialized criteria, ensuring that every student has the opportunity to pursue their education with minimal financial strain. Whether you are excelling in academics, active in extracurricular activities, or facing financial challenges, there is a scholarship designed to suit your needs.
           </p>
         </div>
         <div className="scholarship-incharge">

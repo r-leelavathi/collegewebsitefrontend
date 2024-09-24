@@ -9,8 +9,10 @@ const AdminAICTETable = () => {
   const [editedData, setEditedData] = useState({}); // Hold the edited data
 
   useEffect(() => {
-    axios.get('http://localhost:8013/api/aicte') // Ensure your backend endpoint is correct
+    axios.get('http://localhost:8080/api/aicte/all') // Ensure your backend endpoint is correct
       .then(response => {
+
+        console.log(response.data);
         setAicteFiles(response.data);
       })
       .catch(error => {
@@ -20,7 +22,7 @@ const AdminAICTETable = () => {
 
   const handleEdit = (id) => {
     setEditing(id);
-    const fileToEdit = aicteFiles.find(file => file.aicteId === id);
+    const fileToEdit = aicteFiles.find(file => file.id === id);
     setEditedData(fileToEdit || {}); // Set the file data for editing
   };
 
@@ -33,10 +35,10 @@ const AdminAICTETable = () => {
 
   const handleSave = (id) => {
     // Implement the save logic with axios to update the backend
-    axios.put(`http://localhost:8013/api/aicte/${id}`, editedData)
+    axios.put(`http://localhost:8080/api/aicte/update/${id}`, editedData)
       .then(() => {
         setAicteFiles(prevFiles => prevFiles.map(file =>
-          file.aicteId === id ? { ...file, ...editedData } : file
+          file.id === id ? { ...file, ...editedData } : file
         ));
         setEditing(null);
       })
@@ -46,75 +48,97 @@ const AdminAICTETable = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8013/api/aicte/${id}`)
+    axios.delete(`http://localhost:8080/api/aicte/delete/${id}`)
       .then(() => {
-        setAicteFiles(prevFiles => prevFiles.filter(file => file.aicteId !== id));
+        setAicteFiles(prevFiles => prevFiles.filter(file => file.id !== id));
       })
       .catch(error => {
         console.error('Error deleting the file:', error);
       });
   };
 
-  const handleView = (id) => {
-    console.log(`View AICTE file with id: ${id}`);
-    // Add logic for viewing the AICTE file
+
+  const handleView = (imageLink) => {
+    const newWindow = window.open(imageLink, '_blank');
+    if (!newWindow) {
+      console.error('Failed to open new window');
+    }
   };
 
-  const handleDownload = (id) => {
-    console.log(`Download AICTE file with id: ${id}`);
-    // Add logic for downloading the AICTE file
-  };
+  const handleDownload = (imageLink) => {
+    const fileIdMatch = imageLink.match(/[-\w]{25,}/);
+    if (fileIdMatch) {
+      const fileId = fileIdMatch[0];
+      const directDownloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
+      const downloadLink = document.createElement('a');
+      downloadLink.href = directDownloadLink;
+      downloadLink.download = ''; // This will use the default filename
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink); // Cleanup
+    } else {
+      console.error('Invalid Google Drive link:', imageLink);
+    }
+  };
   return (
     <div className="admin-edit-table-container"><Link
       to="/loginhome" className="back-button">Back to Login</Link>
       <h2 className="aicte-heading">AICTE Files</h2>
-      <p className="aicte-description">
-        The All India Council for Technical Education (AICTE) is the statutory body and a national-level council for technical education under the Department of Higher Education, Ministry of Human Resource Development. It gives approvals for every program in every year. The Extension of Approval (EOA) letters are listed here.
-      </p>
-
       <table className="aicte-table">
         <thead>
           <tr>
             <th>Sl. No.</th>
             <th>Year</th>
-            <th>Extension of Approval</th>
-            <th>Actions</th>
+            <th>EOA</th>
+            <th>Download</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {aicteFiles.map((file, index) => (
-            <tr key={file.aicteId}>
+            <tr key={file.id}>
               <td>{index + 1}</td>
               <td>
-                {editing === file.aicteId ? (
+                {editing === file.id ? (
                   <input
                     type="text"
-                    name="aicteYear"
-                    value={editedData.aicteYear || ''}
+                    className="edit-mode"
+                    name="year"
+                    value={editedData.year || ''}
                     onChange={handleChange}
                   />
                 ) : (
-                  file.aicteYear
+                  file.year
                 )}
               </td>
               <td>
-                {editing === file.aicteId ? (
+                {editing === file.id ? (
                   <input
                     type="text"
-                    name="aicteLink"
-                    value={editedData.aicteLink || ''}
+                    className="edit-mode"
+                    name="link"
+                    value={editedData.link || ''}
                     onChange={handleChange}
                   />
                 ) : (
-                  <a href={file.aicteLink} target="_blank" rel="noopener noreferrer">View Document</a>
+                  <a href={file.link} target="_blank" rel="noopener noreferrer"
+                    className="action-button view-button">View</a>
                 )}
               </td>
               <td>
-                {editing === file.aicteId ? (
+                <button
+                  className="action-button download-button"
+                  onClick={() => handleDownload(file.link)}
+                >
+                  Download
+                </button></td>
+              <td>
+                {editing === file.id ? (
                   <button
                     className="action-button save-button"
-                    onClick={() => handleSave(file.aicteId)}
+                    onClick={() => handleSave(file.id)}
                   >
                     Save
                   </button>
@@ -122,31 +146,20 @@ const AdminAICTETable = () => {
                   <>
                     <button
                       className="action-button edit-button"
-                      onClick={() => handleEdit(file.aicteId)}
+                      onClick={() => handleEdit(file.id)}
                     >
                       Edit
-                    </button>
-                    <button
-                      className="action-button delete-button"
-                      onClick={() => handleDelete(file.aicteId)}
-                    >
-                      Delete
-                    </button>
-                    <button
-                      className="action-button view-button"
-                      onClick={() => handleView(file.aicteId)}
-                    >
-                      View
-                    </button>
-                    <button
-                      className="action-button download-button"
-                      onClick={() => handleDownload(file.aicteId)}
-                    >
-                      Download
                     </button>
                   </>
                 )}
               </td>
+              <td>
+                <button
+                  className="action-button delete-button"
+                  onClick={() => handleDelete(file.id)}
+                >
+                  Delete
+                </button></td>
             </tr>
           ))}
         </tbody>

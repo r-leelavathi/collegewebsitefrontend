@@ -54,7 +54,7 @@ const AwardsPage = () => {
               <td>{award.description}</td>
               <td>
                 <button
-                  className="awards-action-button view-button"
+                  className="awards-action-button awards-view-button"
                   onClick={() => handleViewImage(award.imageLink)}
                 >
                   View
@@ -62,7 +62,7 @@ const AwardsPage = () => {
               </td>
               <td>
                 <button
-                  className="awards-action-button download-button"
+                  className="awards-action-button awards-download-button"
                   onClick={() => handleDownloadImage(award.imageLink)}
                 >
                   Download

@@ -287,7 +287,7 @@ const Navbar = () => {
               <div className="dropdown-content">
                 <Link to="/importantLinks/placements" className="dropdown-link">Placements</Link>
                 <a href="https://kptalumni.org/" target="_blank" className="dropdown-link">Alumni & Careers</a>
-                <Link to="/importantLinks/iste" className="dropdown-link">ISTE</Link>
+                <a href="https://r-leelavathi.github.io/iste/" target="_blank" className="dropdown-link">ISTE</a>
                 <Link to="/importantLinks/cctek" className="dropdown-link">CCTEK</Link>
                 <Link to="/importantLinks/aicte" className="dropdown-link">AICTE</Link>
                 <Link to="/importantLinks/rti" className="dropdown-link">RTI</Link>

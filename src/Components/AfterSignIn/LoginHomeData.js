@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const homeItems = [
   {
-    title: 'Staff Incharge',
+    title: 'Club Incharge',
     content: (
       <ul>
         <li>
@@ -31,27 +31,27 @@ export const aboutItems = [
     ),
   },
   {
-    title: 'IQAC',
+    title: 'FormerPrincipals',
     content: (
       <ul>
         <li>
-          <Link to="/loginhome/iqacForm">Insert</Link>
+          <Link to="/loginhome/formerPrincipalsForm">Insert</Link>
         </li>
         <li>
-          <Link to="/loginhome/iqacTable">Delete/Update</Link>
+          <Link to="/loginhome/formerPrincipalsTable">Delete/Update</Link>
         </li>
       </ul>
     ),
   },
   {
-    title: 'AntiRagging',
+    title: 'Gallery',
     content: (
       <ul>
         <li>
-          <Link to="/loginhome/antiraggingForm">Insert</Link>
+          <Link to="/loginhome/galleryForm">Insert</Link>
         </li>
         <li>
-          <Link to="/loginhome/antiraggingTable">Delete/Update</Link>
+          <Link to="/loginhome/galleryTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -129,40 +129,14 @@ export const academicsItems = [
 
 export const admissionsItems = [
   {
-    title: 'Admission Process Circular',
-    content: (
-      <ul>
-        <li>
-          <Link to="/loginhome/admissionProcessForm">Insert</Link>
-        </li>
-        <li>
-          <Link to="/loginhome/admissionProcessTable">Delete/Update</Link>
-        </li>
-      </ul>
-    ),
-  },
-  {
     title: 'Application Form',
     content: (
       <ul>
         <li>
-          <Link to="/loginhome/circularForm">Insert</Link>
+          <Link to="/loginhome/applicationForm">Insert</Link>
         </li>
         <li>
-          <Link to="/loginhome/circularTable">Delete/Update</Link>
-        </li>
-      </ul>
-    ),
-  },
-  {
-    title: 'ScholarShips',
-    content: (
-      <ul>
-        <li>
-          <Link to="/activities/wid">Insert</Link>
-        </li>
-        <li>
-          <Link to="/activities/wid">Delete/Update</Link>
+          <Link to="/loginhome/applicationTable">Delete/Update</Link>
         </li>
       </ul>
     ),
@@ -382,6 +356,35 @@ export const importantLinksItems = [
         </li>
         <li>
           <Link to="/loginhome/RtiTable">Delete/Update</Link>
+        </li>
+      </ul>
+    ),
+  },
+];
+
+export const footerItems = [
+  {
+    title: 'Telephone Directory',
+    content: (
+      <ul>
+        <li>
+          <Link to="/loginhome/telephoneDirectoryForm">Insert</Link>
+        </li>
+        <li>
+          <Link to="/loginhome/telephoneDirectoryTable">Delete/Update</Link>
+        </li>
+      </ul>
+    ),
+  },
+  {
+    title: 'Public Information Officer',
+    content: (
+      <ul>
+        <li>
+          <Link to="/loginhome/pioForm">Insert</Link>
+        </li>
+        <li>
+          <Link to="/loginhome/pioTable">Delete/Update</Link>
         </li>
       </ul>
     ),

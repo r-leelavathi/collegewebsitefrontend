@@ -30,14 +30,14 @@ const LibraryGallery = () => {
   };
 
   return (
-    <section className="librarygallery-gallery">
+    <section className="librarygallery_gallery">
       <h2>Library Gallery</h2>
-      <Slider {...settings} className="librarygallery-slider">
+      <Slider {...settings} className="librarygallery_slider">
         <div>
           <img src="/assets/library/lib1.jpg" alt="Library Image 1" className="librarygallery-img" />
         </div>
         <div>
-          <img src="/assets/library/lib8.jpg" alt="Library Image 2" className="librarygallery-img" />
+          <img src="/assets/library/lib2.jpg" alt="Library Image 2" className="librarygallery-img" />
         </div>
         <div>
           <img src="/assets/library/lib3.jpg" alt="Library Image 3" className="librarygallery-img" />
@@ -52,13 +52,16 @@ const LibraryGallery = () => {
           <img src="/assets/library/lib6.jpg" alt="Library Image 6" className="librarygallery-img" />
         </div>
         <div>
-          <img src="/assets/library/lib9.jpg" alt="Library Image 7" className="librarygallery-img" />
+          <img src="/assets/library/lib10.jpg" alt="Library Image 9" className="librarygallery-img" />
         </div>
         <div>
-          <img src="/assets/library/lib2.jpg" alt="Library Image 8" className="librarygallery-img" />
+          <img src="/assets/library/lib7.jpg" alt="Library Image 7" className="librarygallery-img" />
         </div>
         <div>
-          <img src="/assets/library/lib7.jpg" alt="Library Image 9" className="librarygallery-img" />
+          <img src="/assets/library/lib8.jpg" alt="Library Image 8" className="librarygallery-img" />
+        </div>
+        <div>
+          <img src="/assets/library/lib9.jpg" alt="Library Image 9" className="librarygallery-img" />
         </div>
       </Slider>
     </section>

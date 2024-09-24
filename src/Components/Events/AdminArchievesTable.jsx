@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './../../AdminTable.css';
 import { Link } from 'react-router-dom';
 
 const AdminArchievesTable = () => {
-  const [circulars, setCirculars] = useState([]);
+  const [events, setEvents] = useState([]);
   const [editing, setEditing] = useState(null);
   const [editedData, setEditedData] = useState({});
 
@@ -15,40 +14,36 @@ const AdminArchievesTable = () => {
 
   const fetchCirculars = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/circulars/all');
-      // Convert byte array to Base64 string
-      const circularsWithBase64 = response.data.map(circular => ({
-        ...circular,
-        base64Image: `data:image/jpeg;base64,${btoa(String.fromCharCode(...new Uint8Array(circular.imageFile)))}`
-      }));
-      setCirculars(circularsWithBase64);
+      const response = await axios.get('http://localhost:8080/api/events/all');
+      setEvents(response.data);
+      console.log(response.data);
     } catch (error) {
-      console.error('Error fetching circulars:', error);
+      console.error('Error fetching events:', error);
     }
   };
 
   const handleEdit = (id) => {
     setEditing(id);
-    const circular = circulars.find(c => c.id === id);
+    const circular = events.find(c => c.id === id);
     setEditedData({ ...circular });
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/circulars/delete/${id}`);
-      setCirculars(circulars.filter(c => c.id !== id));
+      await axios.delete(`http://localhost:8080/api/events/delete/${id}`);
+      setEvents(events.filter(c => c.id !== id));
     } catch (error) {
-      console.error('Error deleting circular:', error);
+      console.error('Error deleting events:', error);
     }
   };
 
   const handleSave = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/circulars/${id}`, editedData);
+      await axios.put(`http://localhost:8080/api/events/update/${id}`, editedData);
       setEditing(null);
       fetchCirculars(); // Refresh the data
     } catch (error) {
-      console.error('Error saving circular:', error);
+      console.error('Error saving events:', error);
     }
   };
 
@@ -59,53 +54,30 @@ const AdminArchievesTable = () => {
       [name]: value,
     });
   };
-  const handleView = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/circulars/${id}/image`);
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
 
-        // Open a new window and set the image source
-        const newWindow = window.open('', '_blank');
-        if (newWindow) {
-          newWindow.document.write(
-            `<html><head><title>Image Preview</title></head><body style="margin:0"><img src="${url}" alt="Circular Image" style="max-width:100%; height:auto;"/></body></html>`
-          );
-          newWindow.document.close();
-        } else {
-          console.error('Failed to open new window');
-        }
-      } else {
-        console.error('Failed to fetch image');
-      }
-    } catch (error) {
-      console.error('Error fetching image:', error);
+  const handleView = (link) => {
+    const newWindow = window.open(link, '_blank');
+    if (!newWindow) {
+      console.error('Failed to open new window');
     }
   };
-  const handleDownload = async (id) => {
-    try {
-      // Make an axios request to fetch the image as a blob
-      const response = await axios.get(`http://localhost:8080/api/circulars/${id}/image`, {
-        responseType: 'blob', // Important to specify the response type as 'blob'
-      });
 
-      // Create a temporary download link
-      const url = URL.createObjectURL(response.data);
+  const handleDownload = (link) => {
+    const fileIdMatch = link.match(/[-\w]{25,}/);
+    if (fileIdMatch) {
+      const fileId = fileIdMatch[0];
+      const directDownloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
       const downloadLink = document.createElement('a');
-      downloadLink.href = url;
-      downloadLink.download = 'circular-image.jpg'; // Set the filename
+      downloadLink.href = directDownloadLink;
+      downloadLink.download = ''; // This will use the default filename
+      document.body.appendChild(downloadLink);
       downloadLink.click();
-
-      // Clean up the URL object
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Error downloading image:', error);
+      document.body.removeChild(downloadLink); // Cleanup
+    } else {
+      console.error('Invalid Google Drive link:', link);
     }
   };
-
-
-
 
   return (
     <div className="admin-edit-table-container">
@@ -117,6 +89,7 @@ const AdminArchievesTable = () => {
             <th>Sl. No</th>
             <th>Date</th>
             <th>Description</th>
+            <th>Image Link</th>
             <th>View</th>
             <th>Download</th>
             <th>Edit</th>
@@ -124,7 +97,7 @@ const AdminArchievesTable = () => {
           </tr>
         </thead>
         <tbody>
-          {circulars.map((circular, index) => (
+          {events.map((circular, index) => (
             <tr key={circular.id}>
               <td>{index + 1}</td>
               <td>
@@ -143,6 +116,7 @@ const AdminArchievesTable = () => {
                 {editing === circular.id ? (
                   <input
                     type="text"
+                    className="edit-mode"
                     name="description"
                     value={editedData.description || ''}
                     onChange={handleChange}
@@ -152,17 +126,30 @@ const AdminArchievesTable = () => {
                 )}
               </td>
               <td>
+                {editing === circular.id ? (
+                  <input
+                    type="text"
+                    className="edit-mode"
+                    name="link"
+                    value={editedData.link || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  circular.link
+                )}
+              </td>
+              <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-view-button"
-                  onClick={() => handleView(circular.id)}
+                  className="action-button view-button"
+                  onClick={() => handleView(circular.link)}
                 >
                   View
                 </button>
               </td>
               <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-download-button"
-                  onClick={() => handleDownload(circular.id)}
+                  className="action-button download-button"
+                  onClick={() => handleDownload(circular.link)}
                 >
                   Download
                 </button>
@@ -170,14 +157,14 @@ const AdminArchievesTable = () => {
               <td>
                 {editing === circular.id ? (
                   <button
-                    className="admin-edit-table-action-button admin-edit-table-save-button"
+                    className="action-button save-button"
                     onClick={() => handleSave(circular.id)}
                   >
                     Save
                   </button>
                 ) : (
                   <button
-                    className="admin-edit-table-action-button admin-edit-table-edit-button"
+                    className="action-button edit-button"
                     onClick={() => handleEdit(circular.id)}
                   >
                     Edit
@@ -186,7 +173,7 @@ const AdminArchievesTable = () => {
               </td>
               <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-delete-button"
+                  className="action-button delete-button"
                   onClick={() => handleDelete(circular.id)}
                 >
                   Delete
@@ -200,4 +187,4 @@ const AdminArchievesTable = () => {
   );
 };
 
-export default AdminArchievesTable
+export default AdminArchievesTable;

@@ -4,50 +4,38 @@ import axios from 'axios';
 import './../../../AdminForm.css'; // Assuming you have a common CSS for forms
 
 const AdminAICTEForm = () => {
-  const [pressRelease, setPressRelease] = useState({
-    pressReleaseDate: "",
-    pressReleaseNewPaperName: "",
-    pressReleaseDescription: ""
+  const [aicteData, setAicteData] = useState({
+    year: "",
+    link: ""
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPressRelease({
-      ...pressRelease,
+    setAicteData({
+      ...aicteData,
       [name]: value
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "pressRelease", new Blob([JSON.stringify(pressRelease)], { type: "application/json" })
-    );
 
     try {
-      const response = await axios.post('http://localhost:8080/api/pressreleases/add', formdata, {
+      const response = await axios.post('http://localhost:8080/api/aicte/add', aicteData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
-      console.log('Press Release added successfully:', response.data);
-      setPressRelease({
-        pressReleaseDate: '',
-        pressReleaseNewPaperName: '',
-        pressReleaseDescription: ''
+      console.log('AICTE record added successfully:', response.data);
+      setAicteData({
+        year: '',
+        link: ''
       });
-      setImage(null);
+      navigate('/loginHome'); // Redirect after successful submission
     } catch (error) {
-      console.error('Error adding press release:', error.response ? error.response.data : error.message);
+      console.error('Error adding AICTE record:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -61,24 +49,24 @@ const AdminAICTEForm = () => {
       <h2>Add AICTE Details</h2>
       <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
-          <label htmlFor="pressReleaseDate">Year</label>
+          <label htmlFor="year">Year</label>
           <input
-            type="number"
-            id="pressReleaseDate"
-            name="pressReleaseDate"
-            value={pressRelease.pressReleaseDate}
+            type="text"
+            id="year"
+            name="year"
+            value={aicteData.year}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="pressReleaseNewPaperName">Link of an Image</label>
+          <label htmlFor="link">Link</label>
           <input
             type="text"
-            id="pressReleaseNewPaperName"
-            name="pressReleaseNewPaperName"
-            value={pressRelease.pressReleaseNewPaperName}
+            id="link"
+            name="link"
+            value={aicteData.link}
             onChange={handleChange}
             required
           />
@@ -90,5 +78,4 @@ const AdminAICTEForm = () => {
   );
 };
 
-
-export default AdminAICTEForm
+export default AdminAICTEForm;

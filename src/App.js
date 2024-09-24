@@ -20,19 +20,15 @@ import AntiRagging from './Components/About/InstitutionalCommittees/AntiRagging/
 import InternalComplaintCell from './Components/About/InstitutionalCommittees/InternalComplaintCell/InternalComplaintCell';
 import DisciplineMonitoringCell from './Components/About/InstitutionalCommittees/DisciplineMonitoringCell/DisciplineMonitoringCell';
 import GrievanceRedressalCell from './Components/About/InstitutionalCommittees/GrievanceRedressalCell/GrievanceRedressalCell';
-
 import EligibilityCriteria from './Components/Admissions/EligibilityCriteria/EligibilityCriteria';
 import ApplicationForms from './Components/Admissions/ApplicationForms/ApplicationForms';
 import ScholarshipsFinancialAid from './Components/Admissions/ScholarshipsFinancialAid/ScholarshipsFinancialAid';
-import AdmissionProcess from './Components/Admissions/AdmissionProcess/AdmissionProcess';
 import OrganizationStructure from './Components/About/OrganizationStructure/OrganizationStructure';
 import Program_Courses from './Components/Academics/Program&Courses/Program_Courses';
 import DepartmentMainPage from './Components/Academics/Department/DepartmentMainPage';
 import RtiTable from './Components/ImportantLinks/RTI/RtiTable';
 import WidTable from './Components/Activitites/Wid/WidTable';
-import FacultyForm from './Components/Academics/Faculty/FacultyForm';
 import AICTETable from './Components/ImportantLinks/AICTE/AICTETable';
-import CircularTable from './Components/News/circulars/AdminCircularTable';
 import AdminRtiTable from './Components/ImportantLinks/RTI/AdminRtiTable';
 import AdminAICTETable from './Components/ImportantLinks/AICTE/AdminAICTETable';
 import AdminAICTEForm from './Components/ImportantLinks/AICTE/AdminAICTEForm';
@@ -88,10 +84,8 @@ import Repeaters from './Components/Admissions/AdmissionProcess/Repeaters';
 import ChangeOfBranch from './Components/Admissions/AdmissionProcess/ChangeOfBranch';
 import FeeStructure from './Components/Admissions/FeeStructure/FeeStructure';
 import RecruitmentPage from './Components/Recruitment/RecruitmentPage';
-import TelephoneDirectoryPage from './Components/Footer/TelephoneDirectoryPage';
 import AwardsPage from './Components/About/History/AwardsPage';
 import FormerPrincipalsPage from './Components/About/History/FormerPrincipalsPage';
-import HomePage from './Components/Home/HomePage';
 import CS from './Components/Academics/Department/CS/CS';
 import AboutUs from './Components/About/AboutUs';
 import FacultyTable from './Components/Academics/Faculty/FacultyTable';
@@ -99,6 +93,31 @@ import Society from './Components/About/Facilities/Society/Society';
 import Hostel from './Components/Hostel/Hostel';
 import SCSTCommittee from './Components/About/InstitutionalCommittees/SCSTCommittee/SCSTCommittee';
 import InnovationCell from './Components/About/InstitutionalCommittees/InnovationCell/InnovationCell';
+import CH from './Components/Academics/Department/CH/CH';
+import ME from './Components/Academics/Department/ME/ME';
+import AT from './Components/Academics/Department/AT/AT';
+import CE from './Components/Academics/Department/CE/CE';
+import EEE from './Components/Academics/Department/EEE/EEE';
+import EC from './Components/Academics/Department/EC/EC';
+import PO from './Components/Academics/Department/PO/PO';
+import SC from './Components/Academics/Department/SC/SC';
+import PublicInformationOfficerTable from './Components/Footer/PublicInformationOfficer/PublicInformationOfficerTable';
+import IndustryInteractions from './Components/Footer/IndustryInteractions';
+import TelephoneDirectoryPage from './Components/Footer/TelephoneDirectoryPage/TelephoneDirectoryPage';
+import AdminTelephoneDirectoryForm from './Components/Footer/TelephoneDirectoryPage/AdminTelephoneDirectoryForm';
+import AdminPublicInformationOfficer from './Components/Footer/PublicInformationOfficer/AdminPublicInformationOfficer';
+import AdminResearchPublicationForm from './Components/Academics/ResearchandPublications/AdminResearchPublicationForm';
+import AdminFacultyForm from './Components/Academics/Faculty/AdminFacultyForm';
+import AdminFormerPrincipals from './Components/About/History/AdminFormerPrincipalsForm';
+import AdminFormerPrincipalsTable from './Components/About/History/AdminFormerPrincipalsTable';
+import AdminFacultyTable from './Components/Academics/Faculty/AdminFacultyTable';
+import AdminResearchAndPublicationsTable from './Components/Academics/ResearchandPublications/AdminResearchAndPublicationsTable';
+import AdminApplicationFormTable from './Components/Admissions/ApplicationForms/AdminApplicationFormTable';
+import ApplicationFormTable from './Components/Admissions/ApplicationForms/ApplicationFormTable';
+import AdminPublicInformationOfficerTable from './Components/Footer/PublicInformationOfficer/AdminPublicInformationOfficerTable';
+import AdminGalleryTable from './Components/About/Gallery/AdminGalleryTable';
+import AdminGalleryForm from './Components/About/Gallery/AdminGalleryForm';
+import CCTEK from './Components/ImportantLinks/CCTEK/CCTEK';
 function App() {
   return (
     <>
@@ -142,11 +161,24 @@ function App() {
             <Route path="library" element={<Library />} />
           </Route>
           <Route path="about/gallery" element={<Gallery />} />
+          <Route path="loginhome/galleryForm" element={<AdminGalleryForm />} />
+          <Route path="loginhome/galleryTable" element={<AdminGalleryTable />} />
+
+
+
           <Route path="/academics/*" element={''}>
             <Route path="programs" element={<Program_Courses />} />
             <Route path="departments" element={<DepartmentMainPage />} />
+            <Route path="department/cs" element={<CS />} />
+            <Route path="department/ch" element={<CH />} />
+            <Route path="department/me" element={<ME />} />
+            <Route path="department/at" element={<AT />} />
+            <Route path="department/ce" element={<CE />} />
+            <Route path="department/eee" element={<EEE />} />
+            <Route path="department/ec" element={<EC />} />
+            <Route path="department/po" element={<PO />} />
+            <Route path="department/sc" element={<SC />} />
 
-            <Route path="departments/cs" element={<CS />} />
             <Route path="faculty" element={<FacultyTable />} />
             <Route path="research" element={<ResearchPublication />} />
           </Route>
@@ -162,7 +194,7 @@ function App() {
 
 
           <Route path="/admissions/scholarships" element={<ScholarshipsFinancialAid />} />
-          <Route path="/admissions/forms" element={<ApplicationForms />} />
+          <Route path="/admissions/forms" element={<ApplicationFormTable />} />
           <Route path="/admissions/eligibility" element={<EligibilityCriteria />} />
           <Route path="/admissions/feeStructure" element={<FeeStructure />} />
           <Route path="/admissions/admissionStatistics" element={<FeeStructure />} />
@@ -189,6 +221,7 @@ function App() {
           <Route path="/importantLinks/*" element={''}>
             <Route path="aicte" element={<AICTETable />} />
             <Route path="rti" element={<RtiTable />} />
+            <Route path="cctek" element={<CCTEK />} />
           </Route>
 
           <Route path="/recruitment" element={<RecruitmentPage />} />
@@ -200,8 +233,8 @@ function App() {
             <Route path="adminStaffInchargeTable" element={<AdminStaffInchargeTable />} />
             <Route path="principalDeskForm" element={''} />
             <Route path="principalDeskTable" element={''} />
-            <Route path="iqacForm" element={''} />
-            <Route path="iqacTable" element={''} />
+            <Route path="formerPrincipalsForm" element={<AdminFormerPrincipals />} />
+            <Route path="formerPrincipalsTable" element={<AdminFormerPrincipalsTable />} />
             <Route path="antiraggingForm" element={''} />
             <Route path="antiraggingTable" element={''} />
             <Route path="iccForm" element={''} />
@@ -210,11 +243,12 @@ function App() {
             <Route path="dmcTable" element={''} />
             <Route path="programsAndCoursesForm" element={''} />
             <Route path="programsAndCoursesTable" element={''} />
-            <Route path="facultyForm" element={''} />
-            <Route path="facultyTable" element={''} />
-            <Route path="researchAndPublicationForm" element={''} />
-            <Route path="researchAndPublicationTable" element={''} />
-            <Route path="admissionProcessForm" element={<AdmissionProcessForm />} />
+            <Route path="facultyForm" element={<AdminFacultyForm />} />
+            <Route path="facultyTable" element={<AdminFacultyTable />} />
+            <Route path="researchAndPublicationForm" element={<AdminResearchPublicationForm />} />
+            <Route path="researchAndPublicationTable" element={<AdminResearchAndPublicationsTable />} />
+            <Route path="applicationForm" element={<AdmissionProcessForm />} />
+            <Route path="applicationTable" element={<AdminApplicationFormTable />} />
             <Route path="studentUnionForm" element={<AdminStudentUnionForm />} />
             <Route path="studentUnionTable" element={<AdminStudentunionTable />} />
             <Route path="sportsForm" element={<AdminSportsForm />} />
@@ -250,11 +284,18 @@ function App() {
             <Route path="RtiForm" element={<AdminRtiForm />} />
             <Route path="RtiTable" element={<AdminRtiTable />} />
 
+            <Route path="telephoneDirectoryForm" element={<AdminStaffInchargeForm />} />
+            <Route path="telephoneDirectoryTable" element={<AdminStaffInchargeTable />} />
+            <Route path="pioForm" element={<AdminPublicInformationOfficer />} />
+            <Route path="pioTable" element={<AdminPublicInformationOfficerTable />} />
+
 
           </Route>
 
           <Route path="footer/sitemap" element={<SiteMap />} />
           <Route path="footer/telephoneDirectory" element={<TelephoneDirectoryPage />} />
+          <Route path="footer/industryInteractions" element={<IndustryInteractions />} />
+          <Route path="footer/poi" element={<PublicInformationOfficerTable />} />
 
         </Routes>
 

@@ -1,93 +1,71 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './../../../AdminForm.css';
 
 const AdminRtiForm = () => {
-  const [circular, setCircular] = useState({
-    date: " ",
-    description: " "
+  const [rtiFile, setRtiFile] = useState({
+    rtiYear: '',
+    rtiLink: ''
   });
-  const [image, setImage] = useState(null);
 
   const navigate = useNavigate(); // Initialize navigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCircular({
-      ...circular,
+    setRtiFile({
+      ...rtiFile,
       [name]: value
     });
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("imageFile", image);
-    formdata.append(
-      "circular", new Blob([JSON.stringify(circular)], { type: "application/json" })
-    );
 
     try {
-      console.log(circular)
-      const response = await axios.post('http://localhost:8080/api/circulars/add', formdata, {
+      console.log(rtiFile);
+      const response = await axios.post('http://localhost:8080/api/rti', rtiFile, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
-      console.log('Circular added successfully:', response.data);
-      setCircular({
-        date: '',
-        description: '',
-        imageFile: null,
+      console.log('RTI File added successfully:', response.data);
+      setRtiFile({
+        rtiYear: '',
+        rtiLink: ''
       });
+      navigate('/loginhome');  // Redirect after successful submission
     } catch (error) {
-      console.error('Error adding circular:', error.response ? error.response.data : error.message);
+      console.error('Error adding RTI File:', error.response ? error.response.data : error.message);
     }
   };
 
   return (
     <div className="admin-form-container">
-
       <Link to="/loginhome" className="back-button">Back to Login</Link>
 
-      <h2>Add New Circular</h2>
+      <h2>Add New RTI File</h2>
       <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
-          <label htmlFor="date">Date</label>
+          <label htmlFor="rtiYear">RTI Year</label>
           <input
-            type="date"
-            id="date"
-            name="date"
-            value={circular.date}
+            type="text"
+            id="rtiYear"
+            name="rtiYear"
+            value={rtiFile.rtiYear}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={circular.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="imageFile">Upload Circular Image</label>
+          <label htmlFor="rtiLink">RTI Link</label>
           <input
-            type="file"
-            id="imageFile"
-            name="imageFile"
-            accept="image/*"
-            onChange={handleFileChange}
+            type="text"
+            id="rtiLink"
+            name="rtiLink"
+            value={rtiFile.rtiLink}
+            onChange={handleChange}
             required
           />
         </div>
@@ -96,5 +74,6 @@ const AdminRtiForm = () => {
       </form>
     </div>
   );
-}
-export default AdminRtiForm
+};
+
+export default AdminRtiForm;

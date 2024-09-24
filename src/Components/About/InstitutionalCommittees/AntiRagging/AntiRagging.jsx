@@ -54,7 +54,7 @@ const AntiRagging = () => {
         <section className="section introduction">
           <h2 className="section-title">Anti-Ragging Cell</h2>
           <p className="section-content">
-            The Anti-Ragging Cell is committed to creating a safe and supportive environment free from any form of ragging. Our goal is to prevent incidents of ragging and address complaints promptly and effectively.
+            The Anti-Ragging Cell is committed to creating a safe and supportive environment free from any form of senior students ragging. Our goal is to prevent incidents of ragging and address complaints promptly and effectively.
           </p>
         </section>
 

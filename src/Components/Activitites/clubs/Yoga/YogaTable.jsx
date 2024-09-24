@@ -41,49 +41,49 @@ const YogaTable = () => {
   };
   return (
     <div className="club_app-container">
-      {clubInfo
-        .filter((club) => club.clubName === "Yoga")
-        .map((club) => (
-          <div key={club.id} className="club_wrapper">
-            <div className="club_info-section">
-              <h2 className="club_club-name">
-                {club.clubName}
-              </h2>
-              <p className="club_description">
-                The Yoga Club at our college is a sanctuary for students to connect with their inner selves and find balance amidst their academic pursuits. We aim to create a nurturing environment where both body and mind are strengthened through the practice of yoga. By integrating ancient wisdom with modern practices, we empower our students to lead healthier, more mindful lives. The Yoga Club welcomes everyone, regardless of experience, to join and experience the transformative power of yoga.
-              </p>
-              <div className="club_vision-mission">
-                <h3 className="club_vision-title">Vision</h3>
-                <p className="club_vision-description">
-                  To foster a harmonious community of students who embrace physical, mental, and spiritual wellness, cultivating resilience and inner peace through the practice of yoga.
-                </p>
-                <h3 className="club_mission-title">Mission</h3>
-                <p className="club_mission-description">
-                  To promote a holistic lifestyle among students by encouraging regular yoga practice, fostering mindfulness, and building a supportive community that values health, well-being, and personal growth.
-                </p>
-              </div>
-            </div>
-            <div className="club_incharge-section">
-              <div className="club_incharge-info">
-                <div className="club_incharge-photo-container">
+      <div className="studentCouncil-info-and-incharge">
+        <div className="studentCouncil-info-section">
+          <h2 className="studentCouncil-club-name">YOGA</h2>
+          <p className="studentCouncil-description">
+            The Yoga Club at our college is a sanctuary for students to connect with their inner selves and find balance amidst their academic pursuits. We aim to create a nurturing environment where both body and mind are strengthened through the practice of yoga. By integrating ancient wisdom with modern practices, we empower our students to lead healthier, more mindful lives. The Yoga Club welcomes everyone, regardless of experience, to join and experience the transformative power of yoga.
+
+          </p>
+          <div className="studentCouncil-vision-mission">
+            <h3 className="studentCouncil-vision-title">Vision</h3>
+            <p className="studentCouncil-vision-description">
+              To foster a harmonious community of students who embrace physical, mental, and spiritual wellness, cultivating resilience and inner peace through the practice of yoga.
+            </p>
+            <h3 className="studentCouncil-mission-title">Mission</h3>
+            <p className="studentCouncil-mission-description">
+              To promote a holistic lifestyle among students by encouraging regular yoga practice, fostering mindfulness, and building a supportive community that values health, well-being, and personal growth.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Side - Officers */}
+        <div className="studentCouncil-incharge-details">
+          {clubInfo
+            .filter((club) => club.clubName === "Yoga1" || club.clubName === "Yoga2")
+            .map((club) => (
+              <div className="studentCouncil-incharge-section" key={club.clubIncharge}>
+                <div className="studentCouncil-incharge-photo-container">
                   <iframe
                     src={getIframeLink(club.clubInchargeImageLink)}
                     title={club.clubIncharge}
-                    className="club_incharge-photo"
+                    className="studentCouncil-incharge-photo"
                     frameBorder="0"
                     allowFullScreen
                   ></iframe>
-                  <div className="overlay"></div>
                 </div>
-                <p className="club_incharge-name">Incharge : {club.clubIncharge}</p>
-                <p className="club_incharge-designation">Designation : {club.clubInchargeDesignation}</p>
-                <p className="club_incharge-designation">Department : {club.clubInchargeDepartment}</p>
-                <p className="club_incharge-phone">Phone Number : {club.clubInchargePhoneNumer}</p>
-                <p className="club_incharge-email">Mail Id : {club.clubInchargeEmail}</p>
+                <p className="studentCouncil-incharge-name">Incharge: {club.clubIncharge}</p>
+                <p className="studentCouncil-incharge-designation">Designation: {club.clubInchargeDesignation}</p>
+                <p className="studentCouncil-incharge-designation">Department: {club.clubInchargeDepartment}</p>
+                <p className="studentCouncil-incharge-phone">Phone Number: {club.clubInchargePhoneNumer}</p>
+                <p className="studentCouncil-incharge-email">Mail Id: {club.clubInchargeEmail}</p>
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
+        </div>
+      </div>
 
       <div className="club_events-intro">
         Below is a list of activities conducted by the aforementioned club at Karnataka (Govt.) Polytechnic, Mangalore, showcasing the diverse range of events and initiatives undertaken to enrich the student experience and foster holistic development.

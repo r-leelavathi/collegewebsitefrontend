@@ -63,7 +63,7 @@ const Footer = () => {
           <div className="footer-links">
             <h3 className="footer-heading">Resources</h3>
             <ul>
-              <li><Link to="/library" className="footer-link">Industry Interactions</Link></li>
+              <li><Link to="/footer/industryInteractions" className="footer-link">Industry Interactions</Link></li>
               <li><Link to="/importantLinks/rti" className="footer-link">RTI</Link></li>
               <li><Link to="/importantLinks/aicte" className="footer-link">AICTE</Link></li>
               <li><Link to="/student-portal" className="footer-link">Training & Placements</Link></li>
@@ -73,7 +73,7 @@ const Footer = () => {
                   Alumni & Careers
                 </a>
               </li>
-              <li><Link to="/alumni-careers" className="footer-link">Public Information Officer</Link></li>
+              <li><Link to="/footer/poi" className="footer-link">Public Information Officer</Link></li>
             </ul>
           </div>
         </div>

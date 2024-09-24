@@ -80,11 +80,25 @@ const CollegeGround = () => {
         <h2 className="section-title">College Ground</h2>
         <div className="gallery">
           <div className="gallery-images-wrapper">
-            <img src="/assets/groundimages/ground1.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/1.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/2.jpg" alt="Ground Event 1" className="gallery-image" />
             <img src="/assets/groundimages/ground2.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/3.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/4.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/5.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/6.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/7.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/8.jpg" alt="Ground Event 1" className="gallery-image" />
             <img src="/assets/groundimages/ground3.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/9.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/10.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/11.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/12.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/13.jpg" alt="Ground Event 1" className="gallery-image" />
+            <img src="/assets/groundimages/14.jpg" alt="Ground Event 1" className="gallery-image" />
             <img src="/assets/groundimages/ground1.jpg" alt="Ground Event 1" className="gallery-image" />
-            <img src="/assets/groundimages/ground1.jpg" alt="Ground Event 1" className="gallery-image" />    </div>
+
+          </div>
         </div>
       </section>
 

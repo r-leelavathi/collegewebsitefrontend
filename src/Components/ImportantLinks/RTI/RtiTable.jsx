@@ -33,16 +33,17 @@ const RtiTable = () => {
         <thead>
           <tr>
             <th>Sl No</th>
-            <th>RTI Year</th>
-            <th>RTI Link</th>
+            <th>Year</th>
+            <th>File</th>
           </tr>
         </thead>
         <tbody>
           {rtiFiles.map((file, index) => (
             <tr key={file.rtiId}>
               <td style={{ textAlign: 'center' }}>{index + 1}</td>
-              <td>{file.rtiYear}</td>
-              <td><a href={file.rtiLink} target="_blank" rel="noopener noreferrer">View RTI</a></td>
+              <td style={{ textAlign: 'center' }}>{file.rtiYear}</td>
+              <td style={{ textAlign: 'center' }}><a href={file.rtiLink} target="_blank"
+                className="action-button view-button" rel="noopener noreferrer">View</a></td>
             </tr>
           ))}
         </tbody>

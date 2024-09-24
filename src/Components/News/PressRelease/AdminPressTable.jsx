@@ -3,53 +3,64 @@ import axios from 'axios';
 import './../../../AdminTable.css';
 import { Link } from 'react-router-dom';
 
+
 const AdminPressTable = () => {
-  const [circulars, setCirculars] = useState([]);
+  const [pressReleases, setPressReleases] = useState([]);
   const [editing, setEditing] = useState(null);
   const [editedData, setEditedData] = useState({});
 
   useEffect(() => {
-    fetchCirculars();
+    fetchPressReleases();
   }, []);
 
-  const fetchCirculars = async () => {
+  const fetchPressReleases = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/circulars/all');
-      // Convert byte array to Base64 string
-      const circularsWithBase64 = response.data.map(circular => ({
-        ...circular,
-        base64Image: `data:image/jpeg;base64,${btoa(String.fromCharCode(...new Uint8Array(circular.imageFile)))}`
-      }));
-      setCirculars(circularsWithBase64);
+      const response = await axios.get('http://localhost:8080/api/press-releases/all');
+      console.log(response.data);
+      setPressReleases(response.data);
     } catch (error) {
-      console.error('Error fetching circulars:', error);
+      console.error('Error fetching press releases:', error);
     }
   };
 
+  const handleView = (imageLink) => {
+    console.log(imageLink);
+    const newWindow = window.open(imageLink, '_blank');
+    if (!newWindow) {
+      console.error('Failed to open new window');
+    }
+  };
+
+
+  const handleDownload = (imageLink) => {
+    const fileIdMatch = imageLink.match(/[-\w]{25,}/);
+    if (fileIdMatch) {
+      const fileId = fileIdMatch[0];
+      const directDownloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = directDownloadLink;
+      downloadLink.download = ''; // This will use the default filename
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink); // Cleanup
+    } else {
+      console.error('Invalid Google Drive link:', imageLink);
+    }
+  };
   const handleEdit = (id) => {
     setEditing(id);
-    const circular = circulars.find(c => c.id === id);
-    setEditedData({ ...circular });
+    const pressRelease = pressReleases.find((pr) => pr.id === id);
+
+    // Set the fields in the editedData with correct property names
+    setEditedData({
+      pressReleaseDate: pressRelease.pressReleaseDate,
+      pressReleaseNewPaperName: pressRelease.pressReleaseNewPaperName,
+      pressReleaseDescription: pressRelease.pressReleaseDescription,
+      imageLink: pressRelease.imageLink,
+    });
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/circulars/delete/${id}`);
-      setCirculars(circulars.filter(c => c.id !== id));
-    } catch (error) {
-      console.error('Error deleting circular:', error);
-    }
-  };
-
-  const handleSave = async (id) => {
-    try {
-      await axios.put(`http://localhost:8080/api/circulars/${id}`, editedData);
-      setEditing(null);
-      fetchCirculars(); // Refresh the data
-    } catch (error) {
-      console.error('Error saving circular:', error);
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,63 +69,37 @@ const AdminPressTable = () => {
       [name]: value,
     });
   };
-  const handleView = async (id) => {
+
+  const handleSave = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/circulars/${id}/image`);
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-
-        // Open a new window and set the image source
-        const newWindow = window.open('', '_blank');
-        if (newWindow) {
-          newWindow.document.write(
-            `<html><head><title>Image Preview</title></head><body style="margin:0"><img src="${url}" alt="Circular Image" style="max-width:100%; height:auto;"/></body></html>`
-          );
-          newWindow.document.close();
-        } else {
-          console.error('Failed to open new window');
-        }
-      } else {
-        console.error('Failed to fetch image');
-      }
+      await axios.put(`http://localhost:8080/api/press-releases/update/${id}`, editedData);
+      fetchPressReleases();
+      setEditing(null);
     } catch (error) {
-      console.error('Error fetching image:', error);
-    }
-  };
-  const handleDownload = async (id) => {
-    try {
-      // Make an axios request to fetch the image as a blob
-      const response = await axios.get(`http://localhost:8080/api/circulars/${id}/image`, {
-        responseType: 'blob', // Important to specify the response type as 'blob'
-      });
-
-      // Create a temporary download link
-      const url = URL.createObjectURL(response.data);
-      const downloadLink = document.createElement('a');
-      downloadLink.href = url;
-      downloadLink.download = 'circular-image.jpg'; // Set the filename
-      downloadLink.click();
-
-      // Clean up the URL object
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Error downloading image:', error);
+      console.error('Error updating press release:', error);
     }
   };
 
-
-
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/press-releases/delete/${id}`);
+      fetchPressReleases(); // Refresh after deletion
+    } catch (error) {
+      console.error('Error deleting press release:', error);
+    }
+  };
 
   return (
     <div className="admin-edit-table-container">
       <Link to="/loginhome" className="back-button">Back to Login</Link>
-      <h2>Circulars</h2>
+
+      <h2>Press Releases</h2>
       <table className="admin-edit-table">
         <thead>
           <tr>
             <th>Sl. No</th>
             <th>Date</th>
+            <th>Paper Name</th>
             <th>Description</th>
             <th>View</th>
             <th>Download</th>
@@ -123,61 +108,86 @@ const AdminPressTable = () => {
           </tr>
         </thead>
         <tbody>
-          {circulars.map((circular, index) => (
-            <tr key={circular.id}>
+          {pressReleases.map((pressRelease, index) => (
+            <tr key={pressRelease.id}>
               <td>{index + 1}</td>
               <td>
-                {editing === circular.id ? (
-                  <input
-                    type="date"
-                    name="date"
-                    value={editedData.date || ''}
-                    onChange={handleChange}
-                  />
-                ) : (
-                  circular.date
-                )}
-              </td>
-              <td>
-                {editing === circular.id ? (
+                {editing === pressRelease.id ? (
                   <input
                     type="text"
-                    name="description"
-                    value={editedData.description || ''}
+                    className="edit-mode"
+                    name="pressReleaseDate"
+                    value={editedData.pressReleaseDate || ''}
                     onChange={handleChange}
                   />
                 ) : (
-                  circular.description
+                  pressRelease.pressReleaseDate
+                )}
+              </td>
+              <td>
+                {editing === pressRelease.id ? (
+                  <input
+                    type="text"
+                    className="edit-mode"
+                    name="pressReleaseNewPaperName"
+                    value={editedData.pressReleaseNewPaperName || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  pressRelease.pressReleaseNewPaperName
+                )}
+              </td>
+              <td>
+                {editing === pressRelease.id ? (
+                  <input
+                    type="text"
+                    className="edit-mode"
+                    name="pressReleaseDescription"
+                    value={editedData.pressReleaseDescription || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  pressRelease.pressReleaseDescription
+                )}
+              </td>
+              <td>
+                {editing === pressRelease.id ? (
+                  <input
+                    type="text"
+                    className="edit-mode"
+                    name="imageLink"
+                    value={editedData.imageLink || ''}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <button
+                    className="action-button view-button"
+                    onClick={() => handleView(pressRelease.imageLink)}
+                  >
+                    View
+                  </button>
                 )}
               </td>
               <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-view-button"
-                  onClick={() => handleView(circular.id)}
-                >
-                  View
-                </button>
-              </td>
-              <td>
-                <button
-                  className="admin-edit-table-action-button admin-edit-table-download-button"
-                  onClick={() => handleDownload(circular.id)}
+                  className="action-button download-button"
+                  onClick={() => handleDownload(pressRelease.imageLink)}
                 >
                   Download
                 </button>
               </td>
               <td>
-                {editing === circular.id ? (
+                {editing === pressRelease.id ? (
                   <button
-                    className="admin-edit-table-action-button admin-edit-table-save-button"
-                    onClick={() => handleSave(circular.id)}
+                    className="action-button save-button"
+                    onClick={() => handleSave(pressRelease.id)}
                   >
                     Save
                   </button>
                 ) : (
                   <button
-                    className="admin-edit-table-action-button admin-edit-table-edit-button"
-                    onClick={() => handleEdit(circular.id)}
+                    className="action-button edit-button"
+                    onClick={() => handleEdit(pressRelease.id)}
                   >
                     Edit
                   </button>
@@ -185,8 +195,8 @@ const AdminPressTable = () => {
               </td>
               <td>
                 <button
-                  className="admin-edit-table-action-button admin-edit-table-delete-button"
-                  onClick={() => handleDelete(circular.id)}
+                  className="action-button delete-button"
+                  onClick={() => handleDelete(pressRelease.id)}
                 >
                   Delete
                 </button>
@@ -194,6 +204,7 @@ const AdminPressTable = () => {
             </tr>
           ))}
         </tbody>
+
       </table>
     </div>
   );

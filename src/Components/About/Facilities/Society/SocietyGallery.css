@@ -1,0 +1,54 @@
+.societygallery_gallery {
+  padding: 40px;
+  background-color: #f8f8f8;
+}
+
+.societygallery_gallery h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.societygallery_slider {
+  display: flex;
+  justify-content: center;
+}
+
+.slick-slide {
+  height: auto;
+  /* Ensure the slide adapts to the image's height */
+}
+
+.societygallery-img {
+  padding-right: 15px;
+  padding-right: 15px;
+  width: 100%;
+  height: 700px;
+  /* Set uniform height */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove dots */
+.slick-dots {
+  /* display: none; */
+  color: black !important;
+}
+
+/* Custom arrows */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px;
+  color: black !important;
+}
+
+/* Center the arrows vertically */
+.slick-prev,
+.slick-next {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: black;
+}
